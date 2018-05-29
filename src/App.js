@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
+import { BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
-import Router from './router'
+import { renderRoutes } from 'react-router-config';
+import globalRouter from './views/router';
+import DevTools from './devtools';
+
+const routes = [
+  ...globalRouter
+]
 
 class App extends Component {
   render() {
@@ -19,8 +25,16 @@ class App extends Component {
     );
     */
     return (
-      <Router />
+      <Router {...this.props}>
+        <div>
+          {renderRoutes(routes)}
+          <DevTools />
+        </div>
+      </Router>
     )
+  }
+  componentDidMount () {
+    console.log(this)
   }
 }
 
