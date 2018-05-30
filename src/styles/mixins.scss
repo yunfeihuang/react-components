@@ -1,0 +1,159 @@
+@mixin disabled{
+  &[disabled]{
+    opacity:0.6;
+    pointer-events: none;
+    @content;
+  }
+}
+@mixin active{
+  &:active{
+    background-color:rgba(0,0,0,0.1);
+  }
+}
+@mixin button{
+  border:0;
+  outline:none;
+  background-color:transparent;
+  -webkit-appearance: none;
+  appearance: none;
+  text-align:center;
+  user-select:none;
+  cursor: default;
+  box-shadow: none;
+  font-size: inherit;
+  box-sizing: border-box;
+  color:inherit;
+  vertical-align: middle;
+}
+@mixin input{
+  border:0;
+  outline:none;
+  background-color:transparent;
+  text-align:inherit;
+  box-sizing:border-box;
+  height:2.6rem;
+  width:100%;
+  color:inherit;
+  vertical-align: middle;
+}
+@mixin scroll{
+  overflow: auto;
+  -webkit-overflow-scrolling: touch; 
+  overflow-scrolling: touch;
+}
+
+@mixin _divider($border-color : $border-color-base,$resolution:1) {
+  $var : 3%;
+  @media screen and (if($resolution == 6,-webkit-min-device-pixel-ratio,-webkit-device-pixel-ratio) : $resolution) {
+    background-color:darken($border-color,$resolution*$var);
+    transform:scaleY(1/$resolution);
+  }
+  @media screen and (if($resolution == 6,min-resolution,resolution): $resolution*1dppx) {
+    background-color:darken($border-color,$resolution*$var);
+    transform:scaleY(1/$resolution);
+  }
+}
+@mixin divider ($color:$color-divider){
+  content:'';
+  display:block;
+  height:1px;
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:100%;
+  background-color:$color;
+  @include _divider($color,2);
+  @include _divider($color,3);
+  @include _divider($color,4);
+  @include _divider($color,5);
+  @include _divider($color,6);
+}
+
+@mixin _divider-vertical($border-color : $border-color-base,$resolution:1) {
+  $var : 3%;
+  @media screen and (if($resolution == 6,-webkit-min-device-pixel-ratio,-webkit-device-pixel-ratio) : $resolution) {
+    background-color:darken($border-color,$resolution*$var);
+    transform:scaleX(1/$resolution);
+  }
+  @media screen and (if($resolution == 6,min-resolution,resolution): $resolution*1dppx) {
+    background-color:darken($border-color,$resolution*$var);
+    transform:scaleX(1/$resolution);
+  }
+}
+
+@mixin divider-vertical($color:$color-divider){
+  content:'';
+  display:block;
+  width:1px;
+  position:absolute;
+  top:0;
+  left:0;
+  height:100%;
+  background-color:$color;
+  @include _divider-vertical($color,2);
+  @include _divider-vertical($color,3);
+  @include _divider-vertical($color,4);
+  @include _divider-vertical($color,5);
+  @include _divider-vertical($color,6);
+}
+@mixin arrow($rotate:45deg){
+  content:'';
+  display:inline-block;
+  width:0.2rem;
+  position:absolute;
+  top:50%;
+  right:0.1rem;
+  height:0.2rem;
+  margin-top:-2px;
+  border-top:1px solid $border-color-base;
+  border-right:1px solid $border-color-base;
+  transform:rotate($rotate) translateY(-50%);
+}
+@mixin _round-border($border-color : $border-color-base,$border-radius : $border-radius-base,$resolution:1) {
+  $var : 3%;
+  @media screen and (if($resolution == 6,-webkit-min-device-pixel-ratio,-webkit-device-pixel-ratio) : $resolution) {
+    border-color:darken($border-color,$resolution*$var);
+    width:$resolution*100%;
+    height:$resolution*100%;
+    transform:scale(1/$resolution);
+    border-radius:$resolution*$border-radius;
+    left:if($resolution%2==1,-100%,-50%);
+    top:if($resolution%2==1,-100%,-50%);
+  }
+  @media screen and (if($resolution == 6,min-resolution,resolution): $resolution*1dppx) {
+    border-color:darken($border-color,$resolution*$var);
+    width:$resolution*100%;
+    height:$resolution*100%;
+    transform:scale(1/$resolution);
+    border-radius:$resolution*$border-radius;
+    left:if($resolution%2==1,-100%,-50%);
+    top:if($resolution%2==1,-100%,-50%);
+  }
+}
+@mixin round-border($border-color : $border-color-base,$border-radius : $border-radius-base) {
+  position:relative;
+  &:before{
+    border:1px solid $border-color;
+    box-sizing:border-box;
+    width:100%;
+    height:100%;
+    position:absolute;
+    left:0;
+    top:0;
+    content:'';
+    border-radius:$border-radius;
+    @include _round-border($border-color,$border-radius,2);
+    @include _round-border($border-color,$border-radius,3);
+    @include _round-border($border-color,$border-radius,4);
+    @include _round-border($border-color,$border-radius,5);
+    @include _round-border($border-color,$border-radius,6);
+  }
+}
+@mixin placeholder{
+  &:empty{
+    &:before{
+      content: attr(data-placeholder);
+      color:$color-placeholder;
+    }
+  }
+}

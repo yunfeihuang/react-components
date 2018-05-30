@@ -1,22 +1,17 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Nav } from '@/components'
 
 class Home extends Component {
   render() {
     return (
-      <div>
-        Home {this.props.state.todo.counter}
-        <Link to="/mine">Mine</Link>
-        <button onClick={this.handleClick.bind(this)}>点击累加</button>
+      <div className="home">
+        <Nav isBack={false} title="Vx UI Demo"/>
+        <Link to="/demos/button">Button</Link>
+        <Link to="/demos/actionsheet">Actionsheet</Link>
+        <Link to="/mine">mine</Link>
       </div>
     );
-  }
-  componentDidMount () {
-    console.log(this)
-    this.props.dispatch('todo/add', 1)
-  }
-  handleClick () {
-    this.props.dispatch('todo/add', 1)
   }
 }
 

@@ -16,7 +16,6 @@ export default function asyncComponent(importComponent) {
       const { default: component } = await importComponent()
       
       const mapStateToProps = (state, ownProps) => {
-        console.log(state)
         return {
           state,
           ownProps

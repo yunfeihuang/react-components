@@ -1,0 +1,30 @@
+// Prefix
+$css-prefix             : vx-;
+$css-prefix-iconfont    : vx-icon;
+
+// color
+$color-black            : #333;   
+$color-primary          : #3399ff;
+$color-error            : #f56c6c;
+$color-sub              : #999;
+$color-divider          : #f5f5f5;
+$color-warning          : #ff9900;
+$color-danger           : $color-error;
+$color-star             : #f5a623;
+$color-placeholder      : rgba(0,0,0,0.4);
+$color-background       : #f7f7f7;
+
+$font-size-default      : 0.28rem;
+$font-size-small        : 0.24rem;
+$font-size-large        : 0.32rem;
+
+$item-padding           : 0.3rem 0;
+
+// Border color
+$border-color-base      : rgb(229, 229, 229);  // outside
+$border-radius-base     : 6px;
+
+// Animation
+$animation-time         : .3s;
+$transition-time        : .2s;
+$ease-in-out            : ease-in-out;

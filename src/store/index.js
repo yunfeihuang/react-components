@@ -6,7 +6,6 @@ import DevTools from '../devtools'
 
 let enhancer = applyMiddleware(thunk)
 if (process.env.NODE_ENV === 'development') {
-  console.log('dddddddddd')
   enhancer = compose(
     applyMiddleware(thunk, createLogger()),
     DevTools.instrument()

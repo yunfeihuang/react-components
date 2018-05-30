@@ -7,8 +7,16 @@ class Mine extends Component {
       <div>
         Mine
         <Link to="/">Home</Link>
+        {this.props.state.todo.counter}
+        <button onClick={this.handleClick.bind(this)}>点击累加</button>
       </div>
     );
+  }
+  componentDidMount () {
+    this.props.dispatch('todo/add', 1)
+  }
+  handleClick () {
+    this.props.dispatch('todo/add', 1)
   }
 }
 
