@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
-import { Button, Nav } from '@/components'
+import { Button, Nav, Popup } from '@/components'
 
 class Demo extends Component {
+  state = {
+    open: false
+  }
   render() {
     return (
       <div>
+        <Popup open={this.state.open} onClose={this.handleClose.bind(this)}><span>fdsafdsafds</span></Popup>
         <Nav title="Button"/>
         <div style={{padding:'10px'}}>
-          <Button>default</Button>
+          <Button onClick={() => {this.setState({open: true})}}>default</Button>
           <Button type="primary">primary</Button>
           <Button type="danger">danger</Button>
           <Button type="warning">warning</Button>
@@ -26,6 +30,11 @@ class Demo extends Component {
         </div>
       </div>
     );
+  }
+  handleClose () {
+    this.setState({
+      open: false
+    })
   }
 }
 

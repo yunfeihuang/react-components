@@ -1,3 +1,3 @@
-import Actionsheet from './actionsheet';
+import Actionsheet from './Actionsheet';
 
 export default Actionsheet;
