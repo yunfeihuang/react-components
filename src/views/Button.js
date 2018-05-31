@@ -1,14 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Button, Nav, Popup } from '@/components'
 
-class Demo extends Component {
-  state = {
-    open: false
+class Demo extends React.Component {
+  constructor (props) {
+    super(props)
+    this.state = {
+      open: false
+    }
+    this.handleClose = this.handleClose.bind(this)
   }
   render() {
     return (
       <div>
-        <Popup open={this.state.open} onClose={this.handleClose.bind(this)}><span>fdsafdsafds</span></Popup>
+        <Popup open={this.state.open} onClose={this.handleClose}>
+          <span>fdsafdsafds<br/>fdsafdsafds<br/>fdsafdsafds<br/>fdsafdsafds<br/>fdsafdsafds<br/>fdsafdsafds<br/></span>
+          <span>fdsafdsafds<br/>fdsafdsafds<br/>fdsafdsafds<br/>fdsafdsafds<br/>fdsafdsafds<br/>fdsafdsafds<br/></span>
+        </Popup>
         <Nav title="Button"/>
         <div style={{padding:'10px'}}>
           <Button onClick={() => {this.setState({open: true})}}>default</Button>

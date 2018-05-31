@@ -3,3 +3,15 @@
     display:block;
   }
 }
+.popup-slide-bottom-enter-active, .popup-slide-bottom-exit-active {
+  transition: transform $transition-time
+}
+.popup-slide-bottom-enter, .popup-slide-bottom-exit-active {
+  transform: translateY(100%);
+}
+.popup-full-slide-bottom-enter-active, .popup-full-slide-bottom-exit-active {
+  transition: transform 0.4s;
+}
+.popup-full-slide-bottom-enter, .popup-full-slide-bottom-exit-active {
+  transform: translateY(100%);
+}
