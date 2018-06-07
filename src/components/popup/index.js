@@ -3,57 +3,51 @@ import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import Overlay from '../overlay'
-import { CSSTransition } from 'react-transition-group'
-console.log('CSSTransitionGroup', CSSTransition)
   
 export default class Popup extends React.Component {
   constructor (props) {
     super(props)
-    this.state = {cssOpen: false}
+    this.state = {open: this.props.open}
+    this.cssOpen = false
+    this.handleClose = this.handleClose.bind(this)
   }
   static propTypes = {
     open: PropTypes.bool,
     full: PropTypes.bool,
     direction: PropTypes.string,
-    onClose: PropTypes.func
+    onClose: PropTypes.func,
+    fastClose: PropTypes.bool
   }
   static defaultProps = {
     open: false,
     full: false,
-    direction: 'bottom'
+    direction: 'bottom',
+    fastClose: false
   }
   render () {
-    const { direction, full, style, onClose } = this.props
-    if (this.props.open) {
-      let node = this.mountNode
+    const { direction, full, style, onClose, className, fastClose, ...others } = this.props
+    if (this.state.open) {
+      let node = this.node
       if (!node) {
-        node = this.mountNode = document.createElement('div')
+        node = this.node = document.createElement('div')
         document.body.appendChild(node)
       }
-      this.cssOpenChange(true)
       return ReactDOM.createPortal(
-        <div className="vx-popup" style={{...style,display: 'block'}}>
-          <Overlay onClick={onClose} />
-          <CSSTransition
-            onExited={this.handleExited.bind(this)}
-            in={this.state.cssOpen}
-            classNames={full ? 'popup-full-slide-' + direction : 'popup-slide-' + direction}
-            timeout={500}
-            >
-            <div className={
-              classnames([
-                'vx-popup-inner',
-                'vx-popup-' + direction,
-                {
-                  'vx-full': full, 
-                  'vx-flexbox': direction === 'center',
-                  'vx-flexbox-align-center': direction === 'center',
-                  'vx-flexbox-content-center': direction === 'center',
-                }
-                ])}>
-              {this.props.children}
-            </div>
-          </CSSTransition>
+        <div className={classnames(["vx-popup", className])} style={{...style,display: 'block'}} {...others}>
+          <Overlay onClick={this.handleClose} />
+          <div className={
+            classnames([
+              'vx-popup-inner',
+              `vx-popup-${direction}`,
+              {
+                'vx-full': full, 
+                'vx-flexbox': direction === 'center',
+                'vx-flexbox-align-center': direction === 'center',
+                'vx-flexbox-content-center': direction === 'center',
+              }
+              ])}>
+            {this.props.children}
+          </div>
         </div>,
         node
       )
@@ -61,19 +55,28 @@ export default class Popup extends React.Component {
     return null
   }
   handleClose () {
-    this.setState({
-      cssOpen: false
-    })
+    if (this.props.fastClose && this.props.onClose) {
+      this.props.onClose()
+    }
   }
-  handleExited () {
-    console.log('ddddddddd')
-    this.props.onClose()
-  }
-  cssOpenChange (value) {
-    setTimeout(() => {
-      this.setState({
-        cssOpen: value
-      })
-    })
+  componentWillReceiveProps (nextProps) {
+    if (nextProps.open !== this.props.open) {
+      if (nextProps.open) {
+        this.setState({
+          open: nextProps.open
+        }, () => {
+          setTimeout(() => {
+           this.node.querySelector('.vx-popup-inner').style.cssText='transform: translateY(0%);'
+          }, 100)
+        })
+      } else {
+        this.node.querySelector('.vx-popup-inner').style.cssText = 'transform: translateY(100%);'
+        setTimeout(() => {
+          this.setState({
+            open: nextProps.open
+          })
+        }, 300)
+      }
+    }
   }
 }
