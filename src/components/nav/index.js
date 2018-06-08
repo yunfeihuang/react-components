@@ -8,7 +8,6 @@ export default class Button extends React.Component{
   static propTypes = {
     back: PropTypes.bool,
     title: PropTypes.string,
-    pull: PropTypes.bool,
     onBack: PropTypes.func
   }
   static defaultProps = {

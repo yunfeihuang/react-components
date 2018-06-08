@@ -3,9 +3,12 @@ import Arrow from './arrow'
 import Button from './button'
 import Nav from './nav'
 import {Actionsheet, ActionsheetItem} from './actionsheet'
+import {Flexbox, FlexboxItem} from './flexbox'
 import Popup from './popup'
 import Switch from './switch'
+import Layout from './layout'
 import Cell from './cell'
+import Group from './group'
 
 export {
   Arrow,
@@ -13,7 +16,11 @@ export {
   Nav,
   Actionsheet,
   ActionsheetItem,
+  Flexbox,
+  FlexboxItem,
   Popup,
   Switch,
-  Cell
+  Layout,
+  Cell,
+  Group
 }

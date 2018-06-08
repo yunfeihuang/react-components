@@ -39,13 +39,14 @@ export default class Popup extends React.Component {
             classnames([
               'vx-popup-inner',
               `vx-popup-${direction}`,
+              `popup-slide-${direction}-enter`,
               {
                 'vx-full': full, 
                 'vx-flexbox': direction === 'center',
                 'vx-flexbox-align-center': direction === 'center',
                 'vx-flexbox-content-center': direction === 'center',
-              }
-              ])}>
+              }])}
+               onClick={this.handleClose}>
             {this.props.children}
           </div>
         </div>,
@@ -54,9 +55,11 @@ export default class Popup extends React.Component {
     }
     return null
   }
-  handleClose () {
-    if (this.props.fastClose && this.props.onClose) {
-      this.props.onClose()
+  handleClose (e) {
+    if (e.currentTarget.classList.contains('vx-popup-inner') || e.currentTarget.classList.contains('vx-overlay')) {
+      if (this.props.fastClose && this.props.onClose) {
+        this.props.onClose()
+      }
     }
   }
   componentWillReceiveProps (nextProps) {
@@ -66,11 +69,11 @@ export default class Popup extends React.Component {
           open: nextProps.open
         }, () => {
           setTimeout(() => {
-           this.node.querySelector('.vx-popup-inner').style.cssText='transform: translateY(0%);'
+           this.node.querySelector('.vx-popup-inner').classList.remove(`popup-slide-${this.props.direction}-enter`)
           }, 100)
         })
       } else {
-        this.node.querySelector('.vx-popup-inner').style.cssText = 'transform: translateY(100%);'
+        this.node.querySelector('.vx-popup-inner').classList.add(`popup-slide-${this.props.direction}-enter`)
         setTimeout(() => {
           this.setState({
             open: nextProps.open

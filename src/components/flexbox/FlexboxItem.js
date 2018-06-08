@@ -14,17 +14,17 @@ export default class FlexboxItem extends React.Component{
     flex: '1'
   }
   render () {
-    const { children, style, flex, order, width, ...others } = this.props
+    const { children, style, flex, order, width, gutter, ...others } = this.props
     let styles = {
       ...style,
-      marginLeft: `${this.context.gutter/2}px`,
+      marginLeft: `${gutter/2}px`,
       flex,
       order
     }
     if (width) {
       styles = {
         ...style,
-        marginLeft: `${this.context.gutter/2}px`,
+        marginLeft: `${gutter/2}px`,
         width
       }
     }

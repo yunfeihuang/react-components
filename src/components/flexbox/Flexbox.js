@@ -33,7 +33,7 @@ export default class Flexbox extends React.Component{
       }
     }
 
-    const { className, direction, wrap, justify, align, children, ...others } = this.props
+    const { className, direction, wrap, justify, align, children, component, ...others } = this.props
     let array = ['vx-flexbox']
     for (let name in mapFlexLayout) {
       if (this.props[name] && mapFlexLayout[name][this.props[name]]) {
@@ -51,12 +51,14 @@ export default class Flexbox extends React.Component{
       }
       return item;
     })
+    
+    let Component = component || 'div'
     return (
-      <div 
+      <Component 
         {...others}
         className={cls}>
           {cloneChildren}
-      </div>
+      </Component>
     )
   }
 }

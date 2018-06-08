@@ -1,2 +1,14 @@
-.home a {
-  display: block; }
+.vx-popup-inner {
+  transition: transform 0.2s ease-out 0s, opacity 0.2s ease-out 0s; }
+
+.flexbox-demos {
+  padding: 10px;
+  overflow: hidden; }
+  .flexbox-demos .flexbox-item {
+    background: #3399ff;
+    border-radius: 6px;
+    text-align: center;
+    color: #fff;
+    line-height: 30px; }
+  .flexbox-demos .flex-wrap .flexbox-item {
+    margin: 5px 0; }

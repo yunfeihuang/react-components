@@ -1,25 +1,29 @@
 import React from 'react'
 import classnames from 'classnames'
+import { Link } from 'react-router-dom';
 import { Flexbox, FlexboxItem } from '../flexbox'
 
 const Cell = (props) => {
-  const { title, value, className, icon, arrow, ...others } = props
+  const { title, value, icon, arrow, to, ...others } = props
+  let Component = to ? Link : 'div'
   return (
-    <Flexbox 
-      {...others}
-      align="center"
-      justify="center"
-      className={classnames(['vx-cell', { 'vx-cell-access': arrow}, className])}>
-      <div className="vx-cell-hd">
-        {icon}
-      </div>
-      <FlexboxItem className="vx-cell-bd">
-        {title}
-      </FlexboxItem>
-      <div className="vx-cell-ft">
-        {value}
-      </div>
-    </Flexbox>
+      <Flexbox 
+        component={Component}
+        to={to}
+        align="center"
+        justify="center"
+        className={classnames(['vx-cell', { 'vx-cell-access': arrow}])}
+        {...others}>
+        <div className="vx-cell-hd">
+          {icon}
+        </div>
+        <FlexboxItem className="vx-cell-bd">
+          {title}
+        </FlexboxItem>
+        <div className="vx-cell-ft">
+          {value}
+        </div>
+      </Flexbox>
   )
 }
 

@@ -16,10 +16,10 @@ class Actionsheet extends Component {
   static defaultProps = {
     type: 'default',
     open: false,
-    cancel: true,
+    cancel: false,
     cancelText: '取消',
     title: '',
-    fastClose: false
+    fastClose: true
   }
   constructor (props) {
     super(props)
@@ -27,7 +27,8 @@ class Actionsheet extends Component {
     this.handleClose = this.handleClose.bind(this)
   }
   render () {
-    let {children, className, title, cancelText, cancel, onClick, ...others} = this.props
+    let {children, className, title, cancelText, cancel, type, onClick, ...others} = this.props
+    let direction = type === 'menu' ? 'center' : 'bottom'
     let cloneChildren = React.Children.map(children, item => {
       if (item) {
         return React.cloneElement(item, {
@@ -37,7 +38,7 @@ class Actionsheet extends Component {
       return item
     })
     return (
-      <Popup className={classnames(["vx-actionsheet", className])} {...others} >
+      <Popup className={classnames(["vx-actionsheet", {'vx-actionsheet-menu': type === 'menu'}, className])} {...others} direction={direction}>
         <div className="vx-actionsheet-inner" >
           {title && <div className="vx-actionsheet-title">
             {title}

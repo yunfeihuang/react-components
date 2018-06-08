@@ -1,29 +1,64 @@
 import AsyncComponent from '../components/AsyncComponent'
 
-const Home = AsyncComponent(() => import('./Home'))
-const Button = AsyncComponent(() => import('./Button'))
-const Mine = AsyncComponent(() => import('./Mine'))
-const Actionsheet = AsyncComponent(() => import('./Actionsheet'))
-
 export default [
   {
     path: '/',
     exact: true,
-    component: Home
+    component: AsyncComponent(() => import('./Home'))
   },
   {
     path: '/mine',
     exact: true,
-    component: Mine
+    component: AsyncComponent(() => import('./Mine'))
   },
   {
     path: '/demos/button',
     exact: true,
-    component: Button
+    component: AsyncComponent(() => import('./Button'))
   },
   {
     path: '/demos/actionsheet',
     exact: true,
-    component: Actionsheet
+    component: AsyncComponent(() => import('./Actionsheet'))
+  },
+  {
+    path: '/demos/popup',
+    exact: true,
+    component: AsyncComponent(() => import('./Popup'))
+  },
+  {
+    path: '/demos/flexbox',
+    exact: true,
+    component: AsyncComponent(() => import('./Flexbox'))
+  },
+  {
+    path: '/demos/layout',
+    exact: true,
+    component: AsyncComponent(() => import('./Layout'))
+  },
+  {
+    path: '/demos/nav',
+    exact: true,
+    component: AsyncComponent(() => import('./Nav'))
+  },
+  {
+    path: '/demos/switch',
+    exact: true,
+    component: AsyncComponent(() => import('./Switch'))
+  },
+  {
+    path: '/demos/input',
+    exact: true,
+    component: AsyncComponent(() => import('./Input'))
+  },
+  {
+    path: '/demos/group',
+    exact: true,
+    component: AsyncComponent(() => import('./Group'))
+  },
+  {
+    path: '/demos/cell',
+    exact: true,
+    component: AsyncComponent(() => import('./Cell'))
   }
 ]

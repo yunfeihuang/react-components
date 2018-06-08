@@ -6,7 +6,7 @@ class Demo extends React.Component {
     return (
       <Layout>
         <Nav slot="header" title="Button"/>
-        <div slot="body" style={{padding:'10px',background: '#fff'}}>
+        <div slot="body" style={{padding:'10px'}}>
           <Button>default</Button>
           <Button type="primary">primary</Button>
           <Button type="danger">danger</Button>
