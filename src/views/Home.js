@@ -9,11 +9,13 @@ class Home extends Component {
         <div slot="body">
           <Group title="basic">
             <Cell title="Button" arrow={true} to="/demos/button" />
-            <Cell title="Flexbox" arrow={true} to="/demos/flexbox" />
             <Cell title="Layout" arrow={true} to="/demos/layout" />
+            <Cell title="Flexbox" arrow={true} to="/demos/flexbox" />
             <Cell title="Nav" arrow={true} to="/demos/nav" />
             <Cell title="Group" arrow={true} to="/demos/group" />
             <Cell title="Cell" arrow={true} to="/demos/cell" />
+            <Cell title="Divider" arrow={true} to="/demos/divider" />
+            <Cell title="Message" arrow={true} to="/demos/message" />
           </Group>
           <Group title="form表单">
             <Cell title="Switch" arrow={true} to="/demos/switch" />

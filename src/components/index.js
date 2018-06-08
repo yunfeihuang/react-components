@@ -9,6 +9,8 @@ import Switch from './switch'
 import Layout from './layout'
 import Cell from './cell'
 import Group from './group'
+import Divider from './divider'
+import Message from './message'
 
 export {
   Arrow,
@@ -22,5 +24,7 @@ export {
   Switch,
   Layout,
   Cell,
-  Group
+  Group,
+  Divider,
+  Message
 }

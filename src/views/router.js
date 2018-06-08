@@ -60,5 +60,15 @@ export default [
     path: '/demos/cell',
     exact: true,
     component: AsyncComponent(() => import('./Cell'))
+  },
+  {
+    path: '/demos/divider',
+    exact: true,
+    component: AsyncComponent(() => import('./Divider'))
+  },
+  {
+    path: '/demos/message',
+    exact: true,
+    component: AsyncComponent(() => import('./Message'))
   }
 ]
