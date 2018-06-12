@@ -2,6 +2,9 @@
 .vx-popup-inner{
   transition:transform 0.2s ease-out 0s, opacity 0.2s ease-out 0s;
 }
+.vx-body{
+  overflow:auto;
+}
 .flexbox-demos{
   padding:10px;
   overflow:hidden;

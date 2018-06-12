@@ -1,6 +1,6 @@
 import React from 'react'
 import classnames from 'classnames'
-import { Flexbox, FlexboxItem } from '../flexbox'
+import { Flexbox } from '../flexbox'
 
 const Layout = (props) => {
   const { children, className, bodyComponent, ...others } = props
@@ -17,14 +17,11 @@ const Layout = (props) => {
       slots.others.push(item)
     }
   })
-  let BodyComponent = bodyComponent || FlexboxItem
   return (
     <div className={classnames(['vx-layout', className])} {...others}>
       <Flexbox className="vx-layout-flexbox" direction="column">
-        {slots['header']}
-        <BodyComponent>
-          {slots['body']}
-        </BodyComponent>
+        {slots['header']}        
+        {slots['body']}
         {slots['footer']}
       </Flexbox>
       {slots['others']}

@@ -7,10 +7,12 @@ import {Flexbox, FlexboxItem} from './flexbox'
 import Popup from './popup'
 import Switch from './switch'
 import Layout from './layout'
+import Body from './body'
 import Cell from './cell'
 import Group from './group'
 import Divider from './divider'
 import Message from './message'
+import Input from './input'
 
 export {
   Arrow,
@@ -23,8 +25,10 @@ export {
   Popup,
   Switch,
   Layout,
+  Body,
   Cell,
   Group,
   Divider,
-  Message
+  Message,
+  Input
 }

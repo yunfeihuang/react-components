@@ -1,12 +1,12 @@
 import React from 'react';
-import { Nav, Layout, Flexbox, FlexboxItem } from '@/components'
+import { Layout, Body, Nav, Flexbox, FlexboxItem } from '@/components'
 
 class Demo extends React.Component {
   render() {
     return (
       <Layout>
         <Nav slot="header" title="Flexbox"/>
-        <div slot="body" className="flexbox-demos">
+        <Body slot="body" className="flexbox-demos">
           <Flexbox gutter={10}>
             <FlexboxItem>
               <div className="flexbox-item">1</div>
@@ -66,7 +66,7 @@ class Demo extends React.Component {
               <div className="flexbox-item">6</div>
             </FlexboxItem>
           </Flexbox>
-        </div>
+        </Body>
       </Layout>
     );
   }

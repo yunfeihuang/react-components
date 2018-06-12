@@ -1,29 +1,19 @@
 import React from 'react';
-import { Button, Nav, Layout } from '@/components'
+import { Layout, Body, Nav, Input, Group } from '@/components'
 
 class Demo extends React.Component {
   render() {
     return (
       <Layout>
-        <Nav slot="header" title="Button"/>
-        <div slot="body" style={{padding:'10px'}}>
-          <Button>default</Button>
-          <Button type="primary">primary</Button>
-          <Button type="danger">danger</Button>
-          <Button type="warning">warning</Button>
-          <Button type="link">link</Button>
-          <br/>
-          <br/>
-          <Button type="primary" size="large">primary</Button>
-          <br/>
-          <Button type="danger" size="large">danger</Button>
-          <br/>
-          <Button type="warning" size="large">warning</Button>
-          <br/>
-          <Button type="primary" disabled size="large">primary</Button>
-          <br/>
-          <Button type="primary" plain size="large">primary</Button>
-        </div>
+        <Nav slot="header" title="Input"/>
+        <Body slot="body">
+          <Group title="default">
+            <Input placeholder="请输入" />
+          </Group>
+          <Group title="disabled">
+            <Input disabled={true} value="disabled"/>
+          </Group>
+        </Body>
       </Layout>
     );
   }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Nav, Layout, Group, Cell, Switch } from '@/components'
+import { Layout, Body, Nav, Group, Cell, Switch } from '@/components'
 
 class Demo extends React.Component {
   state = {
@@ -9,11 +9,11 @@ class Demo extends React.Component {
     return (
       <Layout>
         <Nav slot="header" title="Switch"/>
-        <div slot="body">
+        <Body slot="body">
           <Group>
             <Cell title={'开关：'+this.state.open} value={<Switch value={this.state.open} onChange={this.handleChange.bind(this)} />} />
           </Group>
-        </div>
+        </Body>
       </Layout>
     );
   }

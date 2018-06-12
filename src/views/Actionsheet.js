@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Layout, Actionsheet, ActionsheetItem, Switch, Nav, Cell, Group} from '@/components'
+import { Layout, Body, Actionsheet, ActionsheetItem, Switch, Nav, Cell, Group} from '@/components'
 
 class Demo extends Component {
   state = {
@@ -29,13 +29,13 @@ class Demo extends Component {
     return (
       <Layout>
         <Nav slot="header" title="Actionsheet"/>
-        <div slot="body">
+        <Body slot="body">
           <Group>
             <Cell title="default" value={<Switch value={this.state.open1} onChange={this.handleChange.bind(this, 1)} />} />
             <Cell title="cancel && title" value={<Switch value={this.state.open2} onChange={this.handleChange.bind(this, 2)} />} />
             <Cell title="menu" value={<Switch value={this.state.open3} onChange={this.handleChange.bind(this, 3)} />} />
           </Group>
-        </div>
+        </Body>
         <Actionsheet open={this.state.open1} onClose={this.handleClose.bind(this, 1)}>
           {this.state.options.map((item, index) => {
             return <ActionsheetItem value={item.value} key={index}>{item.label}</ActionsheetItem>

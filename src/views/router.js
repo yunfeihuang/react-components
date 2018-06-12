@@ -1,15 +1,37 @@
 import AsyncComponent from '../components/AsyncComponent'
+/*
+const requireComponent = require.context('.', false, /\.js$/) // 找到demos文件夹下以.vue命名的文件
+let route = []
+requireComponent.keys().forEach(fileName => {
+  let path = fileName.replace('./', '/')
+  let App = 'Home.js'
+  if (fileName.indexOf('router.js') === -1) {
+    if (fileName.indexOf('Home.js') > -1) {
+      console.log(`./${App}`)
+      route.push({
+        exact: true,
+        path: '/',
+        component: () => AsyncComponent(() => import(`./${App}`))
+      })
+    } else {
+      // console.log(`.${fileName.replace('.', '')}`)
+      route.push({
+        exact: true,
+        path: path.toLocaleLowerCase().replace('.js', ''),
+        component: () => AsyncComponent(() => import(`.${fileName.replace('.', '')}`))
+      })
+    }
+  }
+})
+console.log(route)
+export default route
+*/
 
 export default [
   {
     path: '/',
     exact: true,
     component: AsyncComponent(() => import('./Home'))
-  },
-  {
-    path: '/mine',
-    exact: true,
-    component: AsyncComponent(() => import('./Mine'))
   },
   {
     path: '/demos/button',

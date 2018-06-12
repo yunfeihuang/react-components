@@ -1,12 +1,12 @@
 import React from 'react';
-import { Button, Nav, Layout } from '@/components'
+import { Layout, Body, Nav, Button } from '@/components'
 
 class Demo extends React.Component {
   render() {
     return (
       <Layout>
         <Nav slot="header" title="Button"/>
-        <div slot="body" style={{padding:'10px',background: '#fff'}}>
+        <Body slot="body" style={{padding:'10px',background: '#fff'}}>
           <Button>default</Button>
           <Button type="primary">primary</Button>
           <Button type="danger">danger</Button>
@@ -23,7 +23,7 @@ class Demo extends React.Component {
           <Button type="primary" disabled size="large">primary</Button>
           <br/>
           <Button type="primary" plain size="large">primary</Button>
-        </div>
+        </Body>
       </Layout>
     );
   }

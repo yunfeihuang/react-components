@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout, Switch, Nav, Cell, Group, Popup} from '@/components'
+import { Layout, Body, Nav, Cell, Group, Switch, Popup} from '@/components'
 
 class Demo extends React.Component {
   constructor (props) {
@@ -15,7 +15,7 @@ class Demo extends React.Component {
     return (
       <Layout>
         <Nav slot="header" title="Popup"/>
-        <div slot="body">
+        <Body slot="body">
           <Group>
             <Cell title="popup default" value={<Switch value={this.state.open && this.state.direction === 'bottom'} onChange={this.handleChange.bind(this,'bottom')} />} />
             <Cell title="popup top" value={<Switch value={this.state.open && this.state.direction === 'top'} onChange={this.handleChange.bind(this,'top')} />} />
@@ -24,7 +24,7 @@ class Demo extends React.Component {
             <Cell title="popup center" value={<Switch value={this.state.open && this.state.direction === 'center'} onChange={this.handleChange.bind(this,'center')} />} />
             <Cell title="popup full" value={<Switch value={this.state.fullOpen} onChange={this.handleFullChange.bind(this)} />} />
           </Group>
-        </div>
+        </Body>
         <Popup open={this.state.open} onClose={this.handleClose} direction={this.state.direction}>
           <div style={{padding:'0.5rem 0',background:'#fff'}}>
             <Cell title="popup close" value={<Switch value={this.state.open} onChange={this.handleChange.bind(this, this.state.direction)} />} />

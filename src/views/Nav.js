@@ -1,5 +1,5 @@
 import React from 'react';
-import { Nav, Layout } from '@/components'
+import { Layout, Nav } from '@/components'
 
 class Demo extends React.Component {
   render() {
