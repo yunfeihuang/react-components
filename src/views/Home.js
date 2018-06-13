@@ -21,6 +21,7 @@ class Home extends Component {
             <Cell title="Input" arrow={true} to="/demos/input" />
             <Cell title="Switch" arrow={true} to="/demos/switch" />
             <Cell title="Checkbox" arrow={true} to="/demos/checkbox" />
+            <Cell title="Radio" arrow={true} to="/demos/radio" />
           </Group>
           <Group title="对话弹框">
             <Cell title="Actionsheet" arrow={true} to="/demos/actionsheet" />

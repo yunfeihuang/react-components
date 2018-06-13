@@ -1,14 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import classnames from 'classnames';
-import PropTypes from 'prop-types';
 
-class Checkbox extends Component {
-  static propTypes = {
-    type: PropTypes.string
-  }
-  static defaultProps = {
-    type: 'checkbox',
-  }
+class Checkbox extends React.Component {
   constructor (props) {
     super(props)
     this.handleChange = this.handleChange.bind(this)

@@ -14,6 +14,7 @@ import Divider from './divider'
 import Message from './message'
 import Input from './input'
 import {Checkbox, CheckboxGroup} from './checkbox'
+import {Radio, RadioGroup} from './radio'
 
 export {
   Arrow,
@@ -33,5 +34,7 @@ export {
   Message,
   Input,
   Checkbox,
-  CheckboxGroup
+  CheckboxGroup,
+  Radio,
+  RadioGroup
 }

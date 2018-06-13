@@ -97,5 +97,10 @@ export default [
     path: '/demos/checkbox',
     exact: true,
     component: AsyncComponent(() => import('./Checkbox'))
+  },
+  {
+    path: '/demos/radio',
+    exact: true,
+    component: AsyncComponent(() => import('./Radio'))
   }
 ]
