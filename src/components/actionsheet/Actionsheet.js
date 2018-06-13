@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Popup from '../popup';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
-class Actionsheet extends Component {
+class Actionsheet extends React.Component {
   static propTypes = {
     type: PropTypes.string,
     open: PropTypes.bool,

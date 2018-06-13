@@ -92,5 +92,10 @@ export default [
     path: '/demos/message',
     exact: true,
     component: AsyncComponent(() => import('./Message'))
+  },
+  {
+    path: '/demos/checkbox',
+    exact: true,
+    component: AsyncComponent(() => import('./Checkbox'))
   }
 ]

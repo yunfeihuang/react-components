@@ -20,6 +20,7 @@ class Home extends Component {
           <Group title="form表单">
             <Cell title="Input" arrow={true} to="/demos/input" />
             <Cell title="Switch" arrow={true} to="/demos/switch" />
+            <Cell title="Checkbox" arrow={true} to="/demos/checkbox" />
           </Group>
           <Group title="对话弹框">
             <Cell title="Actionsheet" arrow={true} to="/demos/actionsheet" />

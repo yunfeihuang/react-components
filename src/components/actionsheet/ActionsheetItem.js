@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-class ActionsheetItem extends Component {
+class ActionsheetItem extends React.Component {
   static propsTypes = {
     value: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
   }
