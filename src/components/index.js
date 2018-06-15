@@ -15,7 +15,8 @@ import Message from './message'
 import Input from './input'
 import {Checkbox, CheckboxGroup} from './checkbox'
 import {Radio, RadioGroup} from './radio'
-import {Select, Option} from './select/index.js'
+import {Select, Option} from './select'
+import Confirm from './confirm'
 
 export {
   Arrow,
@@ -39,5 +40,6 @@ export {
   Radio,
   RadioGroup,
   Select,
-  Option
+  Option,
+  Confirm
 }
