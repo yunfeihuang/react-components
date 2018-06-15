@@ -26,6 +26,7 @@ class Home extends Component {
           </Group>
           <Group title="对话弹框">
             <Cell title="Actionsheet" arrow={true} to="/demos/actionsheet" />
+            <Cell title="Alert" arrow={true} to="/demos/alert" />
             <Cell title="Confirm" arrow={true} to="/demos/confirm" />
             <Cell title="Popup" arrow={true} to="/demos/popup" />
           </Group>

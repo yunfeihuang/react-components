@@ -109,6 +109,11 @@ export default [
     component: AsyncComponent(() => import('./Select'))
   },
   {
+    path: '/demos/alert',
+    exact: true,
+    component: AsyncComponent(() => import('./Alert'))
+  },
+  {
     path: '/demos/confirm',
     exact: true,
     component: AsyncComponent(() => import('./Confirm'))

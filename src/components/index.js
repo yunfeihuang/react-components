@@ -17,6 +17,7 @@ import {Checkbox, CheckboxGroup} from './checkbox'
 import {Radio, RadioGroup} from './radio'
 import {Select, Option} from './select'
 import Confirm from './confirm'
+import Alert from './alert'
 
 export {
   Arrow,
@@ -41,5 +42,6 @@ export {
   RadioGroup,
   Select,
   Option,
-  Confirm
+  Confirm,
+  Alert
 }
