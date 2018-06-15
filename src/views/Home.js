@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Layout, Body, Nav, Cell, Group } from '@/components'
 
-class Home extends Component {
+class Home extends React.Component {
   render() {
     return (
       <Layout className="home">
@@ -19,6 +19,7 @@ class Home extends Component {
           </Group>
           <Group title="form表单">
             <Cell title="Input" arrow={true} to="/demos/input" />
+            <Cell title="Password" arrow={true} to="/demos/password" />
             <Cell title="Switch" arrow={true} to="/demos/switch" />
             <Cell title="Checkbox" arrow={true} to="/demos/checkbox" />
             <Cell title="Radio" arrow={true} to="/demos/radio" />

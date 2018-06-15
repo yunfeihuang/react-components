@@ -9,18 +9,26 @@ export default class Input extends React.Component {
     }
     this.handleFocus = this.handleFocus.bind(this)
     this.handleBlur = this.handleBlur.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+    this.handleInput = this.handleInput.bind(this)
   }
   render () {
-    let {children, className, style, ...others} = this.props
+    let {children, className, style,...others} = this.props
     return (
       <label
         style={style}
         className={classnames(['vx-input-wrapper',{'vx-input-focus': this.state.isFocus}, className])}
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}>
-        <input {...others}/>
+        <input {...others} onChange={this.handleChange} onInput= {this.handleInput}/>
       </label>
     )
+  }
+  handleChange (e) {
+    this.props.onChange && this.props.onChange (e.target.value)
+  }
+  handleInput (e) {
+    this.props.onInput && this.props.onInput (e.target.value)
   }
   handleFocus () {
     this.setState({

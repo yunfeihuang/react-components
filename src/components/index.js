@@ -18,6 +18,8 @@ import {Radio, RadioGroup} from './radio'
 import {Select, Option} from './select'
 import Confirm from './confirm'
 import Alert from './alert'
+import Icon from './icon'
+import Password from './password'
 
 export {
   Arrow,
@@ -43,5 +45,7 @@ export {
   Select,
   Option,
   Confirm,
-  Alert
+  Alert,
+  Icon,
+  Password
 }
