@@ -79,6 +79,7 @@ class Select extends React.Component {
         value={this.props.value}
         title={this.props.placeholder}
         max={this.props.max}
+        fastClose={this.props.max === 1}
         onClose={this.handleClose}
         onChange={this.handleChange}>
           {this.props.children}

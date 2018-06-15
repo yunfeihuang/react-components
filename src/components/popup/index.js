@@ -56,7 +56,7 @@ export default class Popup extends React.Component {
     return null
   }
   handleClose (e) {
-    if (e.currentTarget.classList.contains('vx-popup-inner') || e.currentTarget.classList.contains('vx-overlay')) {
+    if (e.target.classList.contains('vx-popup-inner') || e.target.classList.contains('vx-overlay')) {
       if (this.props.fastClose && this.props.onClose) {
         this.props.onClose()
       }
