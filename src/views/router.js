@@ -102,5 +102,10 @@ export default [
     path: '/demos/radio',
     exact: true,
     component: AsyncComponent(() => import('./Radio'))
+  },
+  {
+    path: '/demos/select',
+    exact: true,
+    component: AsyncComponent(() => import('./Select'))
   }
 ]

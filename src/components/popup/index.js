@@ -62,6 +62,9 @@ export default class Popup extends React.Component {
       }
     }
   }
+  componentDidMount () {
+    this.node && this.node.querySelector('.vx-popup-inner').classList.remove(`popup-slide-${this.props.direction}-enter`)
+  }
   componentWillReceiveProps (nextProps) {
     if (nextProps.open !== this.props.open) {
       if (nextProps.open) {

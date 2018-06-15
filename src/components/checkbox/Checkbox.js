@@ -20,7 +20,8 @@ class Checkbox extends React.Component {
     return (
       <label
         style={style}
-        className={classnames(['vx-checkbox', {'vx-checkbox-reverse': $parent && $parent.direction === 'reverse', 'is-active': others.checked}, className])} disabled={others.disabled} >
+        disabled={others.disabled}
+        className={classnames(['vx-checkbox', {'vx-checkbox-reverse': $parent && $parent.direction === 'reverse', 'is-active': others.checked}, className])}>
         <input {...others} type={type} checked={checked} onChange={this.handleChange}/>
         <i className="vx-checkbox-icon"></i>
         <span className="vx-checkbox-text">
