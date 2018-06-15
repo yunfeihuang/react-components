@@ -31,14 +31,11 @@ class Picker extends React.Component {
   render () {
     let {children, max, title, cancelText, confirmText} = this.props
     let Checkboxs = React.Children.map(children, (item, index) => {
-      let disabled = item.props.disabled
-      if (this.state.value.length >= max && max > 1) {
-        disabled = this.state.value.indexOf(item.props.value) === -1
-      }
+      
       return (<Checkbox
           value={item.props.value}
           key={index}
-          disabled={disabled}
+          disabled={item.props.disabled}
           label={item.props.label}
           >
           {item.props.children}
