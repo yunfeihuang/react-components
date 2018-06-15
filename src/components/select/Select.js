@@ -22,6 +22,12 @@ class Select extends React.Component {
     this.handleClick = this.handleClick.bind(this)
     this.handleClose = this.handleClose.bind(this)
   }
+  componentWillReceiveProps (nextProps) {
+    if (JSON.stringify(this.props.value) !== JSON.stringify(nextProps.value)) {
+      let label = this.getLabel(nextProps.value)
+      this.setState({label: label.join(',')})
+    }
+  }
   render () {
     let {disabled, placeholder} = this.props
     return (
@@ -31,6 +37,13 @@ class Select extends React.Component {
     );
   }
   handleChange (value) {
+    let label = this.getLabel(value)
+    this.setState({label: label.join(',')}, () => {
+      this.props.onChange && this.props.onChange(value)
+      this.handleClose()
+    })
+  }
+  getLabel (value) {
     let label = []
     if (this.props.max === 1) {
       React.Children.map(this.props.children, item => {
@@ -45,10 +58,7 @@ class Select extends React.Component {
         }
       })
     }
-    this.setState({label: label.join(',')}, () => {
-      this.props.onChange && this.props.onChange(value)
-      this.handleClose()
-    })
+    return label
   }
   handleClose (value = false) {
     this.setState({
@@ -67,6 +77,7 @@ class Select extends React.Component {
       <Picker
         open={false}
         value={this.props.value}
+        title={this.props.placeholder}
         max={this.props.max}
         onClose={this.handleClose}
         onChange={this.handleChange}>

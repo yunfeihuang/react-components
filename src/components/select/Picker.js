@@ -31,7 +31,6 @@ class Picker extends React.Component {
   render () {
     let {children, max, title, cancelText, confirmText} = this.props
     let Checkboxs = React.Children.map(children, (item, index) => {
-      
       return (<Checkbox
           value={item.props.value}
           key={index}
@@ -41,12 +40,16 @@ class Picker extends React.Component {
           {item.props.children}
         </Checkbox>)
     })
+    let myTitle = title
+    if (max > 1 && this.state.value.length >= max) {
+      myTitle = `选项不能超过${max}个`
+    }
     return (
       <Popup open={this.state.open} >
         <div className="vx-option-picker-wrapper">
           {max !== 1 && <div className="vx-flexbox vx-option-picker-header">
             <button type="button" className="vx-option-picker-cancel" onClick={this.handleCancel}>{cancelText}</button>
-            <button type="button" className="vx-flexbox-item vx-option-picker-placeholder">{title}</button>
+            <button type="button" className="vx-flexbox-item vx-option-picker-placeholder">{myTitle}</button>
             <button type="button" disabled={!this.state.value.length} className="vx-option-picker-confirm" onClick={this.handleConfirm}>{confirmText}</button>
           </div>}
           <div className="vx-option-picker">

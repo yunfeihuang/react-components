@@ -84,22 +84,16 @@ class Demo extends React.Component {
                 {Options1}
               </Select>
             } />
-          </Group>
-          <Group>
             <Cell title="下拉框option含html" value={
               <Select value={this.state.value} onChange={this.handleChange} >
                 {Options2}
               </Select>
             } />
-          </Group>
-          <Group>
             <Cell title="多选" value={
               <Select value={this.state.value2} max={0} onChange={this.handleChange2} >
                 {Options3}
               </Select>
             } />
-          </Group>
-          <Group>
             <Cell title="最多选两个" value={
               <Select value={this.state.value2} max={2} onChange={this.handleChange2} >
                 {Options3}
