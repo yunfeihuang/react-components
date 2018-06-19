@@ -22,7 +22,7 @@ export default class Popup extends React.Component {
     open: false,
     full: false,
     direction: 'bottom',
-    fastClose: false
+    fastClose: true
   }
   render () {
     const { direction, full, style, onClose, className, fastClose, ...others } = this.props
