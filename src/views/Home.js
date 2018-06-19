@@ -20,6 +20,7 @@ class Home extends React.Component {
           <Group title="form表单">
             <Cell title="Input" arrow={true} to="/demos/input" />
             <Cell title="Password" arrow={true} to="/demos/password" />
+            <Cell title="Textarea" arrow={true} to="/demos/textarea" />
             <Cell title="Switch" arrow={true} to="/demos/switch" />
             <Cell title="Checkbox" arrow={true} to="/demos/checkbox" />
             <Cell title="Radio" arrow={true} to="/demos/radio" />

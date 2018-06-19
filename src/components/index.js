@@ -22,6 +22,7 @@ import Prompt from './prompt'
 import Toast from './toast'
 import Icon from './icon'
 import Password from './password'
+import Textarea from './textarea'
 
 export {
   Arrow,
@@ -51,5 +52,6 @@ export {
   Prompt,
   Toast,
   Icon,
-  Password
+  Password,
+  Textarea
 }

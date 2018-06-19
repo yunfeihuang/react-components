@@ -132,5 +132,10 @@ export default [
     path: '/demos/toast',
     exact: true,
     component: AsyncComponent(() => import('./Toast'))
+  },
+  {
+    path: '/demos/textarea',
+    exact: true,
+    component: AsyncComponent(() => import('./Textarea'))
   }
 ]
