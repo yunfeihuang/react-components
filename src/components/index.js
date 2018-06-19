@@ -25,6 +25,7 @@ import Icon from './icon'
 import Password from './password'
 import Textarea from './textarea'
 import Spinner from './spinner'
+import {Tab, TabItem} from './tab'
 
 export {
   Arrow,
@@ -58,5 +59,7 @@ export {
   Icon,
   Password,
   Textarea,
-  Spinner
+  Spinner,
+  Tab,
+  TabItem
 }

@@ -147,5 +147,10 @@ export default [
     path: '/demos/spinner',
     exact: true,
     component: AsyncComponent(() => import('./Spinner'))
+  },
+  {
+    path: '/demos/tab',
+    exact: true,
+    component: AsyncComponent(() => import('./Tab'))
   }
 ]

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Layout, Nav, Body, Cell, Group, Spinner} from '@/components'
+import { Layout, Nav, Body, Spinner} from '@/components'
 
 class Demo extends Component {
   state = {
