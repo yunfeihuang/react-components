@@ -142,5 +142,10 @@ export default [
     path: '/demos/textarea',
     exact: true,
     component: AsyncComponent(() => import('./Textarea'))
+  },
+  {
+    path: '/demos/spinner',
+    exact: true,
+    component: AsyncComponent(() => import('./Spinner'))
   }
 ]

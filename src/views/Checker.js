@@ -31,7 +31,7 @@ class Demo extends React.Component {
     })
     return (
       <Layout>
-        <Nav slot="header" title="Checkbox"/>
+        <Nav slot="header" title="Checker"/>
         <Body slot="body">
           <Group title={"Checker："+this.state.checked}>
             <div style={{padding:'20px'}}>

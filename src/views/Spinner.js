@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Layout, Nav, Body, Confirm, Switch, Cell, Group} from '@/components'
+import { Layout, Nav, Body, Cell, Group, Spinner} from '@/components'
 
 class Demo extends Component {
   state = {
@@ -8,28 +8,19 @@ class Demo extends Component {
   render() {
     return (
       <Layout>
-        <Nav slot="header" title="Confirm"/>
-        <Body slot="body">
-          <Group>
-            <Cell title="default" value={<Switch value={this.state.open} onChange={this.handleChange.bind(this)} />} />
-          </Group>
+        <Nav slot="header" title="Spinner"/>
+        <Body slot="body" style={{textAlign: 'center'}}>
+          <br/>
+          <Spinner />
+          <br/>
+          <br/>
+          <br/>
+          <Spinner style={{height:'50px',width:'50px'}}>
+            <span style={{lineHeight:'50px'}}>LOGO</span>
+          </Spinner>
         </Body>
-        <Confirm open={this.state.open} onClose={this.handleClose.bind(this)} onConfirm={this.handleConfirm.bind(this)}>
-          确认删除我么
-        </Confirm>
       </Layout>
     );
-  }
-  handleChange (value) {
-    this.setState({
-      open: value
-    })
-  }
-  handleClose () {
-    this.handleChange(false)
-  }
-  handleConfirm () {
-    this.handleChange(false)
   }
 }
 

@@ -35,6 +35,15 @@ class Home extends React.Component {
             <Cell title="Toast" arrow={true} to="/demos/toast" />
             <Cell title="Popup" arrow={true} to="/demos/popup" />
           </Group>
+          <Group title="选项卡">
+            <Cell title="Tab" arrow={true} to="/demos/tab" />
+          </Group>
+          <Group title="图片">
+            <Cell title="Img" arrow={true} to="/demos/img" />
+          </Group>
+          <Group title="其他">
+            <Cell title="Spinner" arrow={true} to="/demos/spinner" />
+          </Group>
         </Body>
       </Layout>
     );

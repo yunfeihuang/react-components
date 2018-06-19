@@ -24,6 +24,7 @@ import Toast from './toast'
 import Icon from './icon'
 import Password from './password'
 import Textarea from './textarea'
+import Spinner from './spinner'
 
 export {
   Arrow,
@@ -56,5 +57,6 @@ export {
   Toast,
   Icon,
   Password,
-  Textarea
+  Textarea,
+  Spinner
 }
