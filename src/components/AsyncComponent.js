@@ -1,14 +1,22 @@
-import React, { Component } from 'react'
+import React from 'react'
+import ReactDOM from 'react-dom'
 import { connect } from 'react-redux';
 import actions from '../store/actions';
+import Toast from '@/components/toast'
 
 export default function asyncComponent(importComponent) {
-  class AsyncComponent extends Component {
+  class AsyncComponent extends React.Component {
     constructor(props) {
       super(props)
       this.state = {
         component: null
       }
+      let node = this.node = document.createElement('div')
+      document.body.appendChild(node)
+      ReactDOM.render(
+        <Toast type="loading" open={true} duration={0} align="center">页面努力加载...</Toast>,
+        node
+      )
     }
 
     async componentDidMount() {
@@ -43,6 +51,8 @@ export default function asyncComponent(importComponent) {
       }
       this.setState({
         component: connect(mapStateToProps, mapDispatchToProps)(component)
+      }, () => {
+        this.node && this.node.parentNode && this.node.parentNode.removeChild(this.node)
       })
     }
 
