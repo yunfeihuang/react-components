@@ -26,6 +26,9 @@ class Demo extends React.Component {
     ]
   }
   render() {
+    let options = this.state.options.map((item, index) => {
+      return <Checkbox value={item.value} key={index} >{item.label}</Checkbox>
+    })
     return (
       <Layout>
         <Nav slot="header" title="Checkbox"/>
@@ -35,29 +38,17 @@ class Demo extends React.Component {
           </Group>
           <Group title={"CheckboxGroup："+this.state.value}>
             <CheckboxGroup value={this.state.value} onChange={this.handleGroupChange.bind(this)}>
-              {(() => {
-                return this.state.options.map((item, index) => {
-                  return <Checkbox value={item.value} key={index} >{item.label}</Checkbox>
-                })
-              })()}
+              {options}
             </CheckboxGroup>
           </Group>
           <Group title={"CheckboxGroup-Reverse"}>
             <CheckboxGroup value={this.state.value} onChange={this.handleGroupChange.bind(this)} direction="reverse">
-              {(() => {
-                return this.state.options.map((item, index) => {
-                  return <Checkbox value={item.value} key={index} >{item.label}</Checkbox>
-                })
-              })()}
+              {options}
             </CheckboxGroup>
           </Group>
           <Group title={"CheckboxGroup最多选2个"}>
             <CheckboxGroup value={this.state.value} onChange={this.handleGroupChange.bind(this)} max={2}>
-              {(() => {
-                return this.state.options.map((item, index) => {
-                  return <Checkbox value={item.value} key={index} >{item.label}</Checkbox>
-                })
-              })()}
+              {options}
             </CheckboxGroup>
           </Group>
         </Body>

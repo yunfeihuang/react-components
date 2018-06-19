@@ -23,6 +23,7 @@ class Home extends React.Component {
             <Cell title="Textarea" arrow={true} to="/demos/textarea" />
             <Cell title="Switch" arrow={true} to="/demos/switch" />
             <Cell title="Checkbox" arrow={true} to="/demos/checkbox" />
+            <Cell title="Checker" arrow={true} to="/demos/checker" />
             <Cell title="Radio" arrow={true} to="/demos/radio" />
             <Cell title="Select" arrow={true} to="/demos/select" />
           </Group>

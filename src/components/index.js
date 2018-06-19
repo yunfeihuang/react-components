@@ -14,6 +14,7 @@ import Divider from './divider'
 import Message from './message'
 import Input from './input'
 import {Checkbox, CheckboxGroup} from './checkbox'
+import {Checker, CheckerGroup} from './checker'
 import {Radio, RadioGroup} from './radio'
 import {Select, Option} from './select'
 import Confirm from './confirm'
@@ -43,6 +44,8 @@ export {
   Input,
   Checkbox,
   CheckboxGroup,
+  Checker,
+  CheckerGroup,
   Radio,
   RadioGroup,
   Select,
