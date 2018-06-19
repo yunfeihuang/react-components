@@ -7,6 +7,7 @@ class Confirm extends React.Component {
   static propTypes = {
     open: PropTypes.bool,
     cancel: PropTypes.bool,
+    title: PropTypes.string,
     cancelText: PropTypes.string,
     confirmText: PropTypes.string,
     onConfirm: PropTypes.func,
@@ -24,12 +25,13 @@ class Confirm extends React.Component {
     this.handleConfirm = this.handleConfirm.bind(this)
   }
   render () {
-    let {children, className, cancelText, confirmText, cancel, open} = this.props
+    let {children, className, title, cancelText, confirmText, cancel, open} = this.props
     return (
       <div className={classnames(["vx-confirm",className])} style={{display:open ? 'table' : 'none'}}>
         <Overlay />
         <div className="vx-confirm-wrapper">
           <div className="vx-confirm-inner confirm-scale-enter" ref="inner">
+              {title && <div className="vx-confirm-title">{title}</div>}
               <div className="vx-confirm-body">
                 {children}
               </div>

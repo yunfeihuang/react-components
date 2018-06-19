@@ -18,6 +18,7 @@ import {Radio, RadioGroup} from './radio'
 import {Select, Option} from './select'
 import Confirm from './confirm'
 import Alert from './alert'
+import Prompt from './prompt'
 import Icon from './icon'
 import Password from './password'
 
@@ -46,6 +47,7 @@ export {
   Option,
   Confirm,
   Alert,
+  Prompt,
   Icon,
   Password
 }
