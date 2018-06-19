@@ -26,6 +26,9 @@ class Demo extends Component {
     ]
   }
   render() {
+    let options = this.state.options.map((item, index) => {
+      return <ActionsheetItem value={item.value} key={index}>{item.label}</ActionsheetItem>
+    })
     return (
       <Layout>
         <Nav slot="header" title="Actionsheet"/>
@@ -36,20 +39,14 @@ class Demo extends Component {
             <Cell title="menu" value={<Switch value={this.state.open3} onChange={this.handleChange.bind(this, 3)} />} />
           </Group>
         </Body>
-        <Actionsheet open={this.state.open1} onClose={this.handleClose.bind(this, 1)}>
-          {this.state.options.map((item, index) => {
-            return <ActionsheetItem value={item.value} key={index}>{item.label}</ActionsheetItem>
-          })}
+        <Actionsheet open={this.state.open1} onClose={this.handleClose.bind(this, 1)} onClick={this.handleClick.bind(this)}>
+          {options}
         </Actionsheet>
-        <Actionsheet open={this.state.open2} onClose={this.handleClose.bind(this, 2)} cancel={true} title="title">
-          {this.state.options.map((item, index) => {
-            return <ActionsheetItem value={item.value} key={index}>{item.label}</ActionsheetItem>
-          })}
+        <Actionsheet open={this.state.open2} onClose={this.handleClose.bind(this, 2)} cancel={true} title="title" onClick={this.handleClick.bind(this)}>
+          {options}
         </Actionsheet>
-        <Actionsheet open={this.state.open3} onClose={this.handleClose.bind(this, 3)} type="menu">
-          {this.state.options.map((item, index) => {
-            return <ActionsheetItem value={item.value} key={index}>{item.label}</ActionsheetItem>
-          })}
+        <Actionsheet open={this.state.open3} onClose={this.handleClose.bind(this, 3)} type="menu" onClick={this.handleClick.bind(this)}>
+          {options}
         </Actionsheet>
       </Layout>
     );
@@ -60,6 +57,9 @@ class Demo extends Component {
     }
     state['open' + key] = value
     this.setState(state)
+  }
+  handleClick (value) {
+    console.log('点击了' + value)
   }
   handleClose (key) {
     this.handleChange(key, false)

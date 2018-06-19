@@ -23,7 +23,6 @@ class Actionsheet extends React.Component {
   }
   constructor (props) {
     super(props)
-    this.handleClick = this.handleClick.bind(this)
     this.handleClose = this.handleClose.bind(this)
   }
   render () {
@@ -32,7 +31,7 @@ class Actionsheet extends React.Component {
     let cloneChildren = React.Children.map(children, item => {
       if (item) {
         return React.cloneElement(item, {
-          onClick: this.handleClick
+          onClick: this.handleClick.bind(this, item.props.value)
         })
       }
       return item
