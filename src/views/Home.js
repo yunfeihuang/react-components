@@ -5,7 +5,7 @@ class Home extends React.Component {
   render() {
     return (
       <Layout className="home">
-        <Nav slot="header" isBack={false} title="Vx UI Demo"/>
+        <Nav slot="header" isBack={false} title="Vx UI Demo@react"/>
         <Body slot="body">
           <Group title="basic">
             <Cell title="Button" arrow={true} to="/demos/button" />
