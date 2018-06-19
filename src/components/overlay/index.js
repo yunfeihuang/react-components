@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 
 const Overlay = (props) => {
   const { className, opacity, style, ...others } = props
-  const cls = classnames(['vx-overlay', className])
   return (
     <div 
       {...others}
@@ -12,7 +11,7 @@ const Overlay = (props) => {
         ...style,
         opacity
       }}
-      className={cls}>
+      className={classnames(['vx-overlay', className])}>
     </div>
   )
 }

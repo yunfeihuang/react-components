@@ -8,6 +8,7 @@ export default class Button extends React.Component{
   static propTypes = {
     back: PropTypes.bool,
     title: PropTypes.string,
+    backText: PropTypes.string,
     onBack: PropTypes.func
   }
   static defaultProps = {
@@ -17,15 +18,15 @@ export default class Button extends React.Component{
     }
   }
   render () {
-    const { className, title, isBack, onBack, pull, children, ...others } = this.props
-    const cls = classnames(['vx-nav', className])
+    const { className, title, isBack, backText, onBack, pull, children, ...others } = this.props
     return (
       <div 
         {...others}
-        className={cls}>
+        className={classnames(['vx-nav', className])}>
           <Flexbox className="vx-nav-inner" align="center">
           {isBack && <button type="button" className={classnames(['btn-pull','vx-nav-back'])} onClick={onBack}>
               <Arrow direction="left" color="#fff" size="0.24rem" />
+              {backText && <span>{backText}</span>}
           </button>}
             <FlexboxItem className={classnames(['vx-nav-title', {'vx-nav-title-center': !isBack}])}>
               <div>{title}</div>

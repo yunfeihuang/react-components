@@ -5,7 +5,6 @@ import classnames from 'classnames'
 const Arrow = (props) => {
   const { direction, size, color, component, style, className, ...others } = props
   const Component = component
-  const cls = classnames(['vx-arrow', className])
   const styles = {
     height: size,
     width: size,
@@ -21,7 +20,7 @@ const Arrow = (props) => {
     <Component 
       {...others}
       style={styles}
-      className={cls}>
+      className={classnames(['vx-arrow', className])}>
     </Component>
   )
 }
