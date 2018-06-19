@@ -30,6 +30,7 @@ class Home extends React.Component {
             <Cell title="Alert" arrow={true} to="/demos/alert" />
             <Cell title="Confirm" arrow={true} to="/demos/confirm" />
             <Cell title="Prompt" arrow={true} to="/demos/prompt" />
+            <Cell title="Toast" arrow={true} to="/demos/toast" />
             <Cell title="Popup" arrow={true} to="/demos/popup" />
           </Group>
         </Body>

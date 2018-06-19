@@ -127,5 +127,10 @@ export default [
     path: '/demos/confirm',
     exact: true,
     component: AsyncComponent(() => import('./Confirm'))
+  },
+  {
+    path: '/demos/toast',
+    exact: true,
+    component: AsyncComponent(() => import('./Toast'))
   }
 ]
