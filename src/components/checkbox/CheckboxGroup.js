@@ -7,7 +7,8 @@ class CheckboxGroup extends React.Component {
     value: PropTypes.array,
     divider: PropTypes.bool,
     max: PropTypes.number,
-    direction: PropTypes.string
+    direction: PropTypes.string,
+    onChange: PropTypes.func
   }
   static defaultProps = {
     value: [],

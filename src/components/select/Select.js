@@ -6,7 +6,8 @@ import Picker from './Picker'
 class Select extends React.Component {
   static propTypes = {
     placeholder: PropTypes.string,
-    max: PropTypes.number
+    max: PropTypes.number,
+    onChange: PropTypes.func
   }
   static defaultProps = {
     placeholder: '请选择',

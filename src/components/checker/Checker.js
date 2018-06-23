@@ -1,7 +1,11 @@
 import React from 'react';
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
 
 class Checker extends React.Component {
+  static propTypes = {
+    onChange: PropTypes.func
+  }
   constructor (props) {
     super(props)
     this.handleChange = this.handleChange.bind(this)

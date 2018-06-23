@@ -9,7 +9,9 @@ class Picker extends React.Component {
     cancelText: PropTypes.string,
     confirmText: PropTypes.string,
     title: PropTypes.string,
-    max: PropTypes.number
+    max: PropTypes.number,
+    onClose: PropTypes.func,
+    onChange: PropTypes.func
   }
   static defaultProps = {
     confirmText: '确定',

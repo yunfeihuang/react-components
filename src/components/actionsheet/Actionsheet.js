@@ -11,7 +11,8 @@ class Actionsheet extends React.Component {
     cancelText: PropTypes.string,
     title: PropTypes.string,
     fastClose: PropTypes.bool,
-    onClose: PropTypes.func
+    onClose: PropTypes.func,
+    onClick: PropTypes.func
   }
   static defaultProps = {
     type: 'default',

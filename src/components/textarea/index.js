@@ -1,7 +1,15 @@
 import React from 'react'
 import classnames from 'classnames'
+import PropTypes from 'prop-types'
 
 export default class Textarea extends React.Component {
+  static propTypes = {
+    onChange: PropTypes.func,
+    enterNumber: PropTypes.bool,
+  }
+  defaultProps = {
+    enterNumber: false
+  }
   constructor (props) {
     super(props)
     this.state = {

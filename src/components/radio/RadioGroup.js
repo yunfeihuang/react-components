@@ -4,7 +4,8 @@ import classnames from 'classnames';
 
 class CheckboxGroup extends React.Component {
   static propsTypes = {
-    divider: PropTypes.bool
+    divider: PropTypes.bool,
+    onChange: PropTypes.func
   }
   static defaultProps = {
     divider: true

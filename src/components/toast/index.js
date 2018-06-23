@@ -10,7 +10,8 @@ class Toast extends React.Component {
     align: PropTypes.string,
     open: PropTypes.bool,
     type: PropTypes.string,
-    destroy: PropTypes.bool
+    destroy: PropTypes.bool,
+    onClose: PropTypes.func
   }
   static defaultProps = {
     duration: 2000,

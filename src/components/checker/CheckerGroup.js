@@ -5,7 +5,8 @@ import classnames from 'classnames';
 class CheckerGroup extends React.Component {
   static propsTypes = {
     value: PropTypes.array,
-    max: PropTypes.number
+    max: PropTypes.number,
+    onChange: PropTypes.func
   }
   static defaultProps = {
     value: [],

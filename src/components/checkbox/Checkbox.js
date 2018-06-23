@@ -1,7 +1,13 @@
 import React from 'react';
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
 
 class Checkbox extends React.Component {
+  static propTypes = {
+    disabled: PropTypes.bool,
+    checked: PropTypes.bool,
+    onChange: PropTypes.func
+  }
   constructor (props) {
     super(props)
     this.handleChange = this.handleChange.bind(this)

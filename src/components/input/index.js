@@ -1,7 +1,12 @@
 import React from 'react'
 import classnames from 'classnames'
+import PropTypes from 'prop-types'
 
 export default class Input extends React.Component {
+  static propTypes = {
+    onChange: PropTypes.func,
+    onInput: PropTypes.func
+  } 
   constructor (props) {
     super(props)
     this.state = {
