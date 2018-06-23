@@ -17,12 +17,24 @@ class Demo extends React.Component {
         <Nav slot="header" title="Popup"/>
         <Body slot="body">
           <Group>
-            <Cell title="popup default" value={<Switch value={this.state.open && this.state.direction === 'bottom'} onChange={this.handleChange.bind(this,'bottom')} />} />
-            <Cell title="popup top" value={<Switch value={this.state.open && this.state.direction === 'top'} onChange={this.handleChange.bind(this,'top')} />} />
-            <Cell title="popup left" value={<Switch value={this.state.open && this.state.direction === 'left'} onChange={this.handleChange.bind(this,'left')} />} />
-            <Cell title="popup right" value={<Switch value={this.state.open && this.state.direction === 'right'} onChange={this.handleChange.bind(this,'right')} />} />
-            <Cell title="popup center" value={<Switch value={this.state.open && this.state.direction === 'center'} onChange={this.handleChange.bind(this,'center')} />} />
-            <Cell title="popup full" value={<Switch value={this.state.fullOpen} onChange={this.handleFullChange.bind(this)} />} />
+            <Cell title="popup default">
+              <Switch value={this.state.open && this.state.direction === 'bottom'} onChange={this.handleChange.bind(this,'bottom')} />
+            </Cell>
+            <Cell title="popup top">
+              <Switch value={this.state.open && this.state.direction === 'top'} onChange={this.handleChange.bind(this,'top')} />
+            </Cell>
+            <Cell title="popup left">
+              <Switch value={this.state.open && this.state.direction === 'left'} onChange={this.handleChange.bind(this,'left')} />
+            </Cell>
+            <Cell title="popup right">
+              <Switch value={this.state.open && this.state.direction === 'right'} onChange={this.handleChange.bind(this,'right')} />
+            </Cell>
+            <Cell title="popup center">
+              <Switch value={this.state.open && this.state.direction === 'center'} onChange={this.handleChange.bind(this,'center')} />
+            </Cell>
+            <Cell title="popup full">
+              <Switch value={this.state.fullOpen} onChange={this.handleFullChange.bind(this)} />
+            </Cell>
           </Group>
         </Body>
         <Popup open={this.state.open} onClose={this.handleClose} direction={this.state.direction}>

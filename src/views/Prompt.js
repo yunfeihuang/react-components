@@ -14,8 +14,12 @@ class Demo extends Component {
         <Nav slot="header" title="Prompt"/>
         <Body slot="body">
           <Group>
-            <Cell title={`default(${this.state.value1})`} value={<Switch value={this.state.open1} onChange={this.handleChange1.bind(this)} />} />
-            <Cell title={`password(${this.state.value2})`} value={<Switch value={this.state.open2} onChange={this.handleChange2.bind(this)} />} />
+            <Cell title={`default(${this.state.value1})`}>
+              <Switch value={this.state.open1} onChange={this.handleChange1.bind(this)} />
+            </Cell>
+            <Cell title={`password(${this.state.value2})`}>
+              <Switch value={this.state.open2} onChange={this.handleChange2.bind(this)} />
+            </Cell>
           </Group>
         </Body>
         <Prompt

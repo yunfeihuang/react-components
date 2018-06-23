@@ -11,7 +11,9 @@ class Demo extends Component {
         <Nav slot="header" title="Alert"/>
         <Body slot="body">
           <Group>
-            <Cell title="default" value={<Switch value={this.state.open} onChange={this.handleChange.bind(this)} />} />
+            <Cell title="default">
+              <Switch value={this.state.open} onChange={this.handleChange.bind(this)} />
+            </Cell>
           </Group>
         </Body>
         <Alert open={this.state.open} onConfirm={this.handleConfirm.bind(this)}>

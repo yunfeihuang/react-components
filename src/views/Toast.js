@@ -17,12 +17,24 @@ class Demo extends Component {
         <Nav slot="header" title="Toast"/>
         <Body slot="body">
           <Group>
-            <Cell title="Toast Top" value={<Switch value={this.state.topOpen} onChange={this.handleChange.bind(this, 'topOpen')} />} />
-            <Cell title="Toast Center Success" value={<Switch value={this.state.centerOpen} onChange={this.handleChange.bind(this, 'centerOpen')} />} />
-            <Cell title="Toast Center Fail" value={<Switch value={this.state.failOpen} onChange={this.handleChange.bind(this, 'failOpen')} />} />
-            <Cell title="Toast Center Warn" value={<Switch value={this.state.warnOpen} onChange={this.handleChange.bind(this, 'warnOpen')} />} />
-            <Cell title="Toast Center Loading" value={<Switch value={this.state.loadingOpen} onChange={this.handleChange.bind(this, 'loadingOpen')} />} />
-            <Cell title="Toast Bottom" value={<Switch value={this.state.bottomOpen} onChange={this.handleChange.bind(this, 'bottomOpen')} />} />
+            <Cell title="Toast Top">
+              <Switch value={this.state.topOpen} onChange={this.handleChange.bind(this, 'topOpen')} />
+            </Cell>
+            <Cell title="Toast Center Success">
+              <Switch value={this.state.centerOpen} onChange={this.handleChange.bind(this, 'centerOpen')} />
+            </Cell>
+            <Cell title="Toast Center Fail">
+              <Switch value={this.state.failOpen} onChange={this.handleChange.bind(this, 'failOpen')} />
+            </Cell>
+            <Cell title="Toast Center Warn">
+              <Switch value={this.state.warnOpen} onChange={this.handleChange.bind(this, 'warnOpen')} />
+            </Cell>
+            <Cell title="Toast Center Loading">
+              <Switch value={this.state.loadingOpen} onChange={this.handleChange.bind(this, 'loadingOpen')} />
+            </Cell>
+            <Cell title="Toast Bottom">
+              <Switch value={this.state.bottomOpen} onChange={this.handleChange.bind(this, 'bottomOpen')} />
+            </Cell>
           </Group>
         </Body>
         <Toast open={this.state.topOpen} onClose={this.handleClose.bind(this, 'topOpen')}>{this.state.content}</Toast>

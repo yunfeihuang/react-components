@@ -11,7 +11,9 @@ class Demo extends React.Component {
         <Nav slot="header" title="Switch"/>
         <Body slot="body">
           <Group>
-            <Cell title={'开关：'+this.state.open} value={<Switch value={this.state.open} onChange={this.handleChange.bind(this)} />} />
+            <Cell title={'开关：'+this.state.open}>
+              <Switch value={this.state.open} onChange={this.handleChange.bind(this)} />
+            </Cell>
           </Group>
         </Body>
       </Layout>

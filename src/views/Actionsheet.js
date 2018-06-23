@@ -34,9 +34,15 @@ class Demo extends Component {
         <Nav slot="header" title="Actionsheet"/>
         <Body slot="body">
           <Group>
-            <Cell title="default" value={<Switch value={this.state.open1} onChange={this.handleChange.bind(this, 1)} />} />
-            <Cell title="cancel && title" value={<Switch value={this.state.open2} onChange={this.handleChange.bind(this, 2)} />} />
-            <Cell title="menu" value={<Switch value={this.state.open3} onChange={this.handleChange.bind(this, 3)} />} />
+            <Cell title="default">
+              <Switch value={this.state.open1} onChange={this.handleChange.bind(this, 1)} />
+            </Cell>
+            <Cell title="cancel && title">
+              <Switch value={this.state.open2} onChange={this.handleChange.bind(this, 2)} />
+            </Cell>
+            <Cell title="menu">
+              <Switch value={this.state.open3} onChange={this.handleChange.bind(this, 3)} />
+            </Cell>
           </Group>
         </Body>
         <Actionsheet open={this.state.open1} onClose={this.handleClose.bind(this, 1)} onClick={this.handleClick.bind(this)}>
