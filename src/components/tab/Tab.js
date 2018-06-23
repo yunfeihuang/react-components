@@ -6,15 +6,13 @@ class Tab extends React.Component {
   static propTypes = {
     active: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     underlineWidth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    activeClass: PropTypes.string,
     onChange: PropTypes.func
   }
   render () {
-    let {children, className, active, activeClass, underlineWidth, ...others} = this.props
+    let {children, className, active, underlineWidth, ...others} = this.props
     let cloneChildren = React.Children.map(children, item => {
       if (item) {
         return React.cloneElement(item, {
-          activeClass,
           underlineWidth,
           active,
           onClick: this.handleClick.bind(this, item.props.name)
@@ -22,7 +20,7 @@ class Tab extends React.Component {
       }
       return item
     })
-    let cls = classnames(["vx-flexbox", 'vx-tab',className])
+    let cls = classnames(["vx-flexbox", 'vx-tab', className])
     return (
       <div className={cls} {...others} ref="$el" >
         {cloneChildren}

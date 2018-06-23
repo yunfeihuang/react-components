@@ -2,7 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
-class Tabbar extends React.Component {
+class Sidebar extends React.Component {
   static propTypes = {
     active: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     ripple: PropTypes.bool,
@@ -24,7 +24,7 @@ class Tabbar extends React.Component {
       return item
     })
     return (
-      <div className={classnames(['vx-flexbox', 'vx-tabbar', className])} {...others}>
+      <div className={classnames(['vx-sidebar',className])} {...others}>
         {cloneChildren}
       </div>
     );
@@ -34,4 +34,4 @@ class Tabbar extends React.Component {
   }
 }
 
-export default Tabbar;
+export default Sidebar;

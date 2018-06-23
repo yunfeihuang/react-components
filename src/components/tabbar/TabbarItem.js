@@ -4,22 +4,17 @@ import classnames from 'classnames';
 import Ripple from '../ripple'
 
 let TabbarItem = (props) => {
-  let {children, className, activeClass, active, name, ripple, ...others} = props
-  let array = ['vx-tabbar-item', 'vx-flexbox-item']
-  if (active === name) {
-    array.push('is-active')
-    activeClass && array.push(activeClass)
-  }
-  array.push(className)
+  let {children, className, active, name, ripple, ...others} = props
+  let cls = classnames(['vx-tabbar-item', 'vx-flexbox-item', {'is-active': active === name}])
   if (ripple) {
     return (
-      <Ripple className={classnames(array)} position="center" {...others}>
+      <Ripple className={cls} position="center" {...others}>
         {children}
       </Ripple>
     )
   } else {
     return (
-      <div className={classnames(array)} {...others}>
+      <div className={cls} {...others}>
         {children}
       </div>
     );

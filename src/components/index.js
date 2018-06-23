@@ -28,6 +28,7 @@ import Textarea from './textarea'
 import Spinner from './spinner'
 import {Tab, TabItem} from './tab'
 import {Tabbar, TabbarItem} from './tabbar'
+import {Sidebar, SidebarItem} from './sidebar'
 import Rater from './rater'
 import Range from './range'
 import Ripple from './ripple'
@@ -72,6 +73,8 @@ export {
   TabItem,
   Tabbar,
   TabbarItem,
+  Sidebar,
+  SidebarItem,
   Rater,
   Range,
   Ripple,

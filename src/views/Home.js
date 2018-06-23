@@ -40,6 +40,7 @@ class Home extends React.Component {
           <Group title="选项卡">
             <Cell title="Tab" arrow={true} to="/demos/tab" />
             <Cell title="Tabbar" arrow={true} to="/demos/tabbar" />
+            <Cell title="Sidebar" arrow={true} to="/demos/sidebar" />
           </Group>
           <Group title="图片">
             <Cell title="Img" arrow={true} to="/demos/img" />
