@@ -154,6 +154,11 @@ export default [
     component: AsyncComponent(() => import('./Tab'))
   },
   {
+    path: '/demos/tabbar',
+    exact: true,
+    component: AsyncComponent(() => import('./Tabbar'))
+  },
+  {
     path: '/demos/rater',
     exact: true,
     component: AsyncComponent(() => import('./Rater'))

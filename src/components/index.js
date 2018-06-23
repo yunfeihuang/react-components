@@ -27,6 +27,7 @@ import Password from './password'
 import Textarea from './textarea'
 import Spinner from './spinner'
 import {Tab, TabItem} from './tab'
+import {Tabbar, TabbarItem} from './tabbar'
 import Rater from './rater'
 import Range from './range'
 import Ripple from './ripple'
@@ -69,6 +70,8 @@ export {
   Spinner,
   Tab,
   TabItem,
+  Tabbar,
+  TabbarItem,
   Rater,
   Range,
   Ripple,

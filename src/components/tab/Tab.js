@@ -10,7 +10,7 @@ class Tab extends React.Component {
     onChange: PropTypes.func
   }
   render () {
-    let {children, className, active,activeClass, underlineWidth,...others} = this.props
+    let {children, className, active, activeClass, underlineWidth, ...others} = this.props
     let cloneChildren = React.Children.map(children, item => {
       if (item) {
         return React.cloneElement(item, {
