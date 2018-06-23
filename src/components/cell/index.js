@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Flexbox, FlexboxItem } from '../flexbox'
 
 const Cell = (props) => {
-  const { title, value, icon, arrow, to, ...others } = props
+  const { title, value, icon, arrow, to, children, ...others } = props
   let Component = to ? Link : 'div'
   return (
       <Flexbox 
@@ -21,7 +21,7 @@ const Cell = (props) => {
           {title}
         </FlexboxItem>
         <div className="vx-cell-ft">
-          {value}
+          {value || children}
         </div>
       </Flexbox>
   )

@@ -26,6 +26,7 @@ import Password from './password'
 import Textarea from './textarea'
 import Spinner from './spinner'
 import {Tab, TabItem} from './tab'
+import Rater from './rater'
 
 export {
   Arrow,
@@ -61,5 +62,6 @@ export {
   Textarea,
   Spinner,
   Tab,
-  TabItem
+  TabItem,
+  Rater
 }
