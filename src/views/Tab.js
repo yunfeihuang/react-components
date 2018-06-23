@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Layout, Body, Nav, Tab, TabItem } from '@/components'
 
-class Demo extends Component {
+class Demo extends React.Component {
   state = {
     active: 'recommed',
     items: [

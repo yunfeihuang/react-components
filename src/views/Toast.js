@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Layout, Nav, Body, Toast, Switch, Cell, Group} from '@/components'
 
-class Demo extends Component {
+class Demo extends React.Component {
   state = {
     topOpen: false,
     centerOpen: false,

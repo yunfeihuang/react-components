@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { HashRouter as Router } from 'react-router-dom';
 import './App.css';
 import { renderRoutes } from 'react-router-config';
@@ -9,7 +9,7 @@ const routes = [
   ...globalRouter
 ]
 
-class App extends Component {
+class App extends React.Component {
   render() {
     return (
       <Router>
