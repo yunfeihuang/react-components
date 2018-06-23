@@ -41,6 +41,11 @@ class AccordionItem extends React.Component {
       this.handleClick(true)
     }
   }
+  componentWillReceiveProps (nextProps) {
+    if (nextProps.open !== this.props.value) {
+      this.handleClick(nextProps.open)
+    }
+  }
   handleClick (open) {
     let node = this.refs.$el.querySelector('.vx-accordion-item-bd')
     let height = ''
