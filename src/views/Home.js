@@ -45,6 +45,7 @@ class Home extends React.Component {
           </Group>
           <Group title="其他">
             <Cell title="Badge" arrow={true} to="/demos/badge" />
+            <Cell title="Accordion" arrow={true} to="/demos/accordion" />
             <Cell title="Spinner" arrow={true} to="/demos/spinner" />
             <Cell title="Ripple" arrow={true} to="/demos/ripple" />
           </Group>

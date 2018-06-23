@@ -3,6 +3,7 @@ import Arrow from './arrow'
 import Button from './button'
 import Nav from './nav'
 import {Actionsheet, ActionsheetItem} from './actionsheet'
+import {Accordion, AccordionItem} from './accordion'
 import {Flexbox, FlexboxItem} from './flexbox'
 import Popup from './popup'
 import Switch from './switch'
@@ -37,6 +38,8 @@ export {
   Nav,
   Actionsheet,
   ActionsheetItem,
+  Accordion,
+  AccordionItem,
   Flexbox,
   FlexboxItem,
   Popup,

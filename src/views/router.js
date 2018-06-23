@@ -172,5 +172,10 @@ export default [
     path: '/demos/badge',
     exact: true,
     component: AsyncComponent(() => import('./Badge'))
+  },
+  {
+    path: '/demos/accordion',
+    exact: true,
+    component: AsyncComponent(() => import('./Accordion'))
   }
 ]
