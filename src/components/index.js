@@ -28,6 +28,7 @@ import Spinner from './spinner'
 import {Tab, TabItem} from './tab'
 import Rater from './rater'
 import Range from './range'
+import Ripple from './ripple'
 
 export {
   Arrow,
@@ -65,5 +66,6 @@ export {
   Tab,
   TabItem,
   Rater,
-  Range
+  Range,
+  Ripple
 }

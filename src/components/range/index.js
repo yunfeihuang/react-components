@@ -38,19 +38,24 @@ class Range extends React.Component {
     this.getRangeInitData()
     this.renderRange(this.myValue())
   }
+  componentWillReceiveProps (nextProps) {
+    if (nextProps.value !== this.props.value) {
+      this.renderRange(this.myValue(nextProps.value))
+    }
+  }
   offsetWidth () {
     return {
       width: this.props.value / this.props.max * this.props.$el.offsetWidth + 'px'
     }
   }
-  myValue () {
-    if (this.props.value < this.props.min) {
+  myValue (value = this.props.value) {
+    if (value < this.props.min) {
       return Math.round(this.props.min * this.stepRate()) / this.stepRate()
     }
-    if (this.props.value > this.props.max) {
+    if (value > this.props.max) {
       return Math.round(this.props.max * this.stepRate()) / this.stepRate()
     }
-    return Math.round(this.props.value * this.stepRate()) / this.stepRate()
+    return Math.round(value * this.stepRate()) / this.stepRate()
   }
   range () {
     return this.props.max - this.props.min
