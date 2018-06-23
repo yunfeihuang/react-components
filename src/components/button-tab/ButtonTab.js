@@ -7,9 +7,6 @@ class ButtonTab extends React.Component {
     active: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     onChange: PropTypes.func
   }
-  static defaultProps = {
-    ripple: false
-  }
   render () {
     let {children, className, active, ...others} = this.props
     let cloneChildren = React.Children.map(children, item => {
