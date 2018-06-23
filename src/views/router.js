@@ -157,5 +157,10 @@ export default [
     path: '/demos/rater',
     exact: true,
     component: AsyncComponent(() => import('./Rater'))
+  },
+  {
+    path: '/demos/range',
+    exact: true,
+    component: AsyncComponent(() => import('./Range'))
   }
 ]

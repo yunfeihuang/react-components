@@ -27,6 +27,7 @@ import Textarea from './textarea'
 import Spinner from './spinner'
 import {Tab, TabItem} from './tab'
 import Rater from './rater'
+import Range from './range'
 
 export {
   Arrow,
@@ -63,5 +64,6 @@ export {
   Spinner,
   Tab,
   TabItem,
-  Rater
+  Rater,
+  Range
 }

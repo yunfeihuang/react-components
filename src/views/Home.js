@@ -26,6 +26,7 @@ class Home extends React.Component {
             <Cell title="Checker" arrow={true} to="/demos/checker" />
             <Cell title="Radio" arrow={true} to="/demos/radio" />
             <Cell title="Select" arrow={true} to="/demos/select" />
+            <Cell title="Range" arrow={true} to="/demos/range" />
             <Cell title="Rater" arrow={true} to="/demos/rater" />
           </Group>
           <Group title="对话弹框">
