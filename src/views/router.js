@@ -74,6 +74,11 @@ export default [
     component: AsyncComponent(() => import('./Input'))
   },
   {
+    path: '/demos/inputnumber',
+    exact: true,
+    component: AsyncComponent(() => import('./InputNumber'))
+  },
+  {
     path: '/demos/password',
     exact: true,
     component: AsyncComponent(() => import('./Password'))

@@ -21,6 +21,7 @@ class Home extends React.Component {
             <Cell title="Input" arrow={true} to="/demos/input" />
             <Cell title="Password" arrow={true} to="/demos/password" />
             <Cell title="Textarea" arrow={true} to="/demos/textarea" />
+            <Cell title="InputNumber" arrow={true} to="/demos/inputnumber" />
             <Cell title="Switch" arrow={true} to="/demos/switch" />
             <Cell title="Checkbox" arrow={true} to="/demos/checkbox" />
             <Cell title="Checker" arrow={true} to="/demos/checker" />
