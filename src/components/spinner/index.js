@@ -6,16 +6,16 @@ let Spinner = function (props) {
   let style = {}
   if (color && primaryColor) {
     style = {
-      'border-color': `${primaryColor} ${color} ${color} ${color}`
+      'borderColor': `${primaryColor} ${color} ${color} ${color}`
     }
   } else if (color) {
     style = {
-      'border-color': `${color}`
+      'borderColor': `${color}`
     }
   }
   else if (primaryColor) {
     style = {
-      'border-top-color': `${color}`
+      'borderTopColor': `${color}`
     }
   }
   return (
