@@ -164,6 +164,11 @@ export default [
     component: AsyncComponent(() => import('./Sidebar'))
   },
   {
+    path: '/demos/buttontab',
+    exact: true,
+    component: AsyncComponent(() => import('./ButtonTab'))
+  },
+  {
     path: '/demos/rater',
     exact: true,
     component: AsyncComponent(() => import('./Rater'))

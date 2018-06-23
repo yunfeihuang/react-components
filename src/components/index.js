@@ -29,6 +29,7 @@ import Spinner from './spinner'
 import {Tab, TabItem} from './tab'
 import {Tabbar, TabbarItem} from './tabbar'
 import {Sidebar, SidebarItem} from './sidebar'
+import {ButtonTab, ButtonTabItem} from './button-tab'
 import Rater from './rater'
 import Range from './range'
 import Ripple from './ripple'
@@ -75,6 +76,8 @@ export {
   TabbarItem,
   Sidebar,
   SidebarItem,
+  ButtonTab,
+  ButtonTabItem,
   Rater,
   Range,
   Ripple,

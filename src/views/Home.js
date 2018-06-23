@@ -41,6 +41,7 @@ class Home extends React.Component {
             <Cell title="Tab" arrow={true} to="/demos/tab" />
             <Cell title="Tabbar" arrow={true} to="/demos/tabbar" />
             <Cell title="Sidebar" arrow={true} to="/demos/sidebar" />
+            <Cell title="ButtonTab" arrow={true} to="/demos/buttontab" />
           </Group>
           <Group title="图片">
             <Cell title="Img" arrow={true} to="/demos/img" />
