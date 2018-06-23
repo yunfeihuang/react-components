@@ -29,6 +29,7 @@ import {Tab, TabItem} from './tab'
 import Rater from './rater'
 import Range from './range'
 import Ripple from './ripple'
+import Badge from './badge'
 
 export {
   Arrow,
@@ -67,5 +68,6 @@ export {
   TabItem,
   Rater,
   Range,
-  Ripple
+  Ripple,
+  Badge
 }

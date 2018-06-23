@@ -162,5 +162,15 @@ export default [
     path: '/demos/range',
     exact: true,
     component: AsyncComponent(() => import('./Range'))
+  },
+  {
+    path: '/demos/ripple',
+    exact: true,
+    component: AsyncComponent(() => import('./Ripple'))
+  },
+  {
+    path: '/demos/badge',
+    exact: true,
+    component: AsyncComponent(() => import('./Badge'))
   }
 ]

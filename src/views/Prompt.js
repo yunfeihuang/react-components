@@ -25,13 +25,13 @@ class Demo extends React.Component {
         <Prompt
           open={this.state.open1}
           title="用户名称"
-          inputProps={{value: this.state.value1}}
+          inputProps={{value: this.state.value1, placeholder: '请输入用户名'}}
           onClose={this.handleChange1.bind(this)}
           onConfirm={this.handleConfirm1.bind(this)} />
         <Prompt
           open={this.state.open2}
           title="wifi密码"
-          inputProps={{type: 'password', value: this.state.value2}}
+          inputProps={{type: 'password', value: this.state.value2, placeholder: '请输入wifi密码'}}
           onClose={this.handleChange2.bind(this)}
           onConfirm={this.handleConfirm2.bind(this)} />
       </Layout>
