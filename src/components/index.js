@@ -36,6 +36,7 @@ import Rater from './rater'
 import Range from './range'
 import Ripple from './ripple'
 import Badge from './badge'
+import Img from './img'
 
 export {
   Arrow,
@@ -85,5 +86,6 @@ export {
   Rater,
   Range,
   Ripple,
-  Badge
+  Badge,
+  Img
 }

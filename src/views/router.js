@@ -202,5 +202,10 @@ export default [
     path: '/demos/accordion',
     exact: true,
     component: AsyncComponent(() => import('./Accordion'))
+  },
+  {
+    path: '/demos/img',
+    exact: true,
+    component: AsyncComponent(() => import('./Img'))
   }
 ]
