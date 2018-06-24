@@ -32,6 +32,7 @@ class Demo extends React.Component {
                 key={index} 
                 loading={true}
                 src={item.src}
+                style={{minHeight:'150px'}}
                 onLoad={this.handleLoad.bind(this,index)}
                 onClick={this.handleClick.bind(this,index)}/>
             )
