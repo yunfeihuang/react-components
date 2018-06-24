@@ -8,10 +8,12 @@ export default class Img extends React.Component{
     lazyload: PropTypes.bool,
     loading: PropTypes.bool,
     src: PropTypes.string,
+    alt: PropTypes.string
   }
   static defaultProps = {
     lazyload: true,
-    loading: false
+    loading: false,
+    alt: ''
   }
   constructor (props) {
     super(props)
@@ -20,11 +22,12 @@ export default class Img extends React.Component{
     this.handleScroll = this.handleScroll.bind(this)
   }
   render () {
-    const { className, loading, lazyload, src, children, placeholder,...others } = this.props
+    const { className, style, loading, lazyload, src, children, placeholder, alt, ...others } = this.props
     return (
-      <div ref="$el" className={classnames(['vx-img-wrapper',{'vx-img-placeholder': !loading}, className])}>
+      <div ref="$el" className={classnames(['vx-img-wrapper',{'vx-img-placeholder': !loading}, className])} style={style}>
         <img className={classnames(['vx-img', {'vx-img-lazyload': lazyload}])}
           {...others}
+          alt={alt}
           onError={this.handleError}
           onLoad={this.handleLoad}
         />

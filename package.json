@@ -108,6 +108,9 @@
     "redux-devtools-log-monitor": "^1.4.0",
     "redux-logger": "^3.0.6",
     "vx-ui": "^0.0.27-alpha",
-    "webpack-bundle-analyzer": "^2.13.1"
+    "webpack-bundle-analyzer": "^2.13.1",
+    "qrcodejs2": "^0.0.2",
+    "swiper": "^3.4.2",
+    "photoswipe": "^4.1.2"
   }
 }

@@ -5,6 +5,7 @@ import Nav from './nav'
 import {Actionsheet, ActionsheetItem} from './actionsheet'
 import {Accordion, AccordionItem} from './accordion'
 import {Flexbox, FlexboxItem} from './flexbox'
+import {Swiper, SwiperItem} from './swiper'
 import Popup from './popup'
 import Popover from './popover'
 import Switch from './switch'
@@ -37,6 +38,8 @@ import Range from './range'
 import Ripple from './ripple'
 import Badge from './badge'
 import Img from './img'
+import Preview from './preview'
+import Qrcode from './qrcode'
 
 export {
   Arrow,
@@ -48,6 +51,8 @@ export {
   AccordionItem,
   Flexbox,
   FlexboxItem,
+  Swiper,
+  SwiperItem,
   Popup,
   Popover,
   Switch,
@@ -87,5 +92,7 @@ export {
   Range,
   Ripple,
   Badge,
-  Img
+  Img,
+  Preview,
+  Qrcode
 }

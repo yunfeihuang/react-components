@@ -207,5 +207,20 @@ export default [
     path: '/demos/img',
     exact: true,
     component: AsyncComponent(() => import('./Img'))
+  },
+  {
+    path: '/demos/swiper',
+    exact: true,
+    component: AsyncComponent(() => import('./Swiper'))
+  },
+  {
+    path: '/demos/preview',
+    exact: true,
+    component: AsyncComponent(() => import('./Preview'))
+  },
+  {
+    path: '/demos/qrcode',
+    exact: true,
+    component: AsyncComponent(() => import('./Qrcode'))
   }
 ]

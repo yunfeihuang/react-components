@@ -47,6 +47,9 @@ class Home extends React.Component {
           </Group>
           <Group title="图片">
             <Cell title="Img" arrow={true} to="/demos/img" />
+            <Cell title="Swiper" arrow={true} to="/demos/swiper" />
+            <Cell title="Preview" arrow={true} to="/demos/preview" />
+            <Cell title="Qrcode" arrow={true} to="/demos/qrcode" />
           </Group>
           <Group title="其他">
             <Cell title="Badge" arrow={true} to="/demos/badge" />
