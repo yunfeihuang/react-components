@@ -6,6 +6,7 @@ import {Actionsheet, ActionsheetItem} from './actionsheet'
 import {Accordion, AccordionItem} from './accordion'
 import {Flexbox, FlexboxItem} from './flexbox'
 import {Swiper, SwiperItem} from './swiper'
+import {Marquee, MarqueeItem} from './marquee'
 import Popup from './popup'
 import Popover from './popover'
 import Switch from './switch'
@@ -53,6 +54,8 @@ export {
   FlexboxItem,
   Swiper,
   SwiperItem,
+  Marquee,
+  MarqueeItem,
   Popup,
   Popover,
   Switch,

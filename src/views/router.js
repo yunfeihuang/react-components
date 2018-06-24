@@ -222,5 +222,10 @@ export default [
     path: '/demos/qrcode',
     exact: true,
     component: AsyncComponent(() => import('./Qrcode'))
+  },
+  {
+    path: '/demos/marquee',
+    exact: true,
+    component: AsyncComponent(() => import('./Marquee'))
   }
 ]
