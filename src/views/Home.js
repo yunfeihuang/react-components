@@ -37,6 +37,7 @@ class Home extends React.Component {
             <Cell title="Prompt" arrow={true} to="/demos/prompt" />
             <Cell title="Toast" arrow={true} to="/demos/toast" />
             <Cell title="Popup" arrow={true} to="/demos/popup" />
+            <Cell title="Popover" arrow={true} to="/demos/popover" />
           </Group>
           <Group title="选项卡">
             <Cell title="Tab" arrow={true} to="/demos/tab" />

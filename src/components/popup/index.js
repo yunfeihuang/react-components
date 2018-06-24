@@ -25,7 +25,7 @@ export default class Popup extends React.Component {
     fastClose: true
   }
   render () {
-    const { direction, full, style, onClose, className, fastClose, ...others } = this.props
+    const { direction, full, style, onClose, className, fastClose, inner, ...others } = this.props
     if (this.state.open) {
       let node = this.node
       if (!node) {
@@ -35,7 +35,7 @@ export default class Popup extends React.Component {
       return ReactDOM.createPortal(
         <div className={classnames(["vx-popup", className])} style={{...style,display: 'block'}} {...others}>
           <Overlay onClick={this.handleClose} />
-          <div className={
+          {inner || <div className={
             classnames([
               'vx-popup-inner',
               `vx-popup-${direction}`,
@@ -48,7 +48,7 @@ export default class Popup extends React.Component {
               }])}
                onClick={this.handleClose}>
             {this.props.children}
-          </div>
+          </div>}
         </div>,
         node
       )
@@ -63,20 +63,21 @@ export default class Popup extends React.Component {
     }
   }
   componentDidMount () {
-    this.node && this.node.querySelector('.vx-popup-inner').classList.remove(`popup-slide-${this.props.direction}-enter`)
+    this.node && this.node.querySelector('.vx-popup-inner') && this.node.querySelector('.vx-popup-inner').classList.remove(`popup-slide-${this.props.direction}-enter`)
   }
   componentWillReceiveProps (nextProps) {
     if (nextProps.open !== this.props.open) {
+      let node = this.node.querySelector('.vx-popup-inner')
       if (nextProps.open) {
         this.setState({
           open: nextProps.open
         }, () => {
           setTimeout(() => {
-           this.node.querySelector('.vx-popup-inner').classList.remove(`popup-slide-${this.props.direction}-enter`)
+            node && node.classList.remove(`popup-slide-${this.props.direction}-enter`)
           }, 100)
         })
       } else {
-        this.node.querySelector('.vx-popup-inner').classList.add(`popup-slide-${this.props.direction}-enter`)
+        node && node.classList.add(`popup-slide-${this.props.direction}-enter`)
         setTimeout(() => {
           this.setState({
             open: nextProps.open

@@ -6,6 +6,7 @@ import {Actionsheet, ActionsheetItem} from './actionsheet'
 import {Accordion, AccordionItem} from './accordion'
 import {Flexbox, FlexboxItem} from './flexbox'
 import Popup from './popup'
+import Popover from './popover'
 import Switch from './switch'
 import Layout from './layout'
 import Body from './body'
@@ -47,6 +48,7 @@ export {
   Flexbox,
   FlexboxItem,
   Popup,
+  Popover,
   Switch,
   Layout,
   Body,

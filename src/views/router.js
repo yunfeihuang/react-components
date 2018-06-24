@@ -49,6 +49,11 @@ export default [
     component: AsyncComponent(() => import('./Popup'))
   },
   {
+    path: '/demos/popover',
+    exact: true,
+    component: AsyncComponent(() => import('./Popover'))
+  },
+  {
     path: '/demos/flexbox',
     exact: true,
     component: AsyncComponent(() => import('./Flexbox'))
