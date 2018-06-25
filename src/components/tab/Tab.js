@@ -32,8 +32,8 @@ class Tab extends React.Component {
     this.$el = this.refs.$el
     this.computedStyle()
   }
-  componentWillReceiveProps (nextProps) {
-    if (nextProps.active !== this.props.active) {
+  componentDidUpdate (prevProps) {
+    if (prevProps.active !== this.props.active) {
       requestAnimationFrame(this.computedStyle.bind(this))
     }
   }

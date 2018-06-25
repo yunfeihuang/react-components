@@ -41,9 +41,9 @@ class AccordionItem extends React.Component {
       this.handleClick(true)
     }
   }
-  componentWillReceiveProps (nextProps) {
-    if (nextProps.open !== this.props.value) {
-      this.handleClick(nextProps.open)
+  componentDidUpdate (prevProps) {
+    if (prevProps.open !== this.props.open) {
+      this.handleClick(this.props.open)
     }
   }
   handleClick (open) {

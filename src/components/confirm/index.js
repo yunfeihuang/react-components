@@ -44,16 +44,16 @@ class Confirm extends React.Component {
       </div>
     );
   }
-  componentWillReceiveProps (nextProps) {
-    if (nextProps.open !== this.props.open) {
-      if (nextProps.open) {
+  componentDidUpdate (prevProps) {
+    if (prevProps.open !== this.props.open) {
+      if (this.props.open) {
         setTimeout(() => {
           this.refs.inner.classList.remove(`confirm-scale-enter`)
-         }, 100)
+         }, 32)
       } else {
         setTimeout(() => {
           this.refs.inner.classList.add(`confirm-scale-enter`)
-         }, 100)
+         }, 32)
       }
     }
   }

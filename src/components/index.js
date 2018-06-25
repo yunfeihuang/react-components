@@ -42,6 +42,7 @@ import Img from './img'
 import Preview from './preview'
 import Qrcode from './qrcode'
 import Sticky from './sticky'
+import Swipeout from './swipeout'
 import IndexList from './index-list'
 
 export {
@@ -101,5 +102,6 @@ export {
   Preview,
   Qrcode,
   Sticky,
+  Swipeout,
   IndexList
 }

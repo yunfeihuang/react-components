@@ -43,10 +43,10 @@ class Toast extends React.Component {
   componentDidMount () {
     this.openChange(this.props.open)
   }
-  componentWillReceiveProps (nextProps) {
-    if (nextProps.open !== this.props.open) {
-      if (nextProps.open) {
-        this.openChange(nextProps.open)
+  componentDidUpdate (prevProps) {
+    if (prevProps.open !== this.props.open) {
+      if (this.props.open) {
+        this.openChange(this.props.open)
       } else {
         if (!this.props.duration) {
           this.refs.$el.style.display = 'none'

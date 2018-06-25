@@ -57,6 +57,7 @@ class Home extends React.Component {
             <Cell title="Spinner" arrow={true} to="/demos/spinner" />
             <Cell title="Sticky" arrow={true} to="/demos/sticky" />
             <Cell title="IndexList" arrow={true} to="/demos/indexlist" />
+            <Cell title="Swipeout" arrow={true} to="/demos/swipeout" />
             <Cell title="Ripple" arrow={true} to="/demos/ripple" />
             <Cell title="Marquee" arrow={true} to="/demos/marquee" />
           </Group>

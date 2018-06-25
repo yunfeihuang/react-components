@@ -28,10 +28,10 @@ export default class Qrcode extends React.Component {
       })
     })
   }
-  componentWillReceiveProps (nextProps) {
-    if (nextProps.text !== this.props.text && this.$$qrcode) {
+  componentDidUpdate (prevProps) {
+    if (prevProps.text !== this.props.text && this.$$qrcode) {
       this.$$qrcode.clear()
-      this.$$qrcode.makeCode(nextProps.text)
+      this.$$qrcode.makeCode(this.props.text)
     }
   }
 }

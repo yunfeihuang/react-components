@@ -38,9 +38,9 @@ class Range extends React.Component {
     this.getRangeInitData()
     this.renderRange(this.myValue())
   }
-  componentWillReceiveProps (nextProps) {
-    if (nextProps.value !== this.props.value) {
-      this.renderRange(this.myValue(nextProps.value))
+  componentDidUpdate (prevProps) {
+    if (prevProps.value !== this.props.value) {
+      this.renderRange(this.myValue(this.props.value))
     }
   }
   offsetWidth () {

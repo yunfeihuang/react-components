@@ -23,9 +23,9 @@ class Select extends React.Component {
     this.handleClick = this.handleClick.bind(this)
     this.handleClose = this.handleClose.bind(this)
   }
-  componentWillReceiveProps (nextProps) {
-    if (JSON.stringify(this.props.value) !== JSON.stringify(nextProps.value)) {
-      let label = this.getLabel(nextProps.value)
+  componentDidUpdate (prevProps) {
+    if (JSON.stringify(this.props.value) !== JSON.stringify(prevProps.value)) {
+      let label = this.getLabel(this.props.value)
       this.setState({label: label.join(',')})
     }
   }
