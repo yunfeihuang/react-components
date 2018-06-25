@@ -232,5 +232,10 @@ export default [
     path: '/demos/sticky',
     exact: true,
     component: AsyncComponent(() => import('./Sticky'))
+  },
+  {
+    path: '/demos/indexlist',
+    exact: true,
+    component: AsyncComponent(() => import('./IndexList'))
   }
 ]

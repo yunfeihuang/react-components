@@ -42,6 +42,7 @@ import Img from './img'
 import Preview from './preview'
 import Qrcode from './qrcode'
 import Sticky from './sticky'
+import IndexList from './index-list'
 
 export {
   Arrow,
@@ -99,5 +100,6 @@ export {
   Img,
   Preview,
   Qrcode,
-  Sticky
+  Sticky,
+  IndexList
 }
