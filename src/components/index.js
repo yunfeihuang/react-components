@@ -44,6 +44,7 @@ import Qrcode from './qrcode'
 import Sticky from './sticky'
 import Swipeout from './swipeout'
 import IndexList from './index-list'
+import ListView from './list-view'
 
 export {
   Arrow,
@@ -103,5 +104,6 @@ export {
   Qrcode,
   Sticky,
   Swipeout,
-  IndexList
+  IndexList,
+  ListView
 }

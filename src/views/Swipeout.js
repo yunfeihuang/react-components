@@ -21,7 +21,7 @@ class Demo extends React.Component {
           {this.state.list.map((item,index) => {
             return (
             <Swipeout action={action} key={index} open={index===1} onClose={this.handleCloseSwipeout} onOpen={this.handleOpenSwipeout}>
-              <Flexbox align="center" className="list-view-item" gutter={20}>
+              <Flexbox align="center" className="list-view-item" gutter={20} style={{padding:'5px'}}>
                 <Img className="avatar" src={item.src} style={{width:'60px',height: '60px'}}/>
                 <FlexboxItem>
                   <h4 style={{margin:'0'}}>{item.name}(按我向左滑动)</h4>

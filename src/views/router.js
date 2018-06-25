@@ -242,5 +242,10 @@ export default [
     path: '/demos/swipeout',
     exact: true,
     component: AsyncComponent(() => import('./Swipeout'))
+  },
+  {
+    path: '/demos/listview',
+    exact: true,
+    component: AsyncComponent(() => import('./ListView'))
   }
 ]
