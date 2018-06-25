@@ -22,7 +22,7 @@ class Demo extends React.Component {
             return (
             <Swipeout action={action} key={index} open={index===1} onClose={this.handleCloseSwipeout} onOpen={this.handleOpenSwipeout}>
               <Flexbox align="center" className="list-view-item" gutter={20} style={{padding:'5px'}}>
-                <Img className="avatar" src={item.src} style={{width:'60px',height: '60px'}}/>
+                <Img className="avatar" src={item.src} style={{width:'50px',height: '50px'}}/>
                 <FlexboxItem>
                   <h4 style={{margin:'0'}}>{item.name}(按我向左滑动)</h4>
                   <div>{item.date}</div>

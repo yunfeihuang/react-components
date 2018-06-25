@@ -13,7 +13,7 @@ class Demo extends React.Component {
   render() {
     return (
       <Layout>
-        <Nav slot="header" title="ListView"/>
+        <Nav slot="header" title="ListView (pulldown and pullup)"/>
         <Body slot="body" style={{overflow:'visible'}}>
           <ListView
             style={{height:'100%',background:'#fff',position: 'absolute',width: '100%'}}
@@ -25,9 +25,9 @@ class Demo extends React.Component {
             return (
               <div key={index}>
                 <Flexbox  align="center" className="list-view-item" gutter={20} style={{padding:'5px'}}>
-                  <Img className="avatar" src={item.src} style={{width:'60px',height: '60px'}}/>
+                  <Img className="avatar" src={item.src} style={{width:'50px',height: '50px'}}/>
                   <FlexboxItem>
-                    <h4 style={{margin:'0'}}>{item.name}(按我向左滑动)</h4>
+                    <h4 style={{margin:'0'}}>{item.name}</h4>
                     <div>{item.date}</div>
                   </FlexboxItem>
                 </Flexbox>

@@ -44,7 +44,7 @@ export default class Img extends React.Component{
           </div>
           {children}
           {!end ? <div className="vx-list-view-loading">
-            {loading && <Spinner class="vx-list-view-spinner"/>}
+            {loading && <Spinner className="vx-list-view-spinner"/>}
             {loadingText}
           </div>
           :<div className="vx-list-view-loading">{endText}</div>}
