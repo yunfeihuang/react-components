@@ -66,6 +66,12 @@ export default class Img extends React.Component{
       }
     }
   }
+  componentWillUnmount () {
+    let self = this
+    this.$$scrollNode.lazyloadImages = this.$$scrollNode.lazyloadImages.filter((item) => {
+      return item !== self
+    })
+  }
   getScrollNode (node) {
       let n = node
       let closest = () => {

@@ -227,5 +227,10 @@ export default [
     path: '/demos/marquee',
     exact: true,
     component: AsyncComponent(() => import('./Marquee'))
+  },
+  {
+    path: '/demos/sticky',
+    exact: true,
+    component: AsyncComponent(() => import('./Sticky'))
   }
 ]

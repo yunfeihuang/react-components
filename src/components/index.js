@@ -41,6 +41,7 @@ import Badge from './badge'
 import Img from './img'
 import Preview from './preview'
 import Qrcode from './qrcode'
+import Sticky from './sticky'
 
 export {
   Arrow,
@@ -97,5 +98,6 @@ export {
   Badge,
   Img,
   Preview,
-  Qrcode
+  Qrcode,
+  Sticky
 }
