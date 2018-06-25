@@ -66,17 +66,18 @@ export default class Popup extends React.Component {
     this.node && this.node.querySelector('.vx-popup-inner') && this.node.querySelector('.vx-popup-inner').classList.remove(`popup-slide-${this.props.direction}-enter`)
   }
   componentWillReceiveProps (nextProps) {
-    if (nextProps.open !== this.props.open) {
-      let node = this.node.querySelector('.vx-popup-inner')
+    if (nextProps.open !== this.props.open) { 
       if (nextProps.open) {
         this.setState({
           open: nextProps.open
         }, () => {
           setTimeout(() => {
+            let node = this.node.querySelector('.vx-popup-inner')
             node && node.classList.remove(`popup-slide-${this.props.direction}-enter`)
           }, 100)
         })
       } else {
+        let node = this.node.querySelector('.vx-popup-inner')
         node && node.classList.add(`popup-slide-${this.props.direction}-enter`)
         setTimeout(() => {
           this.setState({
