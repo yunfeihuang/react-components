@@ -7,6 +7,12 @@ class Home extends React.Component {
       <Layout className="home">
         <Nav slot="header" isBack={false} title="Vx UI Demo@react"/>
         <Body slot="body">
+        <div style={{textAlign: 'center',paddingTop: '0.2rem',marginBottom: '-0.25rem'}}>
+          <a target="_blank" href="https://github.com/yunfeihuang/react-components">
+            <img style={{borderRadius: '50%',height: '40px',width: '40px'}} src="/images/github.png" alt=""/> <br/>
+            star me
+          </a>
+        </div>
           <Group title="basic">
             <Cell title="Button" arrow={true} to="/demos/button" />
             <Cell title="Layout" arrow={true} to="/demos/layout" />
