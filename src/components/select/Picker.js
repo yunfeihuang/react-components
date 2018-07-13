@@ -46,7 +46,6 @@ class Picker extends React.Component {
     if (max > 1 && this.state.value.length >= max) {
       myTitle = `选项不能超过${max}个`
     }
-    console.log(fastClose)
     return (
       <Popup open={this.state.open} fastClose={fastClose} onClose={this.handleCancel} >
         <div className="vx-option-picker-wrapper">

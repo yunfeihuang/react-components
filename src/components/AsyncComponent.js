@@ -1,10 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { connect } from 'react-redux';
-import actions from '../store/actions';
+import rootAction from '@/store/root/action';
 import Toast from '@/components/toast'
 
-export default function asyncComponent(importComponent) {
+export default function asyncComponent(importComponent, mapStateToProps, mapDispatchToProps) {
   class AsyncComponent extends React.Component {
     constructor(props) {
       super(props)
@@ -22,35 +22,40 @@ export default function asyncComponent(importComponent) {
     async componentDidMount() {
       const { default: component } = await importComponent()
       
-      const mapStateToProps = (state, ownProps) => {
+      const _mapStateToProps = mapStateToProps ? mapStateToProps : (state, ownProps) => {
         return {
           state,
           ownProps
         }
       }
 
-      const mapDispatchToProps = (dispatch) => {
+      const _mapDispatchToProps = mapDispatchToProps ? mapDispatchToProps : (dispatch) => {
         return {
           dispatch (action, data) {
-            let array = action.split('/')
-            if (array.length > 1) {
-              import(`../store/actions/${array[0]}`).then(res => {
-                if (res.default && res.default[array[1]]) {
-                  dispatch(res.default[array[1]](data))
+            let lastIndex = action.lastIndexOf('/')
+            let name = lastIndex ? action.substring(lastIndex + 1) : action
+            let path = lastIndex ? action.substring(0, lastIndex) : ''
+            if (path) {
+              data.$$module = path
+              import(`../store/${path}/action`).then(res => {
+                if (res.default && res.default[name]) {
+                  dispatch(res.default[name](data))
                 }
               }).catch(() => {
-                console.log(`not find store module "${array[0]}"`)
+                console.log(`not find store module "${name}"`)
               })
             } else {
-              if (actions[action]) {
-                dispatch(actions[action](data))
+              if (rootAction[action]) {
+                dispatch(rootAction[action](data))
+              } else {
+                console.log(`not find store module "${action}"`)
               }
             }
           }
         }
       }
       this.setState({
-        component: connect(mapStateToProps, mapDispatchToProps)(component)
+        component: connect(_mapStateToProps, _mapDispatchToProps)(component)
       }, () => {
         this.node && this.node.parentNode && this.node.parentNode.removeChild(this.node)
       })

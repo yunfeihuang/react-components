@@ -10,7 +10,7 @@ export default {
     }
     /*
     return {
-      type: 'ADD_TODO',
+      type: 'TODO_ADD',
       data
     }
     */
