@@ -37,6 +37,11 @@ class Range extends React.Component {
   componentDidMount () {
     this.getRangeInitData()
     this.renderRange(this.myValue())
+    this.$handleResize = this.handleResize.bind(this)
+    window.addEventListener('resize', this.$handleResize, false)
+  }
+  componentWillUnmount () {
+    window.removeEventListener('resize', this.$handleResize)
   }
   componentDidUpdate (prevProps) {
     if (prevProps.value !== this.props.value) {
@@ -80,6 +85,10 @@ class Range extends React.Component {
     let left = Math.round((value - this.props.min) / this.range() * this.$$range.maxLeft) + 'px'
     this.$$range.controlNode.style.left = this.$$range.valueNode.style.width = left
     this.$$range.tipsNode.innerHTML = this.myValue()
+  }
+  handleResize () {
+    this.getRangeInitData()
+    this.renderRange(this.myValue())
   }
   handleChange (val) {
     this.props.onChange && this.props.onChange(val)

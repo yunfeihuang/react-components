@@ -9,7 +9,7 @@ class Demo extends React.Component {
   render() {
     return (
       <Layout>
-        <Nav slot="header" title="Rater"/>
+        <Nav slot="header" title="Range"/>
         <Body slot="body">
           <Group title={`default(value:${this.state.value1})`}>
             <div style={{padding:'10px'}}>

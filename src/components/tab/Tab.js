@@ -31,11 +31,16 @@ class Tab extends React.Component {
   componentDidMount () {
     this.$el = this.refs.$el
     this.computedStyle()
+    this.$ComputedStyle = this.computedStyle.bind(this)
+    window.addEventListener('resize', this.$ComputedStyle, false)
   }
   componentDidUpdate (prevProps) {
     if (prevProps.active !== this.props.active) {
       requestAnimationFrame(this.computedStyle.bind(this))
     }
+  }
+  componentWillUnmount () {
+    window.removeEventListener('resize', this.$ComputedStyle)
   }
   handleClick (value) {
     this.props.onChange && this.props.onChange(value)
