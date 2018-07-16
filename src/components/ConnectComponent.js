@@ -16,10 +16,11 @@ export default function connectComponent(component, mapStateToProps, mapDispatch
         let name = lastIndex ? action.substring(lastIndex + 1) : action
         let path = lastIndex ? action.substring(0, lastIndex) : ''
         if (path) {
-          data.$$module = path
           import(`../store/${path}/action`).then(res => {
             if (res.default && res.default[name]) {
-              dispatch(res.default[name](data))
+              let result = res.default[name](data)
+              result.$$module = path
+              dispatch(result)
             }
           }).catch(() => {
             console.log(`not find store module "${name}"`)

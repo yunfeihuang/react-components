@@ -7,9 +7,8 @@ import DevTools from '../devtools'
 let rootReducer = reducer
 
 const AsyncReducer = store => next => action => {
-  if (action.data && action.data.$$module) {
-    let module = action.data.$$module
-    delete action.data.$$module
+  let module = action.$$module
+  if (module) {
     import(`@/store/${module}/reducer`).then(res => {
       injectReducer({key: module, reducer: res.default})
       next(action)
