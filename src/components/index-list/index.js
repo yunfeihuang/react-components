@@ -55,6 +55,11 @@ export default class Img extends React.Component{
   componentDidMount () {
     this.$el = this.refs.$el
     this.init()
+    this.$handleResize = this.handleResize.bind(this)
+    window.addEventListener('resize', this.$handleResizem, false)
+  }
+  componentWillUnmount () {
+    window.removeEventListener('resize', this.$handleResizem)
   }
   componentWillReceiveProps (nextProps) {
     if (this.props.data !== nextProps.data) {
@@ -68,6 +73,7 @@ export default class Img extends React.Component{
     }
   }
   init () {
+    this.$$scrollNode = this.$el.querySelector('.vx-index-list-each')
     this.$$titleNodes = Array.from(this.$el.querySelectorAll('.vx-index-list-title'))
     this.$$titleNodes.forEach(node => {
       node._offsetTop = node.offsetTop
@@ -91,7 +97,7 @@ export default class Img extends React.Component{
     })
   }
   handleScroll (e) {
-    let scrollTop = e.target.scrollTop
+    let scrollTop = this.$$scrollNode.scrollTop
     this.$$titleNodes.forEach((node, index) => {
       let position = node._offsetTop - scrollTop
       if (position < this.$$Y && position > 0) {
@@ -106,6 +112,10 @@ export default class Img extends React.Component{
         })
       }
     })
+  }
+  handleResize () {
+    this.init()
+    this.handleScroll()
   }
   handleGroup (index) {
     let node = this.$$titleNodes[index]
