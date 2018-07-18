@@ -41,6 +41,14 @@ export default class Textarea extends React.Component {
     this.$$textarea = this.refs.$el.querySelector('textarea')
     this.$$shadow = this.refs.$el.querySelector('.vx-textarea-shadow')
     this.renderAutoHeight(this.$$textarea.value)
+    this.$handleResize = this.handleResize.bind(this)
+    window.addEvenListener('resize', this.$handleResize, false)
+  }
+  componentWillUnmount () {
+    window.removeEventListener('resize', this.$handleResize)
+  }
+  handleResize () {
+    this.renderAutoHeight(this.$$textarea.value)
   }
   renderAutoHeight (value) {
     requestAnimationFrame(() => {

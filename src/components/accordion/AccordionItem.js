@@ -40,10 +40,25 @@ class AccordionItem extends React.Component {
       node.style.height = 'auto'
       this.handleClick(true)
     }
+    this.$handleResize = this.handleResize.bind(this)
+    window.addEventListener('resize', this.$handleResize, false)
   }
   componentDidUpdate (prevProps) {
     if (prevProps.open !== this.props.open) {
       this.handleClick(this.props.open)
+    }
+  }
+  componentWillUnmount () {
+    window.removeEventListener('resize', this.$handleResize)
+  }
+  handleResize () {
+    let node = this.refs.$el.querySelector('.vx-accordion-item-bd')
+    if (node.style.height) {
+      node.style.height = 'auto'
+      let height = node.offsetHeight
+      requestAnimationFrame(() => {
+        node.style.height = height + 'px'
+      })
     }
   }
   handleClick (open) {

@@ -39,7 +39,7 @@ export default class Swipeout extends React.Component{
       </div>
     )
   }
-  componentDidMount () {
+  init () {
     this.$el = this.refs.$el
     this.$$touch = {}
     let node = this.$el.querySelector('.vx-swipeout-action')
@@ -49,6 +49,11 @@ export default class Swipeout extends React.Component{
       node.style.height = node.parentNode.offsetHeight + 'px'
       this.props.open && this.setTranslateX(-this.$$touch.maxTranslateX, null, false)
     })
+  }
+  componentDidMount () {
+    this.init()
+    this.$init = this.init.bind(this)
+    window.addEventListener('resize', this.$init, false)
   }
   componentDidUpdate (prevProps) {
     if (prevProps.open !== this.props.open) {
@@ -60,6 +65,7 @@ export default class Swipeout extends React.Component{
       swipeoutVue = null
     }
     this.$$touch = null
+    window.removeEventListener('resize', this.$init)
   }
   setTranslateX (x, el, transition = true) {
     el = el || this.$$touch.el
