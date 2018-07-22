@@ -31,8 +31,8 @@ export default class Textarea extends React.Component {
         onBlur={this.handleBlur}>
         <div className="vx-textarea-shadow"></div>
         <textarea {...others} onChange={this.handleChange} onInput= {this.handleInput}/>
-        {enterNumber && others.maxlength && <em className="vx-textarea-enter-number">
-          {others.value.length}/{others.maxlength}
+        {enterNumber && others.maxLength && <em className="vx-textarea-enter-number">
+          {others.value.length}/{others.maxLength}
         </em>}
       </label>
     )
@@ -42,7 +42,7 @@ export default class Textarea extends React.Component {
     this.$$shadow = this.refs.$el.querySelector('.vx-textarea-shadow')
     this.renderAutoHeight(this.$$textarea.value)
     this.$handleResize = this.handleResize.bind(this)
-    window.addEvenListener('resize', this.$handleResize, false)
+    window.addEventListener('resize', this.$handleResize, false)
   }
   componentWillUnmount () {
     window.removeEventListener('resize', this.$handleResize)

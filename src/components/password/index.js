@@ -1,9 +1,14 @@
 import React from 'react'
 import classnames from 'classnames'
 import Input from '../input'
-import Icon from '../icon'
 
 export default class Password extends React.Component {
+  static defaultProps= {
+    icons: [
+      '<span class="vx-password-text-icon">abc</span>',
+      '<span class="vx-password-pwd-icon"></span>'
+    ]
+  }
   constructor (props) {
     super(props)
     this.handleSwitch = this.handleSwitch.bind(this)
@@ -12,7 +17,7 @@ export default class Password extends React.Component {
     }
   }
   render () {
-    let {children, className, style, ...others} = this.props
+    let {children, className, style, icons, ...others} = this.props
     return (
       <div className={classnames(['vx-password'])} style={style}>
         <Input {...others} type={this.state.type}/>
@@ -20,8 +25,8 @@ export default class Password extends React.Component {
           className="vx-password-switch"
           type="button"
           onClick={this.handleSwitch}>
-          <Icon style={{display: this.state.type === 'password' ? '' : 'none'}}>&#xe602;</Icon>
-          <Icon style={{display: this.state.type === 'password' ? 'none' : ''}}>&#xe63b;</Icon>
+          <i style={{display: this.state.type === 'password' ? '' : 'none'}} dangerouslySetInnerHTML={{__html: icons[0]}}></i>
+          <i style={{display: this.state.type === 'password' ? 'none' : ''}}dangerouslySetInnerHTML={{__html: icons[1]}}></i>
         </button>
       </div>
     )

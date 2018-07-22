@@ -1,7 +1,6 @@
 import React from 'react'
 import classnames from 'classnames'
 import PropTypes from 'prop-types'
-import Icon from '../icon'
 
 export default class Input extends React.Component {
   static propTypes = {
@@ -23,13 +22,13 @@ export default class Input extends React.Component {
     let {children, className, style, buttonStep, onChange, value, ...others} = this.props
     return (
       <div ref="$el" className={classnames(["vx-input-number", className])} style={style}>
-        <button type="button" onClick={this.handleChangeReduce}><Icon>&#xe729;</Icon></button>
+        <button className="vx-input-number-reduce" type="button" onClick={this.handleChangeReduce}></button>
         <input
           {...others}
           type="number"
           initialvalue={this.myValue()}
           onBlur={this.handleChange}/>
-        <button type="button" onClick={this.handleChangeAdd}><Icon>&#xe727;</Icon></button>
+        <button className="vx-input-number-add" type="button" onClick={this.handleChangeAdd}></button>
       </div>
     )
   }

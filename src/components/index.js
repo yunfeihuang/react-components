@@ -26,7 +26,6 @@ import Confirm from './confirm'
 import Alert from './alert'
 import Prompt from './prompt'
 import Toast from './toast'
-import Icon from './icon'
 import Password from './password'
 import Textarea from './textarea'
 import Spinner from './spinner'
@@ -83,7 +82,6 @@ export {
   Alert,
   Prompt,
   Toast,
-  Icon,
   Password,
   Textarea,
   Spinner,

@@ -2,7 +2,6 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import Spinner from '../spinner'
-import Icon from '../icon'
 
 export default class Img extends React.Component{
   static propTypes = {
@@ -38,7 +37,7 @@ export default class Img extends React.Component{
       <div ref="$el" className={classnames(['vx-list-view', className])} {...others}>
         <div className="vx-list-view-inner">
           <div className="vx-list-view-refresh">
-            <Icon></Icon>
+            <i className="vx-list-view-icon"></i>
             <Spinner className="vx-list-view-spinner"/>
             <span data-loading={loadingText} data-pulldown={pullDownText} data-refresh={refreshText}></span>
           </div>
@@ -144,8 +143,8 @@ export default class Img extends React.Component{
   handleTouchEnd (e) {
     let {pageY} = this.getPosition(e)
     if (this.$$touch.pageY && this.$$touch.inner && this.$$touch.pageY < pageY) {
+      let markHeight = this.$$touch.markHeight
       if (pageY - this.$$touch.pageY > (markHeight + 20)) {
-        let markHeight = this.$$touch.markHeight
         setTimeout(() => {
           let cssText = `-webkit-transform:translate3d(0,${markHeight}px,0);transform:translate3d(0,${markHeight}px,0);-webkit-transition:transform 0.5s ease 0s;transition:transform 0.5s ease 0s;`
           this.$$touch.inner.style.cssText = cssText
