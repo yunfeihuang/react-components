@@ -80,12 +80,13 @@ export default class Swipeout extends React.Component{
       if (this.$$touch.el) {
         let transform = this.$$touch.el.style.transform || this.$$touch.el.style.webkitTransform
         if (transform) {
-          currentTranslateX = parseInt(transform.match(/[-\d]+/g)[0], 10)
+          transform = transform.replace('translate3d', '')
+          currentTranslateX = -parseInt(transform.match(/(\d+)/g)[0])
         }
       }
       Object.assign(this.$$touch, this.getPosition(e), {
         start: true,
-        currentTranslateX: currentTranslateX
+        currentTranslateX
       })
       document.addEventListener('touchmove', this.handleTouchMove, false)
       document.addEventListener('touchend', this.handleTouchEnd, false)
@@ -128,6 +129,7 @@ export default class Swipeout extends React.Component{
           this.props.onOpen && this.props.onOpen()
         }
       }
+      this.$$touch.diffX = 0
       document.removeEventListener('touchmove', this.handleTouchMove)
       document.removeEventListener('touchend', this.handleTouchEnd)
       document.removeEventListener('mousemove', this.handleTouchMove)
