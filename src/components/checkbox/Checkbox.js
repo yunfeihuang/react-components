@@ -8,6 +8,10 @@ class Checkbox extends React.Component {
     checked: PropTypes.bool,
     onChange: PropTypes.func
   }
+  static defaultProps = {
+    disabled: false,
+    checked: false
+  }
   constructor (props) {
     super(props)
     this.handleChange = this.handleChange.bind(this)
@@ -30,11 +34,10 @@ class Checkbox extends React.Component {
     return (
       <label
         style={style}
-        disabled={disabled}
-        className={classnames(['vx-checkbox', {'vx-checkbox-reverse': $parent && $parent.direction === 'reverse', 'is-active': others.checked}, className])}>
+        className={classnames(['vx-checkbox', {'is-disabled': disabled, 'vx-checkbox--reverse': $parent && $parent.direction === 'reverse', 'is-active': others.checked}, className])}>
         <input {...others} type={type} checked={checked} disabled={disabled} onChange={this.handleChange}/>
-        <i className="vx-checkbox-icon"></i>
-        <span className="vx-checkbox-text">
+        <i className="vx-checkbox--icon"></i>
+        <span className="vx-checkbox--text">
           {children}
         </span>
       </label>

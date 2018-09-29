@@ -26,9 +26,9 @@ class Toast extends React.Component {
   render () {
     let {className, align, type, children, style} = this.props
     return (
-      <div ref="$el" className={classnames(['vx-toast', className])} style={style}>
-        <div className={classnames(['vx-toast-inner', 'vx-toast-' + align])}>
-          <div className="vx-toast-content">
+      <div ref="$el" className={classnames(['vx-toast', 'vx-toast--' + align, className])} style={style}>
+        <div className={classnames(['vx-toast--inner'])}>
+          <div className="vx-toast--content">
             {this.renderIcon()}
             {type !== 'default' && <br/>}
             {children}
@@ -40,9 +40,9 @@ class Toast extends React.Component {
   renderIcon () {
     let type = this.props.type
     if (type === 'loading') {
-      return <Spinner {...this.props.spinnerProps} className="vx-toast-loading"/>
+      return <Spinner {...this.props.spinnerProps} className="vx-toast--loading"/>
     } else if (type !== 'default') {
-      return <i className={classnames(['vx-toast-icon',`vx-toast-${type}`])}></i>
+      return <i className={classnames(['vx-toast--icon',`vx-toast--${type}`])}></i>
     }
     return null
   }
@@ -60,20 +60,37 @@ class Toast extends React.Component {
       }
     }
   }
+  componentWillUnmount () {
+    this.$$timer && clearTimeout(this.$$timer)
+  }
+  hide () {
+    this.$$timer && clearTimeout(this.$$timer)
+    this.refs.$el.style.cssText = 'display:block;opacity:0;'
+    requestAnimationFrame(() => {
+      this.refs.$el.style.cssText = 'display:none;'
+      this.props.onClose && this.props.onClose()
+    })
+  }
   openChange (value) {
     if (value) {
+      this.$$timer && clearTimeout(this.$$timer)
       requestAnimationFrame(() => {
-        this.refs.$el.style.display = 'table'
-      })
-      this.props.duration && setTimeout(() => {
+        this.refs.$el.style.cssText = 'display:block;opacity:0;'
         requestAnimationFrame(() => {
-          this.refs.$el.style.display = 'none'
-          this.props.onClose && this.props.onClose()
-          if (this.destroy) {
-            console.log('destroy')
-          }
+          let width = this.refs.$el.children[0].offsetWidth + 4
+          let height = this.refs.$el.children[0].offsetHeight + 4
+          requestAnimationFrame(() => {
+            this.refs.$el.style.cssText = `display:block;width:${width + 10}px;height:${height + 10}px;`
+          })
         })
-      }, this.props.duration)
+      })
+      if (this.props.duration) {
+        this.$$timer = setTimeout(() => {
+          this.hide()
+        }, this.props.duration)
+      }
+    } else {
+      this.hide()
     }
   }
 }

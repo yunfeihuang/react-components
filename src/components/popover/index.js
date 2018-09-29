@@ -19,7 +19,7 @@ let Popover = function (props) {
         opacity={overlayOpacity}
         onClose={handleClose}
         inner={<div
-          className={classnames(['vx-popover-content', popoverClass])}
+          className={classnames(['vx-popover--content', popoverClass])}
           style={{visibility: 'hidden',position: 'absolute'}}
           onClick={handleClose}>
             {children}
@@ -28,7 +28,7 @@ let Popover = function (props) {
       document.createElement('div')
     )
     let target = e.currentTarget
-    let node = ReactDOM.findDOMNode(vnode).querySelector('.vx-popover-content')
+    let node = ReactDOM.findDOMNode(vnode).querySelector('.vx-popover--content')
     let rect = target.getBoundingClientRect()
     let left = rect.left + 'px'
     let isRight = false
@@ -46,8 +46,8 @@ let Popover = function (props) {
       node.style.top = top
       node.style.left = left
       node.style.visibility = ''
-      isRight && node.classList.add('vx-popover-content-right')
-      isBottom && node.classList.add('vx-popover-content-bottom')
+      isRight && node.classList.add('vx-popover--content-right')
+      isBottom && node.classList.add('vx-popover--content-bottom')
     })
   }
   return (

@@ -27,7 +27,7 @@ class Demo extends React.Component {
   }
   render() {
     let options = this.state.options.map((item, index) => {
-      return <Checkbox value={item.value} key={index} >{item.label}</Checkbox>
+      return <Checkbox value={item.value} key={index} disabled={item.disabled}>{item.label}</Checkbox>
     })
     return (
       <Layout>

@@ -24,7 +24,7 @@ class Tab extends React.Component {
     return (
       <div className={cls} {...others} ref="$el" >
         {cloneChildren}
-        <div className="vx-tab-underline"></div>
+        <div className="vx-tab--underline"></div>
       </div>
     );
   }
@@ -46,7 +46,7 @@ class Tab extends React.Component {
     this.props.onChange && this.props.onChange(value)
   }
   computedStyle () {
-    let node = this.$el.querySelector('.vx-tab-underline')
+    let node = this.$el.querySelector('.vx-tab--underline')
     let activeNode = this.$el.querySelector('.is-active')
     if (activeNode) {
       let activeWidth = activeNode.offsetWidth
@@ -54,6 +54,9 @@ class Tab extends React.Component {
       let left = activeNode.offsetLeft
       if (this.props.underlineWidth === 'auto' || this.props.underlineWidth === 0) {
         width = activeNode.children[0].offsetWidth
+        if (width > activeWidth) {
+          width = activeWidth
+        }
         left = activeNode.offsetLeft + (activeWidth - width) / 2
       } else if (this.props.underlineWidth) {
         width = this.props.underlineWidth

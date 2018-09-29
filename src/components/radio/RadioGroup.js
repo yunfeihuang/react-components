@@ -28,7 +28,7 @@ class CheckboxGroup extends React.Component {
       return item
     })
     return (
-      <div className={classnames(["vx-radio-group", {'vx-radio-group-divider': divider}, className])} {...others}>
+      <div className={classnames(["vx-radio-group", {'is-divider': divider}, className])} {...others}>
         {cloneChildren}
       </div>
     );

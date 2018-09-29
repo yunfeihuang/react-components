@@ -12,7 +12,7 @@ class Demo extends React.Component {
             <Input placeholder="请输入" value={this.state.value} onChange={this.handleChange.bind(this)}/>
           </Group>
           <Group title="disabled">
-            <Input disabled={true} value="disabled"/>
+            <Input disabled={true} value={this.state.value}/>
           </Group>
         </Body>
       </Layout>

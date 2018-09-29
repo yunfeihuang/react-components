@@ -1,12 +1,19 @@
 import React from 'react'
 import classnames from 'classnames'
 import PropTypes from 'prop-types'
+import {Flexbox, FlexboxItem} from '../flexbox'
 
 export default class Input extends React.Component {
   static propTypes = {
+    clear: PropTypes.bool,
+    border: PropTypes.bool,
     onChange: PropTypes.func,
     onInput: PropTypes.func
   } 
+  static defaultProps = {
+    border: true,
+    clear: true,
+  }
   constructor (props) {
     super(props)
     this.state = {
@@ -18,15 +25,40 @@ export default class Input extends React.Component {
     this.handleInput = this.handleInput.bind(this)
   }
   render () {
-    let {children, className, style,...others} = this.props
+    let {children, className, style, prepend, append, clear, border, ...others} = this.props
+    let getClassName  = () => {
+      return classnames([
+        'vx-input--wrapper',
+        {
+          'is-focus': this.state.isFocus,
+          'is-clear': !!others.value && clear,
+          'vx-input--prepend': prepend,
+          'vx-input--append': append,
+          'is-disabled': others.disabled,
+          'is-border': border
+        }, 
+        className
+      ])
+    }
     return (
-      <label
+      <div
         style={style}
-        className={classnames(['vx-input-wrapper',{'vx-input-focus': this.state.isFocus}, className])}
-        onFocus={this.handleFocus}
-        onBlur={this.handleBlur}>
-        <input {...others} onChange={this.handleChange} onInput= {this.handleInput}/>
-      </label>
+        className={getClassName()}
+        
+        >
+        <Flexbox component="label" align="center"
+          className={classnames(['vx-input--inner'])}
+          >
+            {prepend}
+            <FlexboxItem>
+              <input {...others} 
+                onFocus={this.handleFocus}
+                onBlur={this.handleBlur}
+                onChange={this.handleChange} onInput= {this.handleInput}/>
+            </FlexboxItem>
+            {append}
+        </Flexbox>
+      </div>
     )
   }
   handleChange (e) {

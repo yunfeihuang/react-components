@@ -37,18 +37,18 @@ class Actionsheet extends React.Component {
       }
       return item
     })
-    let cls = classnames(["vx-actionsheet", {'vx-actionsheet-menu': type === 'menu'}, {'is-not-title': !title},className])
+    let cls = classnames(["vx-actionsheet", {'vx-actionsheet--menu': type === 'menu'}, {'is-not-title': !title},className])
     return (
       <Popup className={cls} {...others} direction={direction}>
-        <div className="vx-actionsheet-inner" >
-          {title && <div className="vx-actionsheet-title">
+        <div className="vx-actionsheet--inner" >
+          {title && <div className="vx-actionsheet--title">
             {title}
           </div>
           }
-          <div className="vx-actionsheet-items">
+          <div className="vx-actionsheet--items">
             {cloneChildren}
           </div>
-          {cancel && <div className="vx-actionsheet-cancel" onClick={this.handleClose}>
+          {cancel && <div className="vx-actionsheet--cancel" onClick={this.handleClose}>
             {cancelText}
           </div>
           }

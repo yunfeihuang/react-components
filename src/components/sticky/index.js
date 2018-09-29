@@ -14,8 +14,8 @@ export default class Sticky extends React.Component{
   render () {
     const { className, children, ...others } = this.props
     return (
-      <div ref="$el" className={classnames(['vx-sticky-box', className])} {...others}>
-        <div className="vx-sticky-inner">
+      <div ref="$el" className={classnames(['vx-sticky--box', className])} {...others}>
+        <div className="vx-sticky--inner">
           {children}
         </div>
       </div>
@@ -25,7 +25,7 @@ export default class Sticky extends React.Component{
     this.$el = this.refs.$el
     this.$$scrollNode = this.getScrollNode(this.$el.offsetParent)
     if (this.$$scrollNode) {
-      this.$$childNode = this.$el.querySelector('.vx-sticky-inner')
+      this.$$childNode = this.$el.querySelector('.vx-sticky--inner')
       this.$$scrollNode.addEventListener('touchstart', this.handleTouchStart, false)
       this.$$scrollNode.addEventListener('scroll', this.handleScroll, false)
       this.$handleResize = this.handleResize.bind(this)
@@ -53,12 +53,12 @@ export default class Sticky extends React.Component{
       this.handleTouchStart()
     }
     if (this.$$scrollNode.scrollTop > this.$myData.offsetTop) {
-      this.$el.classList.add('vx-sticky-fixed')
+      this.$el.classList.add('is-fixed')
       if (this.$$childNode.style.top !== this.$myData.fixedTop) {
         this.$$childNode.style.top = this.$myData.fixedTop
       }
     } else {
-      this.$el.classList.remove('vx-sticky-fixed')
+      this.$el.classList.remove('is-fixed')
       this.$$childNode.style.top = ''
     }
   }
@@ -66,7 +66,7 @@ export default class Sticky extends React.Component{
     let n = node
     let closest = () => {
       let styleObject = window.getComputedStyle(n)
-      if (!(['scroll', 'auto'].indexOf(styleObject['overflow']) > -1 || ['scroll', 'auto'].indexOf(styleObject['overflow-y']) > -1)) {
+      if (!(['scroll', 'auto'].indexOf(styleObject['overflow']) > -1 || ['scroll', 'auto'].indexOf(styleObject['overflow-y']) > -1) || styleObject['-webkit-overflow-scrolling'] === 'touch' || styleObject['overflow-scrolling'] === 'touch') {
         n = n.offsetParent
         if (n === document.body) {
           n = document.body

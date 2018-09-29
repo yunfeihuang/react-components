@@ -16,7 +16,7 @@ class Demo extends React.Component {
             </Cell>
           </Group>
         </Body>
-        <Confirm open={this.state.open} onClose={this.handleClose.bind(this)} onConfirm={this.handleConfirm.bind(this)}>
+        <Confirm title="标题文字" open={this.state.open} onClose={this.handleClose.bind(this)} onConfirm={this.handleConfirm.bind(this)}>
           确认删除我么
         </Confirm>
       </Layout>

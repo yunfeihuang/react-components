@@ -5,7 +5,7 @@ import classnames from 'classnames'
 let Badge = (props) => {
   let {className, text, max, ...others} = props
   return (
-    <span className={classnames(['vx-badge', {'vx-badge-dot': text === ''}, className])} {...others}>
+    <span className={classnames(['vx-badge', {'vx-badge--dot': text === ''}, className])} {...others}>
       {typeof text === 'number' && max && text > max ? <span className="badge-ellipsis"></span> : text}
     </span>
   )

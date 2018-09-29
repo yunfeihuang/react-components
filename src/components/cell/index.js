@@ -12,15 +12,15 @@ const Cell = (props) => {
         to={to}
         align="center"
         justify="center"
-        className={classnames(['vx-cell', { 'vx-cell-access': arrow}])}
+        className={classnames(['vx-cell', { 'vx-cell--access': arrow}])}
         {...others}>
-        <div className="vx-cell-hd">
+        <div className="vx-cell--hd">
           {icon}
         </div>
-        <FlexboxItem className="vx-cell-bd">
+        <FlexboxItem className="vx-cell--bd">
           {title}
         </FlexboxItem>
-        <div className="vx-cell-ft">
+        <div className="vx-cell--ft">
           {value || children}
         </div>
       </Flexbox>

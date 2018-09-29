@@ -19,10 +19,10 @@ class Checkbox extends React.Component {
     return (
       <label
         style={style}
-        className={classnames(['vx-radio', className])} disabled={others.disabled} >
+        className={classnames(['vx-radio', {'is-disabled': others.disabled}, className])} >
         <input {...others} type="radio" checked={checked} onChange={this.handleChange}/>
-        <i className="vx-radio-icon"></i>
-        <span className="vx-radio-text">
+        <i className="vx-radio--icon"></i>
+        <span className="vx-radio--text">
           {children}
         </span>
       </label>

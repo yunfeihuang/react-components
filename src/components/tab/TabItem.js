@@ -4,8 +4,8 @@ import classnames from 'classnames';
 let TabItem = (props) => {
   let {children, className, underlineWidth, active, name, ...others} = props
   return (
-    <div className={classnames(['vx-tab-item', 'vx-flexbox-item', {'is-active': active === name}])} {...others}>
-      {underlineWidth && <span className="vx-tab-item-text">
+    <div className={classnames(['vx-tab--item', 'vx-flexbox--item', {'is-active': active === name}])} {...others}>
+      {underlineWidth && <span className="vx-tab--item-text">
         {children}
       </span>}
       {!underlineWidth && children}

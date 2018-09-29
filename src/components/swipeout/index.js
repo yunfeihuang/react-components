@@ -24,15 +24,15 @@ export default class Swipeout extends React.Component{
   render () {
     const { className, children, action, divider, onClose, onOpen, ...others } = this.props
     return (
-      <div ref="$el" className={classnames(['vx-swipeout', {'vx-swipeout-divider': divider}, className])}
+      <div ref="$el" className={classnames(['vx-swipeout', {'is-divider': divider}, className])}
         {...others}
         onTouchStart={this.handleTouchStart}
         onMouseDown={this.handleTouchStart}>
-        <div className="vx-swipeout-inner">
-          <div className="vx-swipeout-content">
+        <div className="vx-swipeout--inner">
+          <div className="vx-swipeout--content">
             {children}
           </div>
-          <div className="vx-swipeout-action" onClick={this.handleAction}>
+          <div className="vx-swipeout--action" onClick={this.handleAction}>
             {action}
           </div>
         </div>
@@ -42,9 +42,9 @@ export default class Swipeout extends React.Component{
   init () {
     this.$el = this.refs.$el
     this.$$touch = {}
-    let node = this.$el.querySelector('.vx-swipeout-action')
+    let node = this.$el.querySelector('.vx-swipeout--action')
     this.$$touch.maxTranslateX = node.offsetWidth
-    this.$$touch.el = this.$el.querySelector('.vx-swipeout-inner')
+    this.$$touch.el = this.$el.querySelector('.vx-swipeout--inner')
     requestAnimationFrame(() => {
       node.style.height = node.parentNode.offsetHeight + 'px'
       this.props.open && this.setTranslateX(-this.$$touch.maxTranslateX, null, false)

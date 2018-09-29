@@ -35,18 +35,18 @@ export default class Img extends React.Component{
     const { className, children, loadingText, pullDownText, refreshText, end, endText, loading, onPullDown, onPullUp, ...others } = this.props
     return (
       <div ref="$el" className={classnames(['vx-list-view', className])} {...others}>
-        <div className="vx-list-view-inner">
-          <div className="vx-list-view-refresh">
-            <i className="vx-list-view-icon"></i>
-            <Spinner className="vx-list-view-spinner"/>
+        <div className="vx-list-view--inner">
+          <div className="vx-list-view--refresh">
+            <i className="vx-list-view--icon"></i>
+            <Spinner className="vx-list-view--spinner"/>
             <span data-loading={loadingText} data-pulldown={pullDownText} data-refresh={refreshText}></span>
           </div>
           {children}
-          {!end ? <div className="vx-list-view-loading">
-            {loading && <Spinner className="vx-list-view-spinner"/>}
+          {!end || children.length || loading? <div className="vx-list-view--loading">
+            <Spinner className="vx-list-view--spinner"/>
             {loadingText}
           </div>
-          :<div className="vx-list-view-loading">{endText}</div>}
+          :<div className="vx-list-view--loading">{endText}</div>}
         </div>
       </div>
     )
@@ -73,7 +73,7 @@ export default class Img extends React.Component{
     }
     this.$$height = this.$el.offsetHeight
     this.$$touch = {
-      inner: this.$el.querySelector('.vx-list-view-inner')
+      inner: this.$el.querySelector('.vx-list-view--inner')
     }
   }
   componentDidUpdate (prevProps) {
@@ -114,7 +114,7 @@ export default class Img extends React.Component{
         let {pageX, pageY} = this.getPosition(e)
         this.$$touch.pageY = pageY
         this.$$touch.pageX = pageX
-        this.$$touch.markHeight = this.$el.querySelector('.vx-list-view-refresh').offsetHeight
+        this.$$touch.markHeight = this.$el.querySelector('.vx-list-view--refresh').offsetHeight
       }
     }
   }

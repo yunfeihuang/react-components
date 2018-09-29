@@ -6,6 +6,12 @@ const Arrow = (props) => {
   const { direction, size, color, component, style, className, ...others } = props
   const Component = component
   const styles = {
+    display: 'inline-block',
+    borderWidth: '1px',
+    borderStyle: 'solid',
+    verticalAlign: 'middle',
+    boxSizing: 'border-box',
+    transform: 'rotate(45deg)',
     height: size,
     width: size,
     borderColor: {

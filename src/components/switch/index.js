@@ -8,7 +8,7 @@ const Switch = (props) => {
     onChange && onChange(e.target.checked ? onValue : offValue)
   }
   return (
-    <div className={classnames(['vx-switch-wrapper', className])} style={style}>
+    <div className={classnames(['vx-switch--wrapper', className])} style={style}>
       <input
         {...others}
         value={value}

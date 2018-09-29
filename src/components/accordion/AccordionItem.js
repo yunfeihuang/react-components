@@ -19,15 +19,15 @@ class AccordionItem extends React.Component {
   render () {
     let {children, className, title, open, ...others} = this.props
     return (
-      <div ref="$el" className={classnames(['vx-accordion-item', {'is-open': this.state.open}])} {...others}>
-        <div className="vx-accordion-item-hd" onClick={this.handleClick.bind(this,!this.state.open)}>
-          <div className="vx-accordion-item-title">
+      <div ref="$el" className={classnames(['vx-accordion--item', {'is-open': this.state.open}])} {...others}>
+        <div className="vx-accordion--item-hd" onClick={this.handleClick.bind(this,!this.state.open)}>
+          <div className="vx-accordion--item-title">
             {title}
           </div>
           <Arrow direction="down" />
         </div>
-        <div className="vx-accordion-item-bd">
-          <div className="vx-accordion-item-content">
+        <div className="vx-accordion--item-bd">
+          <div className="vx-accordion--item-content">
           {children}
           </div>
         </div>
@@ -36,7 +36,7 @@ class AccordionItem extends React.Component {
   }
   componentDidMount () {
     if (this.props.open) {
-      let node = this.refs.$el.querySelector('.vx-accordion-item-bd')
+      let node = this.refs.$el.querySelector('.vx-accordion--item-bd')
       node.style.height = 'auto'
       this.handleClick(true)
     }
@@ -52,7 +52,7 @@ class AccordionItem extends React.Component {
     window.removeEventListener('resize', this.$handleResize)
   }
   handleResize () {
-    let node = this.refs.$el.querySelector('.vx-accordion-item-bd')
+    let node = this.refs.$el.querySelector('.vx-accordion--item-bd')
     if (node.style.height) {
       node.style.height = 'auto'
       let height = node.offsetHeight
@@ -62,7 +62,7 @@ class AccordionItem extends React.Component {
     }
   }
   handleClick (open) {
-    let node = this.refs.$el.querySelector('.vx-accordion-item-bd')
+    let node = this.refs.$el.querySelector('.vx-accordion--item-bd')
     let height = ''
     if (open) {
       height = node.children[0].offsetHeight + 'px'
@@ -72,10 +72,10 @@ class AccordionItem extends React.Component {
       open: open
     }, () => {
       let parentNode = self.refs.$el.parentNode
-      if (parentNode && parentNode.children) {
+      if (parentNode && parentNode.children && parentNode.dataset.mutex === 'true') {
         Array.from(parentNode.children).forEach(item => {
-          if (item.classList.contains('vx-accordion-item') && item !== self.refs.$el) {
-            item.querySelector('.vx-accordion-item-bd').style.height  = ''
+          if (item.classList.contains('vx-accordion--item') && item !== self.refs.$el) {
+            item.querySelector('.vx-accordion--item-bd').style.height  = ''
           }
         })
       }

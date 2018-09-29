@@ -25,11 +25,11 @@ class Range extends React.Component {
   render () {
     let {className, disabled, value, max, min, ...others} = this.props
     return (
-      <div ref="$el" className={classnames(['vx-range-wrapper', {'is-disabled': disabled}])} {...others}>
-        <div className="vx-range-mask"></div>
-        <div className="vx-range-value" ></div>
-        <div className="vx-range-button" onMouseDown={this.handleTouchStart} onTouchStart={this.handleTouchStart}>
-          <div className="vx-range-tips">0</div>
+      <div ref="$el" className={classnames(['vx-range--wrapper', {'is-disabled': disabled}])} {...others}>
+        <div className="vx-range--mask"></div>
+        <div className="vx-range--value" ></div>
+        <div className="vx-range--button" onMouseDown={this.handleTouchStart} onTouchStart={this.handleTouchStart}>
+          <div className="vx-range--tips">0</div>
         </div>
       </div>
     )
@@ -70,10 +70,10 @@ class Range extends React.Component {
   }
   getRangeInitData () {
     this.$el = this.refs.$el
-    let controlNode = this.$el.querySelector('.vx-range-button')
-    let valueNode = this.$el.querySelector('.vx-range-value')
-    let tipsNode = this.$el.querySelector('.vx-range-tips')
-    let maskNode = this.$el.querySelector('.vx-range-mask')
+    let controlNode = this.$el.querySelector('.vx-range--button')
+    let valueNode = this.$el.querySelector('.vx-range--value')
+    let tipsNode = this.$el.querySelector('.vx-range--tips')
+    let maskNode = this.$el.querySelector('.vx-range--mask')
     this.$$range = {
       maxLeft: maskNode.offsetWidth - controlNode.offsetWidth,
       controlNode,

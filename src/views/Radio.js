@@ -39,7 +39,7 @@ class Demo extends React.Component {
             <RadioGroup value={this.state.value} onChange={this.handleGroupChange.bind(this)}>
               {(() => {
                 return this.state.options.map((item, index) => {
-                  return <Radio value={item.value} key={index} >{item.label}</Radio>
+                  return <Radio value={item.value} key={index} disabled={item.disabled}>{item.label}</Radio>
                 })
               })()}
             </RadioGroup>

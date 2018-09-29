@@ -4,7 +4,7 @@ import classnames from 'classnames'
 
 const Button = (props) => {
   const { type, size, plain, className, disabled, nativeType, children, ...others } = props
-  const cls = classnames(['vx-btn', 'vx-btn-' + type, 'vx-btn-size-' + size, {
+  const cls = classnames(['vx-btn', 'vx-btn--' + type, 'vx-btn--size-' + size, {
     'is-plain': plain,
     'is-disabled': disabled,
   }, className])

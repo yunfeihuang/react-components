@@ -19,7 +19,7 @@ let Spinner = function (props) {
     }
   }
   return (
-    <div { ...others} className={classnames(["vx-spinner-wrapper", className])}>
+    <div { ...others} className={classnames(["vx-spinner--wrapper", className])}>
       <div className="vx-spinner" style={style}></div>
       {children}
     </div>

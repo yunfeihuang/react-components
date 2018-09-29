@@ -26,20 +26,23 @@ export default class Textarea extends React.Component {
       <label
         ref="$el"
         style={style}
-        className={classnames(['vx-textarea-wrapper',{'vx-textarea-focus': this.state.isFocus}, className])}
+        className={classnames(['vx-textarea--wrapper',{'is-focus': this.state.isFocus,'vx-textarea--enter-number': enterNumber}, className])}
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}>
-        <div className="vx-textarea-shadow"></div>
-        <textarea {...others} onChange={this.handleChange} onInput= {this.handleInput}/>
-        {enterNumber && others.maxLength && <em className="vx-textarea-enter-number">
-          {others.value.length}/{others.maxLength}
-        </em>}
+        <div class="vx-textarea--inner">
+          <div className="vx-textarea--shadow"></div>
+          <textarea {...others} onChange={this.handleChange} onInput= {this.handleInput}/>
+          {enterNumber && others.maxLength && <em>
+            {others.value.length}/{others.maxLength}
+          </em>}
+        </div>
       </label>
     )
   }
   componentDidMount () {
     this.$$textarea = this.refs.$el.querySelector('textarea')
-    this.$$shadow = this.refs.$el.querySelector('.vx-textarea-shadow')
+    this.$$inner = this.refs.$el.querySelector('.vx-textarea--inner')
+    this.$$shadow = this.refs.$el.querySelector('.vx-textarea--shadow')
     this.renderAutoHeight(this.$$textarea.value)
     this.$handleResize = this.handleResize.bind(this)
     window.addEventListener('resize', this.$handleResize, false)
@@ -53,7 +56,7 @@ export default class Textarea extends React.Component {
   renderAutoHeight (value) {
     requestAnimationFrame(() => {
       this.$$shadow.innerHTML = value.replace(/(\r|\n)$/, '<br/><span style="color:transparent">s</span>').replace(/(\r|\n)/g, '<br/>')
-      this.refs.$el.style.height = this.$$shadow.offsetHeight + 'px'
+      this.$$inner.style.height = this.$$shadow.offsetHeight + 'px'
     })
   }
   handleChange (e) {

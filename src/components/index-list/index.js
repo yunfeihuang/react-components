@@ -25,14 +25,14 @@ export default class Img extends React.Component{
     const { className, style, data } = this.props
     return (
       <div ref="$el" className={classnames(['vx-index-list', className])} style={style}>
-        <div className="vx-index-list-each" onScroll={this.handleScroll}>
+        <div className="vx-index-list--each" onScroll={this.handleScroll}>
           {data.map((group,i) => {
             return (
-              <div className="vx-index-list-group" key={i}>
-                <div className="vx-index-list-title">{group.label}</div>
+              <div className="vx-index-list--group" key={i}>
+                <div className="vx-index-list--title">{group.label}</div>
                 {group.items.map((item,index) => {
                   return (
-                    <div className="vx-index-list-item" key={index}  onClick={this.handleClick.bind(this, item.value)}>
+                    <div className="vx-index-list--item" key={index}  onClick={this.handleClick.bind(this, item.value)}>
                       {item.label}
                     </div>
                   )
@@ -41,14 +41,14 @@ export default class Img extends React.Component{
             )
           })}
         </div>
-        <div className="vx-index-list-nav">
+        <div className="vx-index-list--nav">
           {this.state.navList.map((item, index) => {
             return (
               <div key={index} className={{'is-active': index === 0}} onClick={this.handleGroup.bind(this, index)}>{item}</div>
             )
           })}
         </div>
-        <div className="vx-index-list-fixed">{this.state.currentCharAt || ' '}</div>
+        <div className="vx-index-list--fixed">{this.state.currentCharAt || ' '}</div>
       </div>
     )
   }
@@ -73,13 +73,13 @@ export default class Img extends React.Component{
     }
   }
   init () {
-    this.$$scrollNode = this.$el.querySelector('.vx-index-list-each')
-    this.$$titleNodes = Array.from(this.$el.querySelectorAll('.vx-index-list-title'))
+    this.$$scrollNode = this.$el.querySelector('.vx-index-list--each')
+    this.$$titleNodes = Array.from(this.$el.querySelectorAll('.vx-index-list--title'))
     this.$$titleNodes.forEach(node => {
       node._offsetTop = node.offsetTop
     })
-    this.$$navNodes = Array.from(this.$el.querySelectorAll('.vx-index-list-nav div'))
-    this.$$fixedNode = this.$el.querySelector('.vx-index-list-fixed')
+    this.$$navNodes = Array.from(this.$el.querySelectorAll('.vx-index-list--nav div'))
+    this.$$fixedNode = this.$el.querySelector('.vx-index-list--fixed')
     this.$$Y = this.$$fixedNode.offsetHeight
   }
   activeNavItem (index) {

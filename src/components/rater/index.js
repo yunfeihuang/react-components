@@ -25,7 +25,7 @@ class Rater extends React.Component {
       items.push(
         <span
           key={i}
-          className={classnames(['vx-rater-item', {'is-active':i <= value}])}
+          className={classnames(['vx-rater--item', {'is-active':i <= value}])}
           style={{color: i <= value && color ? color : '', marginLeft: gutter}}
           onClick={this.handleClick.bind(this, i)}>
           {star}

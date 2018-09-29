@@ -34,7 +34,7 @@ class CheckboxGroup extends React.Component {
       return item
     })
     return (
-      <div className={classnames(["vx-checkbox-group", {'vx-checkbox-group-divider': divider}, className])} {...others}>
+      <div className={classnames(["vx-checkbox-group", {'is-divider': divider}, className])} {...others}>
         {cloneChildren}
       </div>
     );

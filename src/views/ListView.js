@@ -3,12 +3,18 @@ import { Layout, Nav, Body, ListView, Flexbox, FlexboxItem, Img, Divider } from 
 class Demo extends React.Component {
   constructor (props) {
     super(props)
-    let list = this.getList()
     this.state = {
-      list,
+      list: [],
       loading: false,
       end: false // 是否还没有更多
     }
+  }
+  componentDidMount () {
+    setTimeout(() => {
+      this.setState({
+        list: this.getList()
+      })
+    }, 2000)
   }
   render() {
     return (

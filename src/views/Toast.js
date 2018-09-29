@@ -39,7 +39,7 @@ class Demo extends React.Component {
         </Body>
         <Toast open={this.state.topOpen} onClose={this.handleClose.bind(this, 'topOpen')}>{this.state.content}</Toast>
         <Toast open={this.state.centerOpen} type="success" align="center"  onClose={this.handleClose.bind(this, 'centerOpen')}>{this.state.content}</Toast>
-        <Toast open={this.state.failOpen} type="fail" align="center" onClose={this.handleClose.bind(this, 'failOpen')}>操作失败</Toast>
+        <Toast open={this.state.failOpen} type="error" align="center" onClose={this.handleClose.bind(this, 'failOpen')}>操作失败</Toast>
         <Toast open={this.state.warnOpen} type="warn" align="center" onClose={this.handleClose.bind(this, 'warnOpen')}>已经操作过了</Toast>
         <Toast open={this.state.loadingOpen} type="loading" align="center" onClose={this.handleClose.bind(this, 'loadingOpen')}>Loading</Toast>
         <Toast open={this.state.bottomOpen} align="bottom" onClose={this.handleClose.bind(this, 'bottomOpen')}>{this.state.content}</Toast>

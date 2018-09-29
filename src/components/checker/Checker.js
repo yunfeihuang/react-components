@@ -28,8 +28,7 @@ class Checker extends React.Component {
     return (
       <label
         style={style}
-        disabled={disabled}
-        className={classnames(['vx-checker', className])}>
+        className={classnames(['vx-checker', {'is-disabled': disabled}, className])}>
         <input {...others} type={type} checked={checked} disabled={disabled} onChange={this.handleChange}/>
         <button type="button" disabled={disabled}>
           {children}

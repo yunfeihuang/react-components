@@ -6,7 +6,7 @@ const Message = (props) => {
   return (
     <div 
       {...others}
-      className={classnames(['vx-message', 'vx-message-' + type, className])}>
+      className={classnames(['vx-message', 'vx-message--' + type, className])}>
         {children}
     </div>
   )

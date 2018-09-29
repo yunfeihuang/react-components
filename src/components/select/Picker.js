@@ -47,13 +47,16 @@ class Picker extends React.Component {
       myTitle = `选项不能超过${max}个`
     }
     return (
-      <Popup open={this.state.open} fastClose={fastClose} onClose={this.handleCancel} >
-        <div className="vx-option-picker-wrapper">
-          {max !== 1 && <div className="vx-flexbox vx-option-picker-header">
-            <button type="button" className="vx-option-picker-cancel" onClick={this.handleCancel}>{cancelText}</button>
-            <button type="button" className="vx-flexbox-item vx-option-picker-placeholder">{myTitle}</button>
-            <button type="button" disabled={!this.state.value.length} className="vx-option-picker-confirm" onClick={this.handleConfirm}>{confirmText}</button>
-          </div>}
+      <Popup open={this.state.open} fastClose={fastClose} onClose={this.handleCancel} 
+        header={
+          max !== 1 ? <div style={{}} className="vx-flexbox vx-option-picker--header">
+            <button type="button" className="vx-option-picker--cancel" onClick={this.handleCancel}>{cancelText}</button>
+            <button type="button" className="vx-flexbox--item vx-option-picker--placeholder">{myTitle}</button>
+            <button type="button" disabled={!this.state.value.length} className="vx-option-picker--confirm" onClick={this.handleConfirm}>{confirmText}</button>
+          </div> : undefined
+        }
+        >
+        <div className="vx-option-picker--wrapper">
           <div className="vx-option-picker">
             <CheckboxGroup max={max} onChange={this.handleChange} value={this.state.value}>
               {Checkboxs}

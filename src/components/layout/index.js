@@ -19,7 +19,7 @@ const Layout = (props) => {
   })
   return (
     <div className={classnames(['vx-layout', className])} {...others}>
-      <Flexbox className="vx-layout-flexbox" direction="column">
+      <Flexbox className="vx-layout--flexbox" direction="column">
         {slots['header']}        
         {slots['body']}
         {slots['footer']}
