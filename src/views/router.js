@@ -248,5 +248,15 @@ export default [
     path: '/demos/listview',
     exact: true,
     component: ConnectComponent(AsyncComponent(() => import('./ListView')))
+  },
+  {
+    path: '/demos/picker',
+    exact: true,
+    component: ConnectComponent(AsyncComponent(() => import('./Picker')))
+  },
+  {
+    path: '/demos/popuppicker',
+    exact: true,
+    component: ConnectComponent(AsyncComponent(() => import('./PopupPicker')))
   }
 ]

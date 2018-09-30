@@ -48,6 +48,7 @@ class Home extends React.Component {
             <Cell title="Prompt" arrow={true} to="/demos/prompt" />
             <Cell title="Toast" arrow={true} to="/demos/toast" />
             <Cell title="Popup" arrow={true} to="/demos/popup" />
+            <Cell title="PopupPicker" arrow={true} to="/demos/popuppicker" />
             <Cell title="Popover" arrow={true} to="/demos/popover" />
           </Group>
           <Group title="选项卡">
@@ -65,6 +66,7 @@ class Home extends React.Component {
           <Group title="其他">
             <Cell title="Badge" arrow={true} to="/demos/badge" />
             <Cell title="Accordion" arrow={true} to="/demos/accordion" />
+            <Cell title="Picker" arrow={true} to="/demos/picker" />
             <Cell title="Spinner" arrow={true} to="/demos/spinner" />
             <Cell title="ListView" arrow={true} to="/demos/listview" />
             <Cell title="Sticky" arrow={true} to="/demos/sticky" />

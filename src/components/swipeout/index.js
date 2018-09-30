@@ -81,7 +81,7 @@ export default class Swipeout extends React.Component{
         let transform = this.$$touch.el.style.transform || this.$$touch.el.style.webkitTransform
         if (transform) {
           transform = transform.replace('translate3d', '')
-          currentTranslateX = -parseInt(transform.match(/(\d+)/g)[0])
+          currentTranslateX = -parseInt(transform.match(/(\d+)/g)[0], 10)
         }
       }
       Object.assign(this.$$touch, this.getPosition(e), {

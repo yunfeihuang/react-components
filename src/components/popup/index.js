@@ -29,7 +29,7 @@ export default class Popup extends React.Component {
     history: true
   }
   render () {
-    const { direction, full, style, onClose, className, fastClose, showClose, header, footer, title, inner, ...others } = this.props
+    const { direction, full, history, style, onClose, className, fastClose, showClose, header, footer, title, inner} = this.props
     if (this.state.open) {
       let node = this.node
       if (!node) {
@@ -37,7 +37,7 @@ export default class Popup extends React.Component {
         document.body.appendChild(node)
       }
       return ReactDOM.createPortal(
-        <div className={classnames(["vx-popup", className])} style={{...style,display: 'block'}} {...others}>
+        <div className={classnames(["vx-popup", className])} style={{...style,display: 'block'}}>
           <Overlay onClick={this.handleClose} />
           {inner || <Flexbox direction="column" className={
             classnames([

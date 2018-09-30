@@ -44,6 +44,8 @@ import Sticky from './sticky'
 import Swipeout from './swipeout'
 import IndexList from './index-list'
 import ListView from './list-view'
+import Picker from './picker'
+import PopupPicker from './popup-picker'
 
 export {
   Arrow,
@@ -103,5 +105,7 @@ export {
   Sticky,
   Swipeout,
   IndexList,
-  ListView
+  ListView,
+  Picker,
+  PopupPicker
 }
