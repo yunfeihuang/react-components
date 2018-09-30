@@ -16,6 +16,7 @@ export default class Popup extends React.Component {
   static propTypes = {
     open: PropTypes.bool,
     full: PropTypes.bool,
+    history: PropTypes.bool,
     direction: PropTypes.string,
     onClose: PropTypes.func,
     fastClose: PropTypes.bool
@@ -24,7 +25,8 @@ export default class Popup extends React.Component {
     open: false,
     full: false,
     direction: 'bottom',
-    fastClose: true
+    fastClose: true,
+    history: true
   }
   render () {
     const { direction, full, style, onClose, className, fastClose, showClose, header, footer, title, inner, ...others } = this.props
@@ -63,6 +65,32 @@ export default class Popup extends React.Component {
     }
     return null
   }
+  getPushURL () {
+    let array = [window.location.href.split('#')[0], window.location.hash]
+    array.push(window.location.hash ? (window.location.href.indexOf('?') === -1 ? '?' : '&') : '#')
+    array.push('popup=' + Math.random().toString(36).substr(2))
+    return array.join('')
+  }
+  pushState () {
+    if (this.props.history) {
+      if (window.location.href.indexOf('popup=') > -1) {
+        window.history.back()
+      }
+      setTimeout(() => {
+        window.history.pushState({}, '', this.getPushURL())
+        let handlePopstate = this.handlePopstate = () => {
+          this.props.onClose && this.props.onClose()
+          this.popStateBack && this.popStateBack()
+          window.removeEventListener('popstate', handlePopstate)
+        }
+        window.addEventListener('popstate', handlePopstate)
+      }, 16)
+    }
+  }
+  goBack () {
+    window.removeEventListener('popstate', this.handlePopstate)
+    this.props.history && window.location.href.indexOf('popup=') > -1 && window.history.back()
+  }
   handleClose (e) {
     if (e.target.classList.contains('vx-popup--inner') || e.target.classList.contains('vx-overlay')) {
       if (this.props.fastClose && this.props.onClose) {
@@ -79,10 +107,12 @@ export default class Popup extends React.Component {
   componentWillReceiveProps (nextProps) {
     if (nextProps.open !== this.props.open) {
       if (nextProps.open) {
+        this.pushState()
         this.setState({
           open: nextProps.open
         })
       } else {
+        this.goBack()
         if (this.node && this.node.querySelector) {
           let node = this.node.querySelector('.vx-popup--inner')
           node && node.classList.add(`popup-slide-${this.props.direction}-leave-active`)
