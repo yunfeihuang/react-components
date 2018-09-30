@@ -17,7 +17,7 @@ class CheckerGroup extends React.Component {
     this.handleChange = this.handleChange.bind(this)
   }
   render() {
-    let {children, className, onChange, disabled, style, ...others} = this.props
+    let {children, className, onChange, disabled, ...others} = this.props
     let cloneChildren = React.Children.map(children, item => {
       if (item) {
         return React.cloneElement(item, {
@@ -30,7 +30,7 @@ class CheckerGroup extends React.Component {
       return item
     })
     return (
-      <div className={classnames(["vx-checker-group", className])} style={style} disabled={disabled} {...others}>
+      <div className={classnames(["vx-checker-group", className])} disabled={disabled} {...others}>
         {cloneChildren}
       </div>
     );

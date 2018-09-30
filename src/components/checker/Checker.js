@@ -11,7 +11,7 @@ class Checker extends React.Component {
     this.handleChange = this.handleChange.bind(this)
   }
   render () {
-    let {children, className, style, $parent, ...others} = this.props
+    let {children, style, className, $parent, ...others} = this.props
     let type = $parent && $parent.max === 1 ? 'radio' : 'checkbox'
     let checked = others.checked
     let disabled = others.disabled

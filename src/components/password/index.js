@@ -19,7 +19,7 @@ export default class Password extends React.Component {
   render () {
     let {children, className, style, icons, ...others} = this.props
     return (
-      <div className={classnames(['vx-password'])} style={style}>
+      <div className={classnames(['vx-password', className])} style={style}>
         <Input {...others} type={this.state.type} append={
           <button
             className="vx-password--switch"

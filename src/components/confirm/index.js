@@ -32,7 +32,7 @@ class Confirm extends React.Component {
     let {children, className, title, cancelText, confirmText, confirmComponent, confirmProps, cancel, open} = this.props
     let ConfirmComponent = confirmComponent
     return (
-      <div className={classnames(["vx-confirm",className])} style={{display:open ? 'table' : 'none'}}>
+      <div className={classnames(["vx-confirm", className])} style={{display:open ? 'table' : 'none'}}>
         <Overlay />
         <div className="vx-confirm--wrapper">
           <div className="vx-confirm--inner confirm-scale-enter" ref="inner">

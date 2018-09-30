@@ -5,10 +5,14 @@ import PropTypes from 'prop-types';
 class ButtonTab extends React.Component {
   static propTypes = {
     active: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    size: PropTypes.string,
     onChange: PropTypes.func
   }
+  static defaultProps = {
+    size: 'default'
+  }
   render () {
-    let {children, className, active, ...others} = this.props
+    let {children, className, active, size, ...others} = this.props
     let cloneChildren = React.Children.map(children, item => {
       if (item) {
         return React.cloneElement(item, {
@@ -19,7 +23,7 @@ class ButtonTab extends React.Component {
       return item
     })
     return (
-      <div className={classnames(['vx-flexbox', 'vx-button-tab', className])} {...others}>
+      <div className={classnames(['vx-flexbox', 'vx-button-tab', `vx-button-tab--size-${size}`, className])} {...others}>
         {cloneChildren}
       </div>
     );

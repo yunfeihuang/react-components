@@ -23,6 +23,10 @@ class Demo extends React.Component {
           <ButtonTab active={this.state.active} onChange={this.handleChange.bind(this)}>
             {items}
           </ButtonTab>
+          <br />
+          <ButtonTab style={{width:'5rem'}} size="small" active={this.state.active} onChange={this.handleChange.bind(this)}>
+            {items}
+          </ButtonTab>
         </Body>
         
       </Layout>

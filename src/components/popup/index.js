@@ -50,7 +50,7 @@ export default class Popup extends React.Component {
                 'vx-flexbox--content-center': direction === 'center',
               }])}>
               {showClose && <Flexbox align="center">
-                <FlexboxItem className="vx-popup--nav-title">{{title}}</FlexboxItem>
+                <FlexboxItem className="vx-popup--nav-title">{title}</FlexboxItem>
                 <i className="vx-popup--close" onClick={this.close}></i>
               </Flexbox>}
               {header}

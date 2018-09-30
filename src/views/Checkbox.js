@@ -34,10 +34,15 @@ class Demo extends React.Component {
         <Nav slot="header" title="Checkbox"/>
         <Body slot="body">
           <Group title={"Checkbox："+this.state.checked}>
-            <Checkbox checked={this.state.checked} onChange={this.handleChange.bind(this)}>checkbox</Checkbox>
+            <Checkbox style={{margin: '0 0.2rem'}} checked={this.state.checked} onChange={this.handleChange.bind(this)}>checkbox</Checkbox>
           </Group>
           <Group title={"CheckboxGroup："+this.state.value}>
             <CheckboxGroup value={this.state.value} onChange={this.handleGroupChange.bind(this)}>
+              {options}
+            </CheckboxGroup>
+          </Group>
+          <Group title={"CheckboxGroup Change Icon style And inline style"}>
+            <CheckboxGroup style={{padding:'0.2rem'}} inline={true} iconStyle="checkbox" value={this.state.value} onChange={this.handleGroupChange.bind(this)}>
               {options}
             </CheckboxGroup>
           </Group>

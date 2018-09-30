@@ -6,14 +6,17 @@ class CheckboxGroup extends React.Component {
   static propsTypes = {
     value: PropTypes.array,
     divider: PropTypes.bool,
+    inline: PropTypes.bool,
     max: PropTypes.number,
     direction: PropTypes.string,
+    iconStyle: PropTypes.string,
     onChange: PropTypes.func
   }
   static defaultProps = {
     value: [],
     divider: true,
     max: 0,
+    inline: false,
     direction: 'normal'
   }
   constructor (props) {
@@ -21,12 +24,14 @@ class CheckboxGroup extends React.Component {
     this.handleChange = this.handleChange.bind(this)
   }
   render() {
-    let {children, className, style, divider, onChange, ...others} = this.props
+    let {children, className, divider, inline, iconStyle, onChange, ...others} = this.props
     let cloneChildren = React.Children.map(children, item => {
       if (item) {
         return React.cloneElement(item, {
           $parent: {
             ...others,
+            inline,
+            iconStyle,
             onChange: this.handleChange
           }
         })
@@ -34,7 +39,7 @@ class CheckboxGroup extends React.Component {
       return item
     })
     return (
-      <div className={classnames(["vx-checkbox-group", {'is-divider': divider}, className])} {...others}>
+      <div className={classnames(["vx-checkbox-group", {'is-divider': divider && !inline}, className])} {...others}>
         {cloneChildren}
       </div>
     );

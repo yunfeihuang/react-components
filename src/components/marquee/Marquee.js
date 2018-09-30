@@ -20,9 +20,9 @@ class Marquee extends React.Component {
     loop: true
   }
   render () {
-    let {children, className, style} = this.props
+    let {children, className, ...others} = this.props
     return (
-      <div ref="$el" className={classnames(['vx-marquee', 'swiper-container', className])} style={style}>
+      <div ref="$el" className={classnames(['vx-marquee', 'swiper-container', className])} {...others}>
         <div className="swiper-wrapper" >
           {children}
         </div>

@@ -19,7 +19,7 @@ class AccordionItem extends React.Component {
   render () {
     let {children, className, title, open, ...others} = this.props
     return (
-      <div ref="$el" className={classnames(['vx-accordion--item', {'is-open': this.state.open}])} {...others}>
+      <div ref="$el" className={classnames(['vx-accordion--item', {'is-open': this.state.open}, className])} {...others}>
         <div className="vx-accordion--item-hd" onClick={this.handleClick.bind(this,!this.state.open)}>
           <div className="vx-accordion--item-title">
             {title}

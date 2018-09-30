@@ -15,7 +15,7 @@ class CheckboxGroup extends React.Component {
     this.handleChange = this.handleChange.bind(this)
   }
   render() {
-    let {children, className, style, divider, onChange, ...others} = this.props
+    let {children, className, divider, onChange, ...others} = this.props
     let cloneChildren = React.Children.map(children, item => {
       if (item) {
         return React.cloneElement(item, {

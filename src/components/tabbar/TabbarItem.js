@@ -5,7 +5,7 @@ import Ripple from '../ripple'
 
 let TabbarItem = (props) => {
   let {children, className, active, name, ripple, ...others} = props
-  let cls = classnames(['vx-tabbar--item', 'vx-flexbox--item', {'is-active': active === name}])
+  let cls = classnames(['vx-tabbar--item', 'vx-flexbox--item', {'is-active': active === name}, className])
   if (ripple) {
     return (
       <Ripple className={cls} position="center" {...others}>

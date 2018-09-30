@@ -5,7 +5,11 @@ class Demo extends React.Component {
   render() {
     return (
       <Layout>
-        <Nav slot="header" title="Nav" backText="返回" pull={<span style={{marginRight: '10px'}}>更多</span>}/>
+        <div slot="header">
+          <Nav title="Nav" backText="返回" pull={<span style={{marginRight: '10px'}}>更多</span>}/>
+          <br />
+          <Nav title="Nav" type="primary" backText="返回" pull={<span style={{marginRight: '10px'}}>更多</span>}/>
+        </div>
       </Layout>
     );
   }

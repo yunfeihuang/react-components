@@ -26,7 +26,8 @@ class Demo extends React.Component {
                 让孤独的心等待秋收的欢喜。
               </AccordionItem>
             </Accordion>
-            <br />
+          </Group>
+          <Group title="非互斥状态:mutex={false}">
             <Accordion mutex={false}>
               <AccordionItem title="标题文字" open={true}>
                 如果有一天我能够拥有一个大果园，

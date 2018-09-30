@@ -27,7 +27,7 @@ class Prompt extends React.Component {
       }
     }
     return (
-      <Confirm {...others} style={style} className={classnames(['vx-prompt',{'is-disabled': children ? disabled : !this.state.value}])} onConfirm={this.handleConfirm}>{_children}</Confirm>
+      <Confirm {...others} style={style} className={classnames(['vx-prompt',{'is-disabled': children ? disabled : !this.state.value}, className])} onConfirm={this.handleConfirm}>{_children}</Confirm>
     )
   }
   handleInput (value) {

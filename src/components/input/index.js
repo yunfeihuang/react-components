@@ -2,17 +2,21 @@ import React from 'react'
 import classnames from 'classnames'
 import PropTypes from 'prop-types'
 import {Flexbox, FlexboxItem} from '../flexbox'
+import Arrow from '../arrow'
 
 export default class Input extends React.Component {
   static propTypes = {
     clear: PropTypes.bool,
     border: PropTypes.bool,
+    arrow: PropTypes.bool,
     onChange: PropTypes.func,
     onInput: PropTypes.func
   } 
   static defaultProps = {
     border: true,
     clear: true,
+    arrow: false,
+    arrowProps: {}
   }
   constructor (props) {
     super(props)
@@ -25,7 +29,7 @@ export default class Input extends React.Component {
     this.handleInput = this.handleInput.bind(this)
   }
   render () {
-    let {children, className, style, prepend, append, clear, border, ...others} = this.props
+    let {children, className, style, prepend, append, arrow, arrowProps, clear, border, ...others} = this.props
     let getClassName  = () => {
       return classnames([
         'vx-input--wrapper',
@@ -57,6 +61,7 @@ export default class Input extends React.Component {
                 onChange={this.handleChange} onInput= {this.handleInput}/>
             </FlexboxItem>
             {append}
+            {arrow && !append && <Arrow {...arrowProps} direction="down"/>}
         </Flexbox>
       </div>
     )

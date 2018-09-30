@@ -45,27 +45,6 @@ class Demo extends React.Component {
             </FlexboxItem>
           </Flexbox>
 
-          ### 项目换行
-          <Flexbox wrap="wrap" className="flex-wrap">
-            <FlexboxItem width="25%">
-              <div className="flexbox-item">1</div>
-            </FlexboxItem>
-            <FlexboxItem width="25%">
-              <div className="flexbox-item">2</div>
-            </FlexboxItem>
-            <FlexboxItem width="25%">
-              <div className="flexbox-item">3</div>
-            </FlexboxItem>
-            <FlexboxItem width="25%">
-              <div className="flexbox-item">4</div>
-            </FlexboxItem>
-            <FlexboxItem width="25%">
-              <div className="flexbox-item">5</div>
-            </FlexboxItem>
-            <FlexboxItem width="25%">
-              <div className="flexbox-item">6</div>
-            </FlexboxItem>
-          </Flexbox>
         </Body>
       </Layout>
     );

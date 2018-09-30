@@ -18,7 +18,7 @@ class Demo extends React.Component {
           </Group>
           <Group title={`step:10(value:${this.state.value1})`}>
             <div style={{padding:'10px'}}>
-              <Range value={this.state.value1} step={10} onChange={this.handleChange.bind(this, 'value1')}/>
+              <Range unit="M" value={this.state.value1} step={10} onChange={this.handleChange.bind(this, 'value1')}/>
             </div>
           </Group>
           <Group title={`min:10,max:50(value:${this.state.value2})`}>

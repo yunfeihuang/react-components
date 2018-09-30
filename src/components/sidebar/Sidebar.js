@@ -24,7 +24,7 @@ class Sidebar extends React.Component {
       return item
     })
     return (
-      <div className={classnames(['vx-sidebar',className])} {...others}>
+      <div className={classnames(['vx-sidebar', className])} {...others}>
         {cloneChildren}
       </div>
     );

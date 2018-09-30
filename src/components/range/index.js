@@ -9,6 +9,7 @@ class Range extends React.Component {
     min: PropTypes.number,
     step: PropTypes.number,
     disabled: PropTypes.bool,
+    unit: PropTypes.string,
     onChange: PropTypes.func
   }
   static defaultProps = {
@@ -17,6 +18,7 @@ class Range extends React.Component {
     step: 1,
     value: 0,
     disabled: false,
+    unit: ''
   }
   constructor (props) {
     super(props)
@@ -25,11 +27,11 @@ class Range extends React.Component {
   render () {
     let {className, disabled, value, max, min, ...others} = this.props
     return (
-      <div ref="$el" className={classnames(['vx-range--wrapper', {'is-disabled': disabled}])} {...others}>
+      <div ref="$el" className={classnames(['vx-range--wrapper', {'is-disabled': disabled}, className])} {...others}>
         <div className="vx-range--mask"></div>
         <div className="vx-range--value" ></div>
         <div className="vx-range--button" onMouseDown={this.handleTouchStart} onTouchStart={this.handleTouchStart}>
-          <div className="vx-range--tips">0</div>
+          <div className="vx-range--tips">0{this.props.unit}</div>
         </div>
       </div>
     )
@@ -84,7 +86,7 @@ class Range extends React.Component {
   renderRange (value) {
     let left = Math.round((value - this.props.min) / this.range() * this.$$range.maxLeft) + 'px'
     this.$$range.controlNode.style.left = this.$$range.valueNode.style.width = left
-    this.$$range.tipsNode.innerHTML = this.myValue()
+    this.$$range.tipsNode.innerHTML = this.myValue() + this.props.unit
   }
   handleResize () {
     this.getRangeInitData()
@@ -113,7 +115,8 @@ class Range extends React.Component {
           left = left > this.$$range.maxLeft ? this.$$range.maxLeft : left
           buttonLeft = left
           this.$$range.controlNode.style.left = this.$$range.valueNode.style.width = left + 'px'
-          this.$$range.tipsNode.innerHTML = value = Math.round((buttonLeft / this.$$range.maxLeft * this.range() + this.props.min) * this.stepRate()) / this.stepRate()
+          value = Math.round((buttonLeft / this.$$range.maxLeft * this.range() + this.props.min) * this.stepRate()) / this.stepRate()
+          this.$$range.tipsNode.innerHTML = value + this.props.unit
           event.preventDefault()
         }
       }

@@ -32,7 +32,7 @@ class Demo extends React.Component {
             <Cell title="popup center">
               <Switch value={this.state.open && this.state.direction === 'center'} onChange={this.handleChange.bind(this,'center')} />
             </Cell>
-            <Cell title="popup full">
+            <Cell title="popup full && show close">
               <Switch value={this.state.fullOpen} onChange={this.handleFullChange.bind(this)} />
             </Cell>
           </Group>
@@ -42,7 +42,7 @@ class Demo extends React.Component {
             <Cell title="popup close" value={<Switch value={this.state.open} onChange={this.handleChange.bind(this, this.state.direction)} />} />
           </div>
         </Popup>
-        <Popup open={this.state.fullOpen} onClose={this.handleFullClose} direction={this.state.direction} full={true}>
+        <Popup open={this.state.fullOpen} direction={this.state.direction} full={true} showClose={true} onClose={this.handleFullClose.bind(this)}>
           <div style={{padding:'0.5rem 0',background:'#fff'}}>
             <Cell title="popup close" value={<Switch value={this.state.fullOpen} onChange={this.handleFullChange.bind(this)} />} />
           </div>

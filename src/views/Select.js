@@ -61,17 +61,17 @@ class Demo extends React.Component {
   render() {
     let Options1 = this.state.options.map((item, index) => {
       return (
-        <Option value={item.value} key={index}>{item.label}</Option>
+        <Option value={item.value} disabled={item.disabled} key={index}>{item.label}</Option>
       )
     })
     let Options2 = this.state.options.map((item, index) => {
       return (
-        <Option value={item.value} key={index} label={item.label}><span style={{color:'red'}}>red color</span>{item.label}</Option>
+        <Option value={item.value} disabled={item.disabled} key={index} label={item.label}><span style={{color:'red'}}>red color</span>{item.label}</Option>
       )
     })
     let Options3 = this.state.options.map((item, index) => {
       return (
-        <Option value={item.value} key={index}>{item.label}</Option>
+        <Option value={item.value} disabled={item.disabled} key={index}>{item.label}</Option>
       )
     })
     return (
@@ -85,7 +85,7 @@ class Demo extends React.Component {
               </Select>
             } />
             <Cell title="下拉框option含html" value={
-              <Select value={this.state.value} onChange={this.handleChange} >
+              <Select popupDirection="center" value={this.state.value} onChange={this.handleChange} >
                 {Options2}
               </Select>
             } />
