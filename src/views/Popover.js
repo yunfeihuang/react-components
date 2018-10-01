@@ -4,12 +4,12 @@ import { Layout, Nav, Body, Popover, Button, Divider, Flexbox, FlexboxItem} from
 class Demo extends React.Component {
   render() {
     let menu = (
-      <div className="popover-menu" style={{lineHeight: '0.92rem',width:'2.5rem'}}>
-        <div onClick={this.handleClick}>扫一扫</div>
+      <div className="vx-popover--menu">
+        <div className="vx-popover--menu-item" onClick={this.handleClick}>扫一扫</div>
         <Divider />
-        <div onClick={this.handleClick}>找朋友</div>
+        <div className="vx-popover--menu-item" onClick={this.handleClick}>找朋友</div>
         <Divider />
-        <div onClick={this.handleClick}>收付款</div>
+        <div className="vx-popover--menu-item" onClick={this.handleClick}>收付款</div>
       </div>
     )
     return (
