@@ -1,23 +1,11 @@
-
-.vx-popup-inner{
-  transition:transform 0.2s ease-out 0s, opacity 0.2s ease-out 0s;
-}
-.vx-confirm-inner{
-  transition: transform 0.2s ease 0s,opacity 0.2s ease 0s;
-}
-.vx-body{
-  overflow:auto;
-}
-.flexbox-demos{
+.flexbox-demo{
   padding:10px;
   overflow:hidden;
-  .flexbox-item{
+  background: #fff;
+  .vx-flexbox--item{
     background:#eee;
     border-radius:6px;
     text-align:center;
-    line-height:30px;
-  }
-  .flex-wrap .flexbox-item{
-    margin:5px 0;
+    line-height:0.8rem;
   }
 }

@@ -159,7 +159,7 @@ class Demo extends React.Component {
     ],
     value2: '',
     open2: false,
-    addressPickers: [
+    pickers2: [
       {
         value: '01',
         options: [
@@ -206,7 +206,7 @@ class Demo extends React.Component {
           />
         <PopupPicker
           open={this.state.pickerAddressOpen}
-          pickers={this.state.addressPickers}
+          pickers={this.state.pickers2}
           onClose={this.handleSwitchChange2.bind(this, false)}
           onPickerChange={this.handleChangeAddressPicker.bind(this)}
           onChange={this.handleConfirmAddress.bind(this)}
@@ -233,7 +233,7 @@ class Demo extends React.Component {
     // this.$toast({message: '你选中了值：' + val})
   }
   handleChangeAddressPicker (value, index) {
-    let pickers = JSON.parse(JSON.stringify(this.state.addressPickers))
+    let pickers = JSON.parse(JSON.stringify(this.state.pickers2))
     if (index === 0) {
       pickers[1].options = citys[value]
       pickers[1].value = citys[value][0].value
@@ -246,7 +246,7 @@ class Demo extends React.Component {
     }
     pickers[index].value = value
     this.setState({
-      addressPickers: pickers
+      pickers2: pickers
     })
   }
   handleConfirmAddress (value) {

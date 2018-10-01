@@ -29,7 +29,7 @@ export default class Popup extends React.Component {
     history: true
   }
   render () {
-    const { direction, full, history, style, onClose, className, fastClose, showClose, header, footer, title, inner} = this.props
+    const { direction, full, style, className, showClose, header, footer, title, inner} = this.props
     if (this.state.open) {
       let node = this.node
       if (!node) {

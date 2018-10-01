@@ -6,45 +6,27 @@ class Demo extends React.Component {
     return (
       <Layout>
         <Nav slot="header" title="Flexbox"/>
-        <Body slot="body" className="flexbox-demos">
+        <Body slot="body" className="flexbox-demo">
+          ### 平均跨度
           <Flexbox gutter={10}>
-            <FlexboxItem>
-              <div className="flexbox-item">1</div>
-            </FlexboxItem>
-            <FlexboxItem>
-              <div className="flexbox-item">2</div>
-            </FlexboxItem>
-            <FlexboxItem>
-              <div className="flexbox-item">3</div>
-            </FlexboxItem>
+            <FlexboxItem>1</FlexboxItem>
+            <FlexboxItem>2</FlexboxItem>
+            <FlexboxItem>3</FlexboxItem>
           </Flexbox>
-
+          <br />
           ### 跨度
           <Flexbox gutter={10}>
-            <FlexboxItem>
-              <div className="flexbox-item">1</div>
-            </FlexboxItem>
-            <FlexboxItem flex="2">
-              <div className="flexbox-item">2</div>
-            </FlexboxItem>
-            <FlexboxItem flex="3">
-              <div className="flexbox-item">3</div>
-            </FlexboxItem>
+            <FlexboxItem>1</FlexboxItem>
+            <FlexboxItem flex="2">2</FlexboxItem>
+            <FlexboxItem flex="3">3</FlexboxItem>
           </Flexbox>
-
+          <br />
           ### 列布局
           <Flexbox direction="column">
-            <FlexboxItem>
-              <div className="flexbox-item">1</div>
-            </FlexboxItem>
-            <FlexboxItem style={{margin:'10px 0'}}>
-              <div className="flexbox-item">2</div>
-            </FlexboxItem>
-            <FlexboxItem>
-              <div className="flexbox-item">3</div>
-            </FlexboxItem>
+            <FlexboxItem>1</FlexboxItem>
+            <FlexboxItem style={{margin:'10px 0'}}>2</FlexboxItem>
+            <FlexboxItem>3</FlexboxItem>
           </Flexbox>
-
         </Body>
       </Layout>
     );

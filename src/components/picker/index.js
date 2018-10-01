@@ -94,6 +94,8 @@ export default class Picker extends React.Component {
   }
   componentWillUnmount () {
     this.$$touch = null
+    this.$$pullTimer && clearTimeout(this.$$pullTimer)
+    this.$$timer && clearTimeout(this.$$timer)
     window.removeEventListener('resize', this.computeStyles)
   }
   componentWillReceiveProps (nextProps) {

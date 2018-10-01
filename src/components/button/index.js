@@ -8,7 +8,7 @@ const Button = (props) => {
   const { type, size, plain, className, disabled, nativeType, loading, ripple, children, ...others } = props
   const cls = classnames(['vx-btn', 'vx-btn--' + type, 'vx-btn--size-' + size, {
     'is-plain': plain || type === 'default',
-    'is-disabled': disabled,
+    'is-disabled': disabled || loading,
     'is-ripple': ripple
   }, className])
   

@@ -32,7 +32,6 @@ export default class Flexbox extends React.Component{
         center: `flexbox--align-center`
       }
     }
-
     const { className, direction, wrap, justify, align, children, component, ...others } = this.props
     let array = ['vx-flexbox']
     for (let name in mapFlexLayout) {
