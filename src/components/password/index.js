@@ -4,6 +4,7 @@ import Input from '../input'
 
 export default class Password extends React.Component {
   static defaultProps= {
+    autoComplete: 'new-password',
     icons: [
      '<span class="vx-password--pwd-icon"></span>',
      '<span class="vx-password--text-icon">abc</span>'
