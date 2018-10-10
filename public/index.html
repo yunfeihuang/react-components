@@ -23,6 +23,11 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>Vx UI@React</title>
+    <script>
+    if (navigator.userAgent.indexOf('Trident') > -1) {
+      document.writeln("<script type=\"text/javascript\" src=\"http://libs.cdnjs.net/babel-polyfill/6.0.14/polyfill.min.js\"><\/script>");
+    }
+    </script>
   </head>
   <body>
     <noscript>

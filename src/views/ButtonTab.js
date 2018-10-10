@@ -18,7 +18,7 @@ class Demo extends React.Component {
     return (
       <Layout>
         <Nav slot="header" title="ButtonTab"/>
-        <Body slot="body">
+        <Body slot="body" style={{background:'#fff', padding: '0.2rem'}}>
           <br/>
           <ButtonTab active={this.state.active} onChange={this.handleChange.bind(this)}>
             {items}
