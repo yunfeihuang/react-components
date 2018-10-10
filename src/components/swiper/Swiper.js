@@ -10,14 +10,16 @@ class Swiper extends React.Component {
     prev: PropTypes.bool,
     next: PropTypes.bool,
     scrollbar: PropTypes.bool,
+    autoplay: PropTypes.number,
     onChange: PropTypes.func
   }
   static defaultProps = {
     active: 0,
+    autoplay: 2000,
     pagination: true
   }
   render () {
-    let {children, className, onChange, pagination, prev, next, scrollbar, ...others} = this.props
+    let {children, className, onChange, pagination, prev, next, scrollbar, autoplay, ...others} = this.props
     return (
       <div ref="$el" className={classnames(['vx-swiper', 'swiper-container', className])} {...others}>
         <div className="swiper-wrapper" >
@@ -30,6 +32,11 @@ class Swiper extends React.Component {
       </div>
     );
   }
+  componentWillReceiveProps (nextProps) {
+    if (this.props.active !== nextProps.active) {
+      this.$$swiper.slideTo(nextProps.active)
+    }
+  }
   componentDidMount () {
     let {active, pagination, prev, next, scrollbar, onChange} = this.props
     require.ensure([], (r) => {
@@ -37,6 +44,8 @@ class Swiper extends React.Component {
       require('swiper/dist/css/swiper.min.css')
       let options = Object.assign({
         initialSlide: active,
+        autoplay: this.props.autoplay,
+        autoplayDisableOnInteraction: false,
         onSlideChangeStart: (swiper) => {
           onChange && onChange(swiper.activeIndex)
         }

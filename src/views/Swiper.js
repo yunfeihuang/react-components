@@ -16,18 +16,22 @@ class Demo extends React.Component {
     }
   }
   render() {
+    let items = this.state.images.map((item,index) =>{
+      return (
+        <SwiperItem key={index}>
+          <img src={item} alt="" style={{maxWidth:'100%'}} />
+        </SwiperItem>
+      )
+    })
     return (
       <Layout>
         <Nav slot="header" title="Swiper"/>
         <Body slot="body">
           <Swiper active={this.state.active} options={this.state.options} onChange={this.handleChange.bind(this)}>
-            {this.state.images.map((item,index) =>{
-              return (
-                <SwiperItem key={index}>
-                  <img src={item} alt="" style={{maxWidth:'100%'}} />
-                </SwiperItem>
-              )
-            })}
+            {items}
+          </Swiper>
+          <Swiper active={this.state.active} options={{effect: 'fade', speed: 500}} onChange={this.handleChange.bind(this)}>
+            {items}
           </Swiper>
         </Body>
       </Layout>
