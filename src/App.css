@@ -17,3 +17,5 @@
     line-height: 30px; }
   .flexbox-demos .flex-wrap .flexbox-item {
     margin: 5px 0; }
+/*去除滑动警告*/
+* { touch-action: pan-y; } 
