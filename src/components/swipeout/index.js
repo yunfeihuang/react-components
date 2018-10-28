@@ -22,7 +22,7 @@ export default class Swipeout extends React.Component{
     this.handleTouchEnd = this.handleTouchEnd.bind(this)
   }
   render () {
-    const { className, children, action, divider, onClose, onOpen, ...others } = this.props
+    const { className, children, action, divider, onClose, onOpen, onClick, ...others } = this.props
     return (
       <div ref="$el" className={classnames(['vx-swipeout', {'is-divider': divider}, className])}
         {...others}
@@ -112,7 +112,7 @@ export default class Swipeout extends React.Component{
     if (this.$$touch.start) {
       this.$$touch.start = false
       if (this.$$touch.diffX === 0) {
-        this.$emit('click', this.$el)
+        this.props.onClick && this.props.onClick(e)
       }
       if (Math.abs(this.$$touch.diffX) > 60) {
         this.$$touch.translateX = this.$$touch.diffX < 0 ? -this.$$touch.maxTranslateX : 0
