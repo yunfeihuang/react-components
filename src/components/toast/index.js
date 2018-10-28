@@ -64,11 +64,16 @@ class Toast extends React.Component {
   componentWillUnmount () {
     this.$$timer && clearTimeout(this.$$timer)
   }
+  css (text) {
+    if (this.refs.$el && this.refs.$el.style) {
+      this.refs.$el.style.cssText = text
+    }
+  }
   hide () {
     this.$$timer && clearTimeout(this.$$timer)
-    this.refs.$el.style.cssText = 'display:block;opacity:0;'
+    this.css('display:block;opacity:0;')
     requestAnimationFrame(() => {
-      this.refs.$el.style.cssText = 'display:none;'
+      this.css('display:none;')
       this.props.onClose && this.props.onClose()
       this.props.destroy && ReactDOM.unmountComponentAtNode(this.refs.$el)
     })
@@ -77,12 +82,12 @@ class Toast extends React.Component {
     if (value) {
       this.$$timer && clearTimeout(this.$$timer)
       requestAnimationFrame(() => {
-        this.refs.$el.style.cssText = 'display:block;opacity:0;'
+        this.css('display:block;opacity:0;')
         requestAnimationFrame(() => {
           let width = this.refs.$el.children[0].offsetWidth + 4
           let height = this.refs.$el.children[0].offsetHeight + 4
           requestAnimationFrame(() => {
-            this.refs.$el.style.cssText = `display:block;width:${width + 10}px;height:${height + 10}px;`
+            this.css(`display:block;width:${width + 10}px;height:${height + 10}px;`)
           })
         })
       })

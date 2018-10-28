@@ -9,7 +9,7 @@ class Demo extends React.Component {
     return (
       <Layout>
         <Nav slot="header" title="Spinner"/>
-        <Body slot="body" style={{textAlign: 'center'}}>
+        <Body slot="body" style={{textAlign: 'center', background: '#fff'}}>
           <br/>
           <Spinner />
           <br/>
