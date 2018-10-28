@@ -9,11 +9,11 @@ export default function asyncComponent(importComponent) {
       this.state = {
         component: null
       }
-      let node = this.node = document.createElement('div')
-      document.body.appendChild(node)
+      this.node = document.createElement('div')
+      document.body.appendChild(this.node)
       ReactDOM.render(
         <Toast type="loading" open={true} duration={0} align="center">页面努力加载...</Toast>,
-        node
+        this.node
       )
     }
 
@@ -22,16 +22,18 @@ export default function asyncComponent(importComponent) {
       this.setState({
         component: component
       }, () => {
-        this.node && this.node.parentNode && this.node.parentNode.removeChild(this.node)
+        setTimeout(() => {
+          ReactDOM.unmountComponentAtNode(this.node)
+          this.node && this.node.parentNode && this.node.parentNode.removeChild(this.node)
+          this.node = null
+        }, 200)
       })
     }
 
     render() {
       const C = this.state.component
-      
       return C ? <C {...this.props} /> : null
     }
   }
-
   return AsyncComponent
 }

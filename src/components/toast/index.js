@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import Spinner from '../spinner'
 import classnames from 'classnames'
@@ -69,6 +70,7 @@ class Toast extends React.Component {
     requestAnimationFrame(() => {
       this.refs.$el.style.cssText = 'display:none;'
       this.props.onClose && this.props.onClose()
+      this.props.destroy && ReactDOM.unmountComponentAtNode(this.refs.$el)
     })
   }
   openChange (value) {
