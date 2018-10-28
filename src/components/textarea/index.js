@@ -29,7 +29,7 @@ export default class Textarea extends React.Component {
         className={classnames(['vx-textarea--wrapper',{'is-focus': this.state.isFocus,'vx-textarea--enter-number': enterNumber}, className])}
         onFocus={this.handleFocus}
         onBlur={this.handleBlur}>
-        <div class="vx-textarea--inner">
+        <div className="vx-textarea--inner">
           <div className="vx-textarea--shadow"></div>
           <textarea {...others} onChange={this.handleChange} onInput= {this.handleInput}/>
           {enterNumber && others.maxLength && <em>
