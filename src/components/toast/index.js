@@ -84,11 +84,13 @@ class Toast extends React.Component {
       requestAnimationFrame(() => {
         this.css('display:block;opacity:0;')
         requestAnimationFrame(() => {
-          let width = this.refs.$el.children[0].offsetWidth + 4
-          let height = this.refs.$el.children[0].offsetHeight + 4
-          requestAnimationFrame(() => {
-            this.css(`display:block;width:${width + 10}px;height:${height + 10}px;`)
-          })
+          if (this.refs.$el) {
+            let width = this.refs.$el.children[0].offsetWidth + 4
+            let height = this.refs.$el.children[0].offsetHeight + 4
+            requestAnimationFrame(() => {
+              this.css(`display:block;width:${width + 10}px;height:${height + 10}px;`)
+            })
+          }
         })
       })
       if (this.props.duration) {

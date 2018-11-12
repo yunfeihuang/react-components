@@ -21,21 +21,29 @@ export default class Sticky extends React.Component{
       </div>
     )
   }
+  supportSticky() {
+    let position = window.getComputedStyle(this.$el)['position']
+    return position.indexOf('sticky') > -1
+  }
   componentDidMount () {
     this.$el = this.refs.$el
-    this.$$scrollNode = this.getScrollNode(this.$el.offsetParent)
-    if (this.$$scrollNode) {
-      this.$$childNode = this.$el.querySelector('.vx-sticky--inner')
-      this.$$scrollNode.addEventListener('touchstart', this.handleTouchStart, false)
-      this.$$scrollNode.addEventListener('scroll', this.handleScroll, false)
-      this.$handleResize = this.handleResize.bind(this)
-      window.addEventListener('resize', this.$handleResize, false)
+    if (!this.supportSticky()) {
+      this.$$scrollNode = this.getScrollNode(this.$el.offsetParent)
+      if (this.$$scrollNode) {
+        this.$$childNode = this.$el.querySelector('.vx-sticky--inner')
+        this.$$scrollNode.addEventListener('touchstart', this.handleTouchStart, false)
+        this.$$scrollNode.addEventListener('scroll', this.handleScroll, false)
+        this.$handleResize = this.handleResize.bind(this)
+        window.addEventListener('resize', this.$handleResize, false)
+      }
     }
   }
   componentWillUnmount () {
-    this.$$scrollNode.removeEventListener('scroll', this.handleScroll)
-    this.$$scrollNode.removeEventListener('touchstart', this.handleTouchStart)
-    window.removeEventListener('resize', this.$handleResize)
+    if (!this.supportSticky()) {
+      this.$$scrollNode.removeEventListener('scroll', this.handleScroll)
+      this.$$scrollNode.removeEventListener('touchstart', this.handleTouchStart)
+      window.removeEventListener('resize', this.$handleResize)
+    }
   }
   handleResize () {
     this.handleTouchStart()
