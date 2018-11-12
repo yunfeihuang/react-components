@@ -12,9 +12,9 @@ export default class Sticky extends React.Component{
     this.handleScroll = this.handleScroll.bind(this)
   }
   render () {
-    const { className, children, ...others } = this.props
+    const { className, children, style, ...others } = this.props
     return (
-      <div ref="$el" className={classnames(['vx-sticky--box', className])} {...others}>
+      <div ref="$el" className={classnames(['vx-sticky--box', className])} style={Object.assign({top: '0px'}, style)} {...others}>
         <div className="vx-sticky--inner">
           {children}
         </div>
