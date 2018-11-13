@@ -1,8 +1,4 @@
-示例地址：http://vx2.bittyos.com/
-
-二维码查看：
-
-![Minion](http://vx2.bittyos.com/images/code.png)
+示例地址：http://vx.bittyos.com/react/
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
