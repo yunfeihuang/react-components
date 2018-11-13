@@ -1,7 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
 
-const MarqueeItem = (props) => {
+const MarqueeItem = props => {
   let {children, className, ...others} = props
   return (
     <div className={classnames(['vx-marquee-item', 'swiper-slide', className])} {...others}>

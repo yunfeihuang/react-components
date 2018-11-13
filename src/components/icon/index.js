@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-const Icon = (props) => {
+const Icon = props => {
   const { className,  ...others } = props
   return (
     <i 

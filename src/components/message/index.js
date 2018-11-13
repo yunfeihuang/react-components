@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-const Message = (props) => {
+const Message = props => {
   const { children, className, type, ...others } = props
   return (
     <div 

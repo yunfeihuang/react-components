@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-let Badge = (props) => {
+const Badge = props => {
   let {className, text, max, ...others} = props
   return (
     <span className={classnames(['vx-badge', {'vx-badge--dot': text === ''}, className])} {...others}>

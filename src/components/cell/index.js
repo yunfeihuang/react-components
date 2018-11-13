@@ -3,7 +3,7 @@ import classnames from 'classnames'
 import { Link } from 'react-router-dom';
 import { Flexbox, FlexboxItem } from '../flexbox'
 
-const Cell = (props) => {
+const Cell = props => {
   const { className, title, value, icon, arrow, to, children, ...others } = props
   let Component = to ? Link : 'div'
   return (

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-let TabItem = (props) => {
+const TabItem = props => {
   let {children, className, underlineWidth, active, name, ...others} = props
   return (
     <div className={classnames(['vx-tab--item', 'vx-flexbox--item', {'is-active': active === name}, className])} {...others}>

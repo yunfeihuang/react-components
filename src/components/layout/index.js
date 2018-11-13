@@ -2,7 +2,7 @@ import React from 'react'
 import classnames from 'classnames'
 import { Flexbox } from '../flexbox'
 
-const Layout = (props) => {
+const Layout = props => {
   const { children, className, bodyComponent, ...others } = props
   let slots = {
     others: []

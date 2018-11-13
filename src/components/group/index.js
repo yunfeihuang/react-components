@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-const Group = (props) => {
+const Group = props => {
   const { className, title, component, children, ...others } = props
   let Component = component || 'div'
   return (

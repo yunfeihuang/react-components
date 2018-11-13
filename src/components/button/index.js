@@ -4,7 +4,7 @@ import classnames from 'classnames'
 import Spinner from '../spinner'
 import Ripple from '../ripple'
 
-const Button = (props) => {
+const Button = props => {
   const { type, size, plain, className, disabled, nativeType, loading, ripple, children, ...others } = props
   const cls = classnames(['vx-btn', 'vx-btn--' + type, 'vx-btn--size-' + size, {
     'is-plain': plain || type === 'default',

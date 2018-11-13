@@ -2,7 +2,7 @@ import React from 'react'
 import classnames from 'classnames'
 import PropTypes from 'prop-types'
 
-const Overlay = (props) => {
+const Overlay = props => {
   const { className, opacity, style, ...others } = props
   return (
     <div 

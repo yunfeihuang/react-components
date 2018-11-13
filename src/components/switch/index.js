@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-const Switch = (props) => {
+const Switch = props => {
   const { className, style, onValue, offValue, value, onChange, size, ...others } = props
   let handleChange = (e) => {
     onChange && onChange(e.target.checked ? onValue : offValue)

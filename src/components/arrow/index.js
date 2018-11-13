@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-const Arrow = (props) => {
+const Arrow = props => {
   const { direction, size, color, component, style, className, ...others } = props
   const Component = component
   const styles = {
