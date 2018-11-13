@@ -1,7 +1,7 @@
 import React from 'react'
 import classnames from 'classnames'
 
-let Spinner = function (props) {
+let Spinner = props => {
   let {children, className, color, primaryColor, ...others} = props
   let style = {}
   if (color && primaryColor) {

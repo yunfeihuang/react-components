@@ -4,7 +4,7 @@ import Popup from '../popup'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-let Popover = function (props) {
+let Popover = props => {
   let {children, className, overlayOpacity, popoverClass, trigger, open,...others} = props
   let vnode = null
   let handleClose = () => {
