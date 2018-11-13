@@ -4,7 +4,7 @@ import { Layout, Body, Nav, Group, Cell, Switch } from '@/components'
 class Demo extends React.Component {
   state = {open: false}
   render() {
-    let icon = <img alt="img" src="http://vx.bittyos.com/static/images/github.png" style={{height:'20px',width:'20px',borderRadius:'50%'}}/>
+    let icon = <img alt="img" src="./images/github.png" style={{height:'20px',width:'20px',borderRadius:'50%'}}/>
     return (
       <Layout>
         <Nav slot="header" title="Cell"/>

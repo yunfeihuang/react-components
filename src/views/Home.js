@@ -13,7 +13,7 @@ class Home extends React.Component {
         
         <div style={{textAlign: 'center',paddingTop: '0.2rem',marginBottom: '-0.25rem'}}>
           <a target="_blank" rel="noopener noreferrer" href="https://github.com/yunfeihuang/react-components">
-            <img style={{borderRadius: '50%',height: '40px',width: '40px'}} src="/images/github.png" alt=""/> <br/>
+            <img style={{borderRadius: '50%',height: '40px',width: '40px'}} src="./images/github.png" alt=""/> <br/>
             star me
             {this.props.state.todo && this.props.state.todo.counter}
           </a>

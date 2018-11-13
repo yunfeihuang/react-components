@@ -1,5 +1,9 @@
 示例地址：http://vx.bittyos.com/react/
 
+二维码查看：
+
+![Minion](http://vx.bittyos.com/react/images/code.png)
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
