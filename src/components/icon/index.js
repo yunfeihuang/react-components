@@ -2,10 +2,9 @@ import React from 'react'
 import classnames from 'classnames'
 
 const Icon = props => {
-  const { className,  ...others } = props
+  const { className, ...others } = props
   return (
-    <i 
-      {...others}
+    <i {...others}
       className={classnames(['vx-iconfont', className])}>
     </i>
   )

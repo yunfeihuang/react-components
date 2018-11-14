@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-export default class Img extends React.Component{
+export default class RemToPx extends React.Component{
   static propTypes = {
     width: PropTypes.number,
     height: PropTypes.number,
