@@ -4,7 +4,7 @@ import classnames from 'classnames'
 import Popup from '../popup'
 import Picker from '../picker'
 
-export default class Img extends React.Component{
+export default class PopupPicker extends React.Component{
   static propTypes = {
     open: PropTypes.bool,
     history: PropTypes.bool,

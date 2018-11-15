@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import Spinner from '../spinner'
 
-export default class Img extends React.Component{
+export default class ListView extends React.Component{
   static propTypes = {
     loadingText: PropTypes.string,
     refreshText: PropTypes.string,

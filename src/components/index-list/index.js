@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-export default class Img extends React.Component{
+export default class IndexList extends React.Component{
   static propTypes = {
     data: PropTypes.array,
     onClick: PropTypes.func
