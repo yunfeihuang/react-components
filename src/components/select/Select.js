@@ -58,7 +58,6 @@ class Select extends React.Component {
     let label = this.getLabel(value)
     this.setState({label: label.join(this.props.separator)}, () => {
       this.props.onChange && this.props.onChange(value)
-      this.handleClose()
     })
   }
   getLabel (value) {
@@ -83,19 +82,15 @@ class Select extends React.Component {
       open: value,
       focus: false
     }, () => {
-      let node = ReactDOM.findDOMNode(this.vnode).parentNode
-      setTimeout(() => {
-        node.parentNode && node.parentNode.removeChild(node)
-      }, 1000)
-      // this.vnode.forceUpdate()
+      this.node && ReactDOM.unmountComponentAtNode(this.node)
     })
   }
   handleClick () {
     this.setState({
       focus: true
     })
-    let node = document.createElement('div')
-    this.vnode = ReactDOM.render(
+    let node = this.node = document.createElement('div')
+    ReactDOM.render(
       <Picker
         open={false}
         value={this.props.value}
@@ -109,7 +104,6 @@ class Select extends React.Component {
       </Picker>,
       node
     )
-    // this.handleClose(true)
   }
 }
 

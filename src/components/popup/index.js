@@ -4,13 +4,15 @@ import PropTypes from 'prop-types'
 import classnames from 'classnames'
 import Overlay from '../overlay'
 import {Flexbox, FlexboxItem} from '../flexbox'
+import Transition from 'react-transition-group/Transition'
   
 export default class Popup extends React.Component {
   constructor (props) {
     super(props)
-    this.state = {open: this.props.open}
+    this.state = {open: this.props.open, in: false}
     this.cssOpen = false
     this.handleClose = this.handleClose.bind(this)
+    this.handleExited = this.handleExited.bind(this)
     this.close = this.close.bind(this)
   }
   static propTypes = {
@@ -29,6 +31,12 @@ export default class Popup extends React.Component {
     history: true
   }
   render () {
+    let cssState =  {
+      entering: 'enter',
+      entered: 'enter-active',
+      exiting: 'leave-active',
+      exited: 'leave-active'
+    }
     const { direction, full, style, className, showClose, header, footer, title, inner} = this.props
     if (this.state.open) {
       let node = this.node
@@ -37,14 +45,13 @@ export default class Popup extends React.Component {
         document.body.appendChild(node)
       }
       return ReactDOM.createPortal(
-        <div className={classnames(["vx-popup", className])} style={{...style,display: 'block'}}>
+        <div className={classnames(["vx-popup", className])} style={{...style,display:'block'}}>
           <Overlay onClick={this.handleClose} />
-          {inner || <Flexbox direction="column" className={
+          {inner || <Transition in={this.state.in} timeout={300}  onExited={this.handleExited}>{state => {return (<Flexbox direction="column" className={
             classnames([
               'vx-popup--inner',
               `vx-popup--${direction}`,
-              `popup-slide-${direction}-leave-active`,
-              `popup-slide-${direction}-enter-active`,
+              `popup-slide-${direction}-${cssState[state]}`,
               {
                 'vx-full': full, 
                 'vx-flexbox': direction === 'center',
@@ -53,12 +60,12 @@ export default class Popup extends React.Component {
               }])}>
               {showClose && <Flexbox align="center">
                 <FlexboxItem className="vx-popup--nav-title">{title}</FlexboxItem>
-                <i className="vx-popup--close" onClick={this.close}></i>
+                <i className="vx-popup--close" onClick={this.handleClose}></i>
               </Flexbox>}
               {header}
               {direction === 'center' ? <div className="vx-popup--relative">{this.props.children}</div> : <FlexboxItem className="vx-popup--relative">{this.props.children}</FlexboxItem>}
               {footer}
-          </Flexbox>}
+          </Flexbox>)}}</Transition>}
         </div>,
         node
       )
@@ -79,7 +86,7 @@ export default class Popup extends React.Component {
       setTimeout(() => {
         window.history.pushState({}, '', this.getPushURL())
         let handlePopstate = this.handlePopstate = () => {
-          this.props.onClose && this.props.onClose()
+          this.close()
           this.popStateBack && this.popStateBack()
           window.removeEventListener('popstate', handlePopstate)
         }
@@ -91,18 +98,20 @@ export default class Popup extends React.Component {
     window.removeEventListener('popstate', this.handlePopstate)
     this.props.history && window.location.href.indexOf('popup=') > -1 && window.history.back()
   }
-  handleClose (e) {
-    if (e.target.classList.contains('vx-popup--inner') || e.target.classList.contains('vx-overlay')) {
-      if (this.props.fastClose && this.props.onClose) {
-        this.props.onClose()
-      }
-    }
+  handleClose () {
+    this.setState({
+      in: false
+    })
   }
   close () {
     this.props.onClose && this.props.onClose()
   }
-  componentDidMount () {
-    this.node && this.node.querySelector('.vx-popup--inner') && this.node.querySelector('.vx-popup--inner').classList.remove(`popup-slide-${this.props.direction}-leave-active`)
+  handleExited () {
+    this.setState({
+      open: false
+    }, () => {
+      this.close()
+    })
   }
   componentWillReceiveProps (nextProps) {
     if (nextProps.open !== this.props.open) {
@@ -110,30 +119,16 @@ export default class Popup extends React.Component {
         this.pushState()
         this.setState({
           open: nextProps.open
+        }, () => {
+          this.setState({
+            in: nextProps.open
+          })
         })
       } else {
         this.goBack()
-        if (this.node && this.node.querySelector) {
-          let node = this.node.querySelector('.vx-popup--inner')
-          node && node.classList.add(`popup-slide-${this.props.direction}-leave-active`)
-        }
-        setTimeout(() => {
-          this.setState({
-            open: nextProps.open
-          })
-        }, 300)
-      }
-    }
-  }
-  componentDidUpdate (prevProps) {
-    if (prevProps.open !== this.props.open) {
-      if (this.props.open) {
-        setTimeout(() => {
-          if (this.node && this.node.querySelector) {
-            let node = this.node.querySelector('.vx-popup--inner')
-            node && node.classList.remove(`popup-slide-${this.props.direction}-leave-active`)
-          }
-        }, 16)
+        this.setState({
+          in: nextProps.open
+        })
       }
     }
   }
