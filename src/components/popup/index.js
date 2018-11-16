@@ -31,7 +31,7 @@ export default class Popup extends React.Component {
     history: true
   }
   render () {
-    let transitionState =  {
+    const transitionState =  {
       entering: 'enter',
       entered: 'enter-active',
       exiting: 'leave-active',

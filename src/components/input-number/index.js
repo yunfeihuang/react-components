@@ -2,7 +2,7 @@ import React from 'react'
 import classnames from 'classnames'
 import PropTypes from 'prop-types'
 
-export default class Input extends React.Component {
+export default class InputNumber extends React.Component {
   static propTypes = {
     step: PropTypes.number,
     buttonStep: PropTypes.number,

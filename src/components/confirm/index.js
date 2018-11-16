@@ -34,7 +34,7 @@ class Confirm extends React.Component {
   render () {
     let {children, className, title, cancelText, confirmText, confirmComponent, confirmProps, cancel, open} = this.props
     let ConfirmComponent = confirmComponent
-    let transitionState = {
+    const transitionState = {
       entering: 'enter',
       entered: 'enter-active',
       exiting: 'leave-active',
