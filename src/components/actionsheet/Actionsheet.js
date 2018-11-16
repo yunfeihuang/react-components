@@ -24,7 +24,7 @@ const Actionsheet = props => {
   })
   let cls = classnames(["vx-actionsheet", {'vx-actionsheet--menu': type === 'menu'}, {'is-not-title': !title}, className])
   return (
-    <Popup className={cls} {...others} direction={direction}>
+    <Popup className={cls} {...others} direction={direction} onClose={handleClose}>
       <div className="vx-actionsheet--inner" >
         {title && <div className="vx-actionsheet--title">
           {title}
