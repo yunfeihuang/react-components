@@ -31,7 +31,7 @@ export default class Popup extends React.Component {
     history: true
   }
   render () {
-    let cssState =  {
+    let transitionState =  {
       entering: 'enter',
       entered: 'enter-active',
       exiting: 'leave-active',
@@ -47,11 +47,11 @@ export default class Popup extends React.Component {
       return ReactDOM.createPortal(
         <div className={classnames(["vx-popup", className])} style={{...style,display:'block'}}>
           <Overlay onClick={this.handleClose} />
-          {inner || <Transition in={this.state.in} timeout={300}  onExited={this.handleExited}>{state => {return (<Flexbox direction="column" className={
+          {inner || <Transition in={this.state.in} timeout={300} onExited={this.handleExited}>{state => {return (<Flexbox direction="column" className={
             classnames([
               'vx-popup--inner',
               `vx-popup--${direction}`,
-              `popup-slide-${direction}-${cssState[state]}`,
+              `popup-slide-${direction}-${transitionState[state]}`,
               {
                 'vx-full': full, 
                 'vx-flexbox': direction === 'center',

@@ -2,6 +2,7 @@ import React from 'react';
 import Overlay from '../overlay';
 import classnames from 'classnames';
 import PropTypes from 'prop-types';
+import Transition from 'react-transition-group/Transition'
 
 class Confirm extends React.Component {
   static propTypes = {
@@ -33,24 +34,34 @@ class Confirm extends React.Component {
   render () {
     let {children, className, title, cancelText, confirmText, confirmComponent, confirmProps, cancel, open} = this.props
     let ConfirmComponent = confirmComponent
+    let transitionState = {
+      entering: 'enter',
+      entered: 'enter-active',
+      exiting: 'leave-active',
+      exited: 'leave-active'
+    }
     return (
       <div className={classnames(["vx-confirm", className])} style={{display:open ? 'table' : 'none'}}>
         <Overlay />
         <div className="vx-confirm--wrapper">
-          <div className="vx-confirm--inner confirm-scale-enter confirm-scale-enter-active" ref="inner">
-              {title && <div className="vx-confirm--title">{title}</div>}
-              <div className="vx-confirm--body">
-                <div className="vx-confirm--table">
-                  <div className="vx-confirm--cell">
-                    {children}
+          <Transition in={open} timeout={300}>
+            {state => {
+              return (<div className={`vx-confirm--inner confirm-scale-${transitionState[state]}`} ref="inner">
+                {title && <div className="vx-confirm--title">{title}</div>}
+                <div className="vx-confirm--body">
+                  <div className="vx-confirm--table">
+                    <div className="vx-confirm--cell">
+                      {children}
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="vx-confirm--footer vx-flexbox">
-                {cancel && <button className="vx-flexbox--item"  type="button" onClick={this.handleCancel}>{cancelText}</button>}
-                <ConfirmComponent className="vx-flexbox--item" {...confirmProps} onClick={this.handleConfirm}>{confirmText}</ConfirmComponent>
-              </div>
-            </div>
+                <div className="vx-confirm--footer vx-flexbox">
+                  {cancel && <button className="vx-flexbox--item"  type="button" onClick={this.handleCancel}>{cancelText}</button>}
+                  <ConfirmComponent className="vx-flexbox--item" {...confirmProps} onClick={this.handleConfirm}>{confirmText}</ConfirmComponent>
+                </div>
+              </div>)
+            }}
+          </Transition>
         </div>
       </div>
     );
@@ -85,14 +96,8 @@ class Confirm extends React.Component {
     if (prevProps.open !== this.props.open) {
       if (this.props.open) {
         this.pushState()
-        setTimeout(() => {
-          this.refs.inner.classList.remove(`confirm-scale-enter`)
-        }, 16)
       } else {
         this.goBack()
-        setTimeout(() => {
-          this.refs.inner.classList.add('confirm-scale-enter')
-         }, 16)
       }
     }
   }
