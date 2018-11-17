@@ -1,27 +1,27 @@
 import React from 'react'
 import classnames from 'classnames'
 import PropTypes from 'prop-types'
+import Transition from 'react-transition-group/Transition'
 
 const Overlay = props => {
-  const { className, opacity, style, ...others } = props
+  const { className, open, ...others } = props
+  const transitionState =  {
+    entering: 'popup-fade-enter',
+    entered: 'popup-fade-enter-active',
+    exiting: 'popup-fade-leave-active',
+    exited: 'popup-fade-leave popup-fade-enter'
+  }
   return (
-    <div 
-      {...others}
-      style={{
-        ...style,
-        opacity
+    <Transition in={open} timeout={300}>
+      {state => {
+        return <div {...others} className={classnames(['vx-overlay', transitionState[state], className])}></div>
       }}
-      className={classnames(['vx-overlay', className])}>
-    </div>
+    </Transition>
   )
 }
 
 Overlay.propTypes = {
-  opacity: PropTypes.number
-}
-
-Overlay.defaultProps = {
-  opacity: 0.2
+  open: PropTypes.bool
 }
 
 export default Overlay

@@ -28,11 +28,13 @@ class Confirm extends React.Component {
   }
   constructor (props) {
     super(props)
+    this.state = {open: this.props.open,in: false}
     this.handleCancel = this.handleCancel.bind(this)
     this.handleConfirm = this.handleConfirm.bind(this)
+    this.handleExited = this.handleExited.bind(this)
   }
   render () {
-    let {children, className, title, cancelText, confirmText, confirmComponent, confirmProps, cancel, open} = this.props
+    let {children, className, title, cancelText, confirmText, confirmComponent, confirmProps, cancel} = this.props
     let ConfirmComponent = confirmComponent
     const transitionState = {
       entering: 'enter',
@@ -41,10 +43,10 @@ class Confirm extends React.Component {
       exited: 'leave-active'
     }
     return (
-      <div className={classnames(["vx-confirm", className])} style={{display:open ? 'table' : 'none'}}>
-        <Overlay />
+      <div className={classnames(["vx-confirm", className])} style={{display:this.state.open ? 'table' : 'none'}}>
+        <Overlay open={this.state.in} />
         <div className="vx-confirm--wrapper">
-          <Transition in={open} timeout={300}>
+          <Transition in={this.state.in} timeout={300} onExited={this.handleExited}>
             {state => {
               return (<div className={`vx-confirm--inner confirm-scale-${transitionState[state]}`} ref="inner">
                 {title && <div className="vx-confirm--title">{title}</div>}
@@ -92,14 +94,31 @@ class Confirm extends React.Component {
     window.removeEventListener('popstate', this.handlePopstate)
     this.props.history && window.location.href.indexOf('popup=') > -1 && window.history.back()
   }
-  componentDidUpdate (prevProps) {
-    if (prevProps.open !== this.props.open) {
-      if (this.props.open) {
+  componentWillReceiveProps (nextProps) {
+    if (nextProps.open !== this.props.open) {
+      if (nextProps.open) {
         this.pushState()
+        this.setState({
+          open: nextProps.open
+        }, () => {
+          this.setState({
+            in: nextProps.open
+          })
+        })
       } else {
         this.goBack()
+        this.setState({
+          in: nextProps.open
+        })
       }
     }
+  }
+  handleExited () {
+    this.setState({
+      open: false
+    }, () => {
+      this.handleCancel()
+    })
   }
   handleConfirm (e) {
     if (e.target && e.target.nodeName && e.target.nodeName.toLowerCase() === 'a') {

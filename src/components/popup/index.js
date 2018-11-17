@@ -46,7 +46,7 @@ export default class Popup extends React.Component {
       }
       return ReactDOM.createPortal(
         <div className={classnames(["vx-popup", className])} style={{...style,display:'block'}}>
-          <Overlay onClick={this.handleClose} />
+          <Overlay open={this.state.in} onClick={this.handleClose} />
           {inner || <Transition in={this.state.in} timeout={300} onExited={this.handleExited}>{state => {return (<Flexbox direction="column" className={
             classnames([
               'vx-popup--inner',
