@@ -3,20 +3,11 @@ import classnames from 'classnames'
 
 let Spinner = props => {
   let {children, className, color, primaryColor, ...others} = props
-  let style = {}
-  if (color && primaryColor) {
-    style = {
-      'borderColor': `${primaryColor} ${color} ${color} ${color}`
-    }
-  } else if (color) {
-    style = {
-      'borderColor': `${color}`
-    }
-  }
-  else if (primaryColor) {
-    style = {
-      'borderTopColor': `${color}`
-    }
+  const style = {
+    'borderTopColor': `${primaryColor}`,
+    'borderRightColor': `${color}`,
+    'borderBottomColor': `${color}`,
+    'borderLeftColor': `${color}`
   }
   return (
     <div { ...others} className={classnames(["vx-spinner--wrapper", className])}>
@@ -25,5 +16,8 @@ let Spinner = props => {
     </div>
   )
 }
-
+Spinner.defaultProps = {
+  color: '',
+  primaryColor: ''
+}
 export default Spinner;

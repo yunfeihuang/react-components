@@ -17,7 +17,7 @@ class Demo extends React.Component {
     })
     return (
       <Layout>
-        <Nav slot="header" title="Sticky"/>
+        <Nav slot="header" title="Sticky-往上滚动Tab栏会固定位置"/>
         <Body slot="body" style={{background:'#fff', lineHeight:2.5}}>
           <Img src="http://assets.bittyos.com/images/swiper/01.jpg" style={{minHeight:'100px'}}/>
           <Sticky>
