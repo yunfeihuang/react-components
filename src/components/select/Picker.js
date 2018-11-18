@@ -26,6 +26,7 @@ class Picker extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleCancel = this.handleCancel.bind(this)
     this.handleConfirm = this.handleConfirm.bind(this)
+    this.handleAfterClose = this.handleAfterClose.bind(this)
   }
   componentDidMount () {
     this.setState({open: true})
@@ -33,21 +34,23 @@ class Picker extends React.Component {
   render () {
     let {children, max, title, cancelText, confirmText, fastClose, direction} = this.props
     let Checkboxs = React.Children.map(children, (item, index) => {
-      return (<Checkbox
+      return (
+        <Checkbox
           value={item.props.value}
           key={index}
           disabled={item.props.disabled}
           label={item.props.label}
           >
           {item.props.children}
-        </Checkbox>)
+        </Checkbox>
+      )
     })
     let myTitle = title
     if (max > 1 && this.state.value.length >= max) {
       myTitle = `选项不能超过${max}个`
     }
     return (
-      <Popup open={this.state.open} fastClose={fastClose} onClose={this.handleCancel} direction={direction}
+      <Popup open={this.state.open} fastClose={fastClose} onClose={this.handleCancel} onAfterClose={this.handleAfterClose} direction={direction}
         className="vx-select--picker"
         header={
           max !== 1 ? <div style={{}} className="vx-flexbox vx-option-picker--header">
@@ -78,9 +81,10 @@ class Picker extends React.Component {
   handleCancel () {
     this.setState({
       open: false
-    }, () => {
-      this.props.onClose && this.props.onClose()
     })
+  }
+  handleAfterClose () {
+    this.props.onClose && this.props.onClose()
   }
   handleConfirm () {
     this.onChange(this.state.value)
