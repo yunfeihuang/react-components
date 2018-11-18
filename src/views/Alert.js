@@ -14,6 +14,9 @@ class Demo extends React.Component {
             <Cell title="default">
               <Switch value={this.state.open} onChange={this.handleChange.bind(this)} />
             </Cell>
+            <Cell title="js调用">
+              <span onClick={this.handleClick}>点击我打开</span>
+            </Cell>
           </Group>
         </Body>
         <Alert open={this.state.open} onConfirm={this.handleConfirm.bind(this)}>
@@ -29,6 +32,11 @@ class Demo extends React.Component {
   }
   handleConfirm () {
     this.handleChange(false)
+  }
+  handleClick () {
+    Alert.open({
+      message: 'alert'
+    })
   }
 }
 

@@ -28,7 +28,7 @@ class Confirm extends React.Component {
   }
   constructor (props) {
     super(props)
-    this.state = {open: this.props.open,in: false}
+    this.state = {open: this.props.open,in: this.props.open}
     this.handleCancel = this.handleCancel.bind(this)
     this.handleConfirm = this.handleConfirm.bind(this)
     this.handleExited = this.handleExited.bind(this)
@@ -48,7 +48,7 @@ class Confirm extends React.Component {
         <div className="vx-confirm--wrapper">
           <Transition in={this.state.in} timeout={300} onExited={this.handleExited}>
             {state => {
-              return (<div className={`vx-confirm--inner confirm-scale-${transitionState[state]}`} ref="inner">
+              return (<div className={`vx-confirm--inner confirm-scale-${transitionState[state]}`}>
                 {title && <div className="vx-confirm--title">{title}</div>}
                 <div className="vx-confirm--body">
                   <div className="vx-confirm--table">
@@ -117,7 +117,7 @@ class Confirm extends React.Component {
     this.setState({
       open: false
     }, () => {
-      this.handleCancel()
+      this.props.onClose && this.props.onClose()
     })
   }
   handleConfirm (e) {
@@ -130,7 +130,9 @@ class Confirm extends React.Component {
     }
   }
   handleCancel () {
-    this.props.onClose && this.props.onClose()
+    this.setState({
+      in: false
+    })
   }
 }
 

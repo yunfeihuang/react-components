@@ -9,7 +9,7 @@ const Overlay = props => {
     entering: 'popup-fade-enter',
     entered: 'popup-fade-enter-active',
     exiting: 'popup-fade-leave-active',
-    exited: 'popup-fade-leave popup-fade-enter'
+    exited: 'popup-fade-leave'
   }
   return (
     <Transition in={open} timeout={300}>

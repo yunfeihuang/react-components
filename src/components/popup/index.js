@@ -9,7 +9,7 @@ import Transition from 'react-transition-group/Transition'
 export default class Popup extends React.Component {
   constructor (props) {
     super(props)
-    this.state = {open: this.props.open, in: false}
+    this.state = {open: this.props.open, in: this.props.open}
     this.cssOpen = false
     this.handleClose = this.handleClose.bind(this)
     this.handleExited = this.handleExited.bind(this)
@@ -35,7 +35,7 @@ export default class Popup extends React.Component {
       entering: 'enter',
       entered: 'enter-active',
       exiting: 'leave-active',
-      exited: 'leave-active'
+      exited: 'leave'
     }
     const { direction, full, style, className, showClose, header, footer, title, inner} = this.props
     if (this.state.open) {
@@ -102,6 +102,7 @@ export default class Popup extends React.Component {
     this.setState({
       in: false
     })
+    this.close()
   }
   close () {
     this.props.onClose && this.props.onClose()
@@ -110,7 +111,7 @@ export default class Popup extends React.Component {
     this.setState({
       open: false
     }, () => {
-      this.close()
+      this.props.onAfterClose && this.props.onAfterClose()
     })
   }
   componentWillReceiveProps (nextProps) {

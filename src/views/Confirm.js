@@ -18,6 +18,9 @@ class Demo extends React.Component {
             <Cell title="长文本">
               <Switch value={this.state.open2} onChange={this.handleChange2.bind(this)} />
             </Cell>
+            <Cell title="js调用">
+              <span onClick={this.handleClick}>点击我打开</span>
+            </Cell>
           </Group>
         </Body>
         <Confirm title="标题文字" open={this.state.open} onClose={this.handleClose.bind(this)} onConfirm={this.handleConfirm.bind(this)}>
@@ -60,6 +63,11 @@ class Demo extends React.Component {
   }
   handleConfirm2 () {
     this.handleChange2(false)
+  }
+  handleClick () {
+    Confirm.open({
+      message: 'Confirm'
+    })
   }
 }
 

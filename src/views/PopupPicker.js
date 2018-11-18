@@ -150,7 +150,7 @@ let areas = {
 class Demo extends React.Component {
   state = {
     value: '',
-    open: false,
+    pickerOpen: false,
     pickers: [
       {
         value: '010101',
@@ -158,7 +158,7 @@ class Demo extends React.Component {
       }
     ],
     value2: '',
-    open2: false,
+    pickerAddressOpen: false,
     pickers2: [
       {
         value: '01',
@@ -191,10 +191,10 @@ class Demo extends React.Component {
           <Message>注意：此示例要在移动设备体验哦~</Message>
           <Group>
             <Cell arrow={false} title={"地区 picker："+this.state.value}>
-              <Switch value={this.state.open} onChange={this.handleSwitchChange.bind(this)}/>
+              <Switch value={this.state.pickerOpen} onChange={this.handleSwitchChange.bind(this)}/>
             </Cell>
             <Cell arrow={false} title={"地址级联 picker："+this.state.value2}>
-              <Switch value={this.state.open2} onChange={this.handleSwitchChange2.bind(this)}/>
+              <Switch value={this.state.pickerAddressOpen} onChange={this.handleSwitchChange2.bind(this)}/>
             </Cell>
           </Group>
         </Body>
@@ -215,6 +215,7 @@ class Demo extends React.Component {
     );
   }
   handleSwitchChange (value) {
+    console.log('value', value)
     this.setState({
       pickerOpen: value
     })

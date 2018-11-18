@@ -1,3 +1,5 @@
+import ReactDOM from 'react-dom'
+import React from 'react'
 import Arrow from './arrow'
 import Button from './button'
 import Nav from './nav'
@@ -45,6 +47,143 @@ import IndexList from './index-list'
 import ListView from './list-view'
 import Picker from './picker'
 import PopupPicker from './popup-picker'
+
+Alert.open = props => {
+  let {onConfirm, onClose, message, ...others} = props
+  let node = document.createElement('div')
+  document.body.appendChild(node)
+  let handleClose = () => {
+    ReactDOM.unmountComponentAtNode(node)
+    document.body.removeChild(node)
+    onClose && onClose()
+  }
+  class Wrapper extends React.Component {
+    state = {open: true}
+    render () {
+      return <Alert {...others} open={this.state.open} onConfirm={this.handleConfirm.bind(this)} onClose={handleClose}>{message}</Alert>
+    }
+    handleConfirm () {
+      this.setState({open: false})
+      onConfirm && onConfirm()
+    }
+  }
+  ReactDOM.render(
+    <Wrapper/>,
+    node
+  )
+}
+
+Confirm.open = props => {
+  let {onConfirm, onClose, message, ...others} = props
+  let node = document.createElement('div')
+  document.body.appendChild(node)
+  let handleClose = () => {
+    ReactDOM.unmountComponentAtNode(node)
+    document.body.removeChild(node)
+    onClose && onClose()
+  }
+  class Wrapper extends React.Component {
+    state = {open: true}
+    render () {
+      return <Confirm {...others} open={this.state.open} onConfirm={this.handleConfirm.bind(this)} onClose={handleClose}>{message}</Confirm>
+    }
+    handleConfirm () {
+      this.setState({open: false})
+      onConfirm && onConfirm()
+    }
+  }
+  ReactDOM.render(
+    <Wrapper/>,
+    node
+  )
+}
+
+Prompt.open = props => {
+  let {onConfirm, onClose, ...others} = props
+  let node = document.createElement('div')
+  document.body.appendChild(node)
+  let handleClose = () => {
+    ReactDOM.unmountComponentAtNode(node)
+    document.body.removeChild(node)
+    onClose && onClose()
+  }
+  class Wrapper extends React.Component {
+    state = {open: true}
+    render () {
+      return <Prompt {...others} open={this.state.open} onConfirm={this.handleConfirm.bind(this)} onClose={handleClose}></Prompt>
+    }
+    handleConfirm (value) {
+      this.setState({open: false})
+      onConfirm && onConfirm(value)
+    }
+  }
+  ReactDOM.render(
+    <Wrapper/>,
+    node
+  )
+}
+
+Toast.open = props => {
+  let {onClose, message, ...others} = props
+  let node = document.createElement('div')
+  document.body.appendChild(node)
+  let handleClose = () => {
+    ReactDOM.unmountComponentAtNode(node)
+    document.body.removeChild(node)
+    onClose && onClose()
+  }
+  class Wrapper extends React.Component {
+    state = {open: false}
+    componentDidMount () {
+      this.setState({open: true})
+    }
+    render () {
+      return <Toast {...others} open={this.state.open} onClose={this.handleClose.bind(this)} onAfterClose={handleClose}>{message}</Toast>
+    }
+    handleClose () {
+      this.setState({open: false})
+    }
+  }
+  ReactDOM.render(
+    <Wrapper/>,
+    node
+  )
+}
+
+Actionsheet.open = props => {
+  let {onAction, onClose, options, ...others} = props
+  let node = document.createElement('div')
+  document.body.appendChild(node)
+  let handleClose = () => {
+    ReactDOM.unmountComponentAtNode(node)
+    document.body.removeChild(node)
+    onClose && onClose()
+  }
+  class Wrapper extends React.Component {
+    state = {open: false}
+    componentDidMount () {
+      this.setState({open: true})
+    }
+    render () {
+      return (
+        <Actionsheet {...others} open={this.state.open} onAction={this.handleAction.bind(this)} onAfterClose={handleClose}>
+          {options.map(item => {
+            let {label, ...others} = item
+            return <ActionsheetItem {...others} key={item.value}>{label}</ActionsheetItem>
+          })}
+        </Actionsheet>
+      )
+    }
+    handleAction (value) {
+      this.setState({open: false})
+      onAction && onAction(value)
+    }
+  }
+  ReactDOM.render(
+    <Wrapper/>,
+    node
+  )
+}
 
 export {
   Arrow,

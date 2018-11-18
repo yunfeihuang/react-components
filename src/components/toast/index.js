@@ -27,18 +27,19 @@ class Toast extends React.Component {
   constructor (props) {
     super(props)
     this.handleEntering = this.handleEntering.bind(this)
+    this.handleExited = this.handleExited.bind(this)
     this.rootId = Math.random().toString(36).substr(2)
   }
   render () {
     let {className, align, type, children, style, open} = this.props
     const transitionClass = {
-      entering: 'confirm-fade-enter confirm-fade-enter-active',
-      entered: 'confirm-fade-enter-active',
-      exiting: 'confirm-fade-enter-active confirm-fade-leave-active',
-      exited: 'confirm-fade-leave'
+      entering: 'popup-fade-enter popup-fade-enter-active',
+      entered: 'popup-fade-enter-active',
+      exiting: 'popup-fade-enter-active popup-fade-leave-active',
+      exited: 'popup-fade-leave'
     }
     return (
-      <Transition in={open} timeout={120} onEntering={this.handleEntering}>
+      <Transition in={open} timeout={120} onEntering={this.handleEntering} onExited={this.handleExited}>
         {state => {
           let display = ''
           if (state === 'entering') {
@@ -76,7 +77,7 @@ class Toast extends React.Component {
     if (this.props.open) {
       let node = document.getElementById(this.rootId)
       if (node){
-        node.style.opacity = 0;
+        node.style.opacity = 1;
         this.handleEntering(node)
       }
     }
@@ -94,6 +95,9 @@ class Toast extends React.Component {
         this.props.onClose && this.props.onClose()
       }, this.props.duration)
     }
+  }
+  handleExited () {
+    this.props.onAfterClose && this.props.onAfterClose()
   }
 }
 

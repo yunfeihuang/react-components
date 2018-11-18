@@ -35,6 +35,9 @@ class Demo extends React.Component {
             <Cell title="Toast Bottom">
               <Switch value={this.state.bottomOpen} onChange={this.handleChange.bind(this, 'bottomOpen')} />
             </Cell>
+            <Cell title="js调用">
+              <span onClick={this.handleClick}>点击我打开</span>
+            </Cell>
           </Group>
         </Body>
         <Toast open={this.state.topOpen} onClose={this.handleClose.bind(this, 'topOpen')}>{this.state.content}</Toast>
@@ -55,6 +58,12 @@ class Demo extends React.Component {
     let state = {...this.state}
     state[key] = false
     this.setState(state)
+  }
+  handleClick () {
+    Toast.open({
+      type: 'loading',
+      message: 'loading...'
+    })
   }
 }
 

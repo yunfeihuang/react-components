@@ -4,13 +4,13 @@ import classnames from 'classnames';
 import PropTypes from 'prop-types';
 
 const Actionsheet = props => {
-  let {children, className, title, cancelText, cancel, type, onClick, onClose, ...others} = props
+  let {children, className, title, cancelText, cancel, type, onAction, onClose, ...others} = props
   
   let handleClose = () => {
     onClose && onClose()
   }
   let handleClick = value => {
-    onClick && onClick(value)
+    onAction && onAction(value)
     handleClose()
   }
   let direction = type === 'menu' ? 'center' : 'bottom'

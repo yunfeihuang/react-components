@@ -43,15 +43,18 @@ class Demo extends React.Component {
             <Cell title="menu">
               <Switch value={this.state.open3} onChange={this.handleChange.bind(this, 3)} />
             </Cell>
+            <Cell title="js调用">
+              <span onClick={this.handleClick.bind(this)}>点击我打开</span>
+            </Cell>
           </Group>
         </Body>
-        <Actionsheet open={this.state.open1} onClose={this.handleClose.bind(this, 1)} onClick={this.handleClick.bind(this)}>
+        <Actionsheet open={this.state.open1} onClose={this.handleClose.bind(this, 1)} onAction={this.handleAction.bind(this)}>
           {options}
         </Actionsheet>
-        <Actionsheet open={this.state.open2} onClose={this.handleClose.bind(this, 2)} cancel={true} title="title" onClick={this.handleClick.bind(this)}>
+        <Actionsheet open={this.state.open2} onClose={this.handleClose.bind(this, 2)} cancel={true} title="title" onAction={this.handleAction.bind(this)}>
           {options}
         </Actionsheet>
-        <Actionsheet open={this.state.open3} onClose={this.handleClose.bind(this, 3)} type="menu" onClick={this.handleClick.bind(this)}>
+        <Actionsheet open={this.state.open3} onClose={this.handleClose.bind(this, 3)} type="menu" onAction={this.handleAction.bind(this)}>
           {options}
         </Actionsheet>
       </Layout>
@@ -64,11 +67,20 @@ class Demo extends React.Component {
     state['open' + key] = value
     this.setState(state)
   }
-  handleClick (value) {
+  handleAction (value) {
     console.log('点击了' + value)
   }
   handleClose (key) {
     this.handleChange(key, false)
+  }
+  handleClick () {
+    Actionsheet.open({
+      title: '标题文字',
+      options: this.state.options,
+      onAction (value) {
+        console.log(value)
+      }
+    })
   }
 }
 

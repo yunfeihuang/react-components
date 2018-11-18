@@ -20,6 +20,9 @@ class Demo extends React.Component {
             <Cell title={`password(${this.state.value2})`}>
               <Switch value={this.state.open2} onChange={this.handleChange2.bind(this)} />
             </Cell>
+            <Cell title="js调用">
+              <span onClick={this.handleClick}>点击我打开</span>
+            </Cell>
           </Group>
         </Body>
         <Prompt
@@ -57,6 +60,15 @@ class Demo extends React.Component {
     this.handleChange2(false)
     this.setState({
       value2: value
+    })
+  }
+  handleClick () {
+    Prompt.open({
+      title: '用户名称',
+      inputProps: {value: '', placeholder: '请输入用户名'},
+      onConfirm (value) {
+        console.log(value)
+      }
     })
   }
 }
