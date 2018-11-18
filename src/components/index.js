@@ -58,9 +58,12 @@ Alert.open = props => {
     onClose && onClose()
   }
   class Wrapper extends React.Component {
-    state = {open: true}
+    state = {open: false}
     render () {
       return <Alert {...others} open={this.state.open} onConfirm={this.handleConfirm.bind(this)} onClose={handleClose}>{message}</Alert>
+    }
+    componentDidMount () {
+      this.setState({open: true})
     }
     handleConfirm () {
       this.setState({open: false})
@@ -83,9 +86,12 @@ Confirm.open = props => {
     onClose && onClose()
   }
   class Wrapper extends React.Component {
-    state = {open: true}
+    state = {open: false}
     render () {
       return <Confirm {...others} open={this.state.open} onConfirm={this.handleConfirm.bind(this)} onClose={handleClose}>{message}</Confirm>
+    }
+    componentDidMount () {
+      this.setState({open: true})
     }
     handleConfirm () {
       this.setState({open: false})
@@ -108,9 +114,12 @@ Prompt.open = props => {
     onClose && onClose()
   }
   class Wrapper extends React.Component {
-    state = {open: true}
+    state = {open: false}
     render () {
       return <Prompt {...others} open={this.state.open} onConfirm={this.handleConfirm.bind(this)} onClose={handleClose}></Prompt>
+    }
+    componentDidMount () {
+      this.setState({open: true})
     }
     handleConfirm (value) {
       this.setState({open: false})

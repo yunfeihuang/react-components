@@ -68,6 +68,11 @@ class Confirm extends React.Component {
       </div>
     );
   }
+  componentDidMount () {
+    if (this.props.open) {
+      this.pushState()
+    }
+  }
   getPushURL () {
     let array = [window.location.href.split('#')[0], window.location.hash]
     array.push(window.location.hash ? (window.location.href.indexOf('?') === -1 ? '?' : '&') : '#')

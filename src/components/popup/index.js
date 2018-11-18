@@ -114,6 +114,11 @@ export default class Popup extends React.Component {
       this.props.onAfterClose && this.props.onAfterClose()
     })
   }
+  componentDidMount () {
+    if (this.props.open) {
+      this.pushState()
+    }
+  }
   componentWillReceiveProps (nextProps) {
     if (nextProps.open !== this.props.open) {
       if (nextProps.open) {
