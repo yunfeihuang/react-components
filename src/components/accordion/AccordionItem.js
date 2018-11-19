@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Arrow from '../arrow'
+import Transition from 'react-transition-group/Transition'
 
 class AccordionItem extends React.Component {
   static propTypes = {
@@ -15,72 +16,67 @@ class AccordionItem extends React.Component {
     this.state = {
       open: this.props.open
     }
+    this.handleOpen = this.handleOpen.bind(this)
   }
   render () {
-    let {children, className, title, open, ...others} = this.props
+    let {children, className, title, open, value, toClose, toOpen, ...others} = this.props
+    const transitionClass = {
+      entering: 'accordion-slide-enter',
+      entered: 'accordion-slide-enter-active',
+      exiting: 'accordion-slide-leave-active',
+      exited: 'accordion-slide-leave'
+    }
     return (
-      <div ref="$el" className={classnames(['vx-accordion--item', {'is-open': this.state.open}, className])} {...others}>
-        <div className="vx-accordion--item-hd" onClick={this.handleClick.bind(this,!this.state.open)}>
-          <div className="vx-accordion--item-title">
-            {title}
-          </div>
+      <div ref="$el" className={classnames(['vx-accordion--item', {'is-open': value.indexOf(this.name)>-1}, className])} {...others}>
+        <div className="vx-accordion--item-hd" onClick={this.handleOpen}>
+          <div className="vx-accordion--item-title">{title}</div>
           <Arrow direction="down" />
         </div>
-        <div className="vx-accordion--item-bd">
-          <div className="vx-accordion--item-content">
-          {children}
-          </div>
-        </div>
+        <Transition timeout={300} in={value.indexOf(this.name)>-1} onEntering={this.handleEnter}>
+          {state => {
+            return (
+              <div style={{display: state==='exited'?'none':''}} className={classnames(["vx-accordion--item-bd", transitionClass[state]])}>
+                <div className="vx-accordion--item-content">{children}</div>
+              </div>
+            )
+          }}
+        </Transition>
       </div>
     );
   }
-  componentDidMount () {
-    if (this.props.open) {
-      let node = this.refs.$el.querySelector('.vx-accordion--item-bd')
-      node.style.height = 'auto'
-      this.handleClick(true)
-    }
-    this.$handleResize = this.handleResize.bind(this)
-    window.addEventListener('resize', this.$handleResize, false)
+  componentWillMount () {
+    this.name = Math.random().toString(36).substr(2)
+    this.props.open && this.props.toOpen(this.name)
   }
-  componentDidUpdate (prevProps) {
-    if (prevProps.open !== this.props.open) {
-      this.handleClick(this.props.open)
-    }
+  componentDidMount () {
+    this.handleResize()
+    window.addEventListener('resize', this.$handleResize, false)
   }
   componentWillUnmount () {
     window.removeEventListener('resize', this.$handleResize)
   }
-  handleResize () {
-    let node = this.refs.$el.querySelector('.vx-accordion--item-bd')
-    if (node.style.height) {
-      node.style.height = 'auto'
-      let height = node.offsetHeight
-      requestAnimationFrame(() => {
-        node.style.height = height + 'px'
-      })
+  componentWillReceiveProps (nextProps) {
+    if (this.props.open !== nextProps.open) {
+      if (nextProps.open) {
+        this.props.toOpen(this.name)
+      } else {
+        this.props.toClose(this.name)
+      }
     }
   }
-  handleClick (open) {
-    let node = this.refs.$el.querySelector('.vx-accordion--item-bd')
-    let height = ''
-    if (open) {
-      height = node.children[0].offsetHeight + 'px'
+  handleResize () {
+    if (this.props.value.indexOf(this.name) > -1) {
+      let node = this.refs.$el.querySelector('.vx-accordion--item-bd')
+      this.handleEnter(node)
     }
-    let self = this
-    this.setState({
-      open: open
-    }, () => {
-      let parentNode = self.refs.$el.parentNode
-      if (parentNode && parentNode.children && parentNode.dataset.mutex === 'true') {
-        Array.from(parentNode.children).forEach(item => {
-          if (item.classList.contains('vx-accordion--item') && item !== self.refs.$el) {
-            item.querySelector('.vx-accordion--item-bd').style.height  = ''
-          }
-        })
-      }
-      node.style.height = height
+  }
+  handleEnter (node) {
+    requestAnimationFrame(() => {
+      node.style.height = node.children[0].offsetHeight + 'px'
     })
+  }
+  handleOpen () {
+    this.props.toOpen(this.name)
   }
 }
 

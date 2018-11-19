@@ -54,7 +54,7 @@ Alert.open = props => {
   document.body.appendChild(node)
   let handleClose = () => {
     ReactDOM.unmountComponentAtNode(node)
-    document.body.removeChild(node)
+    node.parentNode && document.body.removeChild(node)
     onClose && onClose()
   }
   class Wrapper extends React.Component {
@@ -82,7 +82,7 @@ Confirm.open = props => {
   document.body.appendChild(node)
   let handleClose = () => {
     ReactDOM.unmountComponentAtNode(node)
-    document.body.removeChild(node)
+    node.parentNode && document.body.removeChild(node)
     onClose && onClose()
   }
   class Wrapper extends React.Component {
@@ -110,7 +110,7 @@ Prompt.open = props => {
   document.body.appendChild(node)
   let handleClose = () => {
     ReactDOM.unmountComponentAtNode(node)
-    document.body.removeChild(node)
+    node.parentNode && document.body.removeChild(node)
     onClose && onClose()
   }
   class Wrapper extends React.Component {
@@ -138,7 +138,7 @@ Toast.open = props => {
   document.body.appendChild(node)
   let handleClose = () => {
     ReactDOM.unmountComponentAtNode(node)
-    document.body.removeChild(node)
+    node.parentNode && document.body.removeChild(node)
     onClose && onClose()
   }
   class Wrapper extends React.Component {
@@ -165,7 +165,7 @@ Actionsheet.open = props => {
   document.body.appendChild(node)
   let handleClose = () => {
     ReactDOM.unmountComponentAtNode(node)
-    document.body.removeChild(node)
+    node.parentNode && document.body.removeChild(node)
     onClose && onClose()
   }
   class Wrapper extends React.Component {
@@ -175,7 +175,7 @@ Actionsheet.open = props => {
     }
     render () {
       return (
-        <Actionsheet {...others} open={this.state.open} onAction={this.handleAction.bind(this)} onAfterClose={handleClose}>
+        <Actionsheet {...others} open={this.state.open} onAction={this.handleAction.bind(this)} onClose={this.handleClose.bind(this)} onAfterClose={handleClose}>
           {options.map(item => {
             let {label, ...others} = item
             return <ActionsheetItem {...others} key={item.value}>{label}</ActionsheetItem>
@@ -186,6 +186,9 @@ Actionsheet.open = props => {
     handleAction (value) {
       this.setState({open: false})
       onAction && onAction(value)
+    }
+    handleClose () {
+      this.setState({open: false})
     }
   }
   ReactDOM.render(

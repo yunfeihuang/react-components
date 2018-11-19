@@ -33,9 +33,9 @@ class Toast extends React.Component {
   render () {
     let {className, align, type, children, style, open} = this.props
     const transitionClass = {
-      entering: 'popup-fade-enter popup-fade-enter-active',
+      entering: 'popup-fade-enter',
       entered: 'popup-fade-enter-active',
-      exiting: 'popup-fade-enter-active popup-fade-leave-active',
+      exiting: 'popup-fade-leave-active',
       exited: 'popup-fade-leave'
     }
     return (
