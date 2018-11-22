@@ -18,7 +18,7 @@ const Layout = props => {
     }
   })
   return (
-    <div className={classnames(['vx-layout', className])} {...others}>
+    <div className={classnames(['vx-layout', `vx-layout--${props.type}`, className])} {...others}>
       <Flexbox className="vx-layout--flexbox" direction="column">
         {slots['header']}        
         {slots['body']}
@@ -28,5 +28,7 @@ const Layout = props => {
     </div>
   )
 }
-
+Layout.defaultProps = {
+  type: 'default'
+}
 export default Layout
