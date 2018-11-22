@@ -145,6 +145,7 @@ Toast.open = props => {
     state = {open: false}
     componentDidMount () {
       this.setState({open: true})
+      window.$$$$toast = this
     }
     render () {
       return <Toast {...others} open={this.state.open} onClose={this.handleClose.bind(this)} onAfterClose={handleClose}>{message}</Toast>
@@ -157,6 +158,12 @@ Toast.open = props => {
     <Wrapper/>,
     node
   )
+}
+
+Toast.close = () => {
+  window.$$$$toast.setState({open: false}, () => {
+    window.$$$$toast = null
+  })
 }
 
 Actionsheet.open = props => {

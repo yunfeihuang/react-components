@@ -42,7 +42,7 @@ class Select extends React.Component {
   render () {
     let {disabled, placeholder, separator, arrow, arrowProps, children, prepend, append, className, popupDirection, max, ...others} = this.props
     return (
-      <div className={classnames(["vx-select", {'is-disabled': disabled, 'is-focus': this.state.focus}, className])} onClick={this.handleClick} {...others}>
+      <div className={classnames(["vx-select", {'is-disabled': disabled}, className])} onClick={this.handleClick} {...others}>
         <Flexbox className="vx-select--inner" align="center">
           {prepend}
           <FlexboxItem>

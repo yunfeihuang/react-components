@@ -21,9 +21,14 @@ export default class Sticky extends React.Component{
       </div>
     )
   }
-  supportSticky() {
-    let position = window.getComputedStyle(this.$el)['position']
-    return position.indexOf('sticky') > -1
+  supportSticky () {
+    if (this.$$supportSticky !== undefined) {
+      return this.$$supportSticky
+    }
+    let node = document.createElement('div')
+    node.style.cssText = 'position:-webkit-sticky;position:sticky;'
+    this.$$supportSticky = (node.cssText || '').indexOf('sticky') > -1
+    return this.$$supportSticky
   }
   componentDidMount () {
     this.$el = this.refs.$el

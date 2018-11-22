@@ -56,10 +56,10 @@ export default class IndexList extends React.Component{
     this.$el = this.refs.$el
     this.init()
     this.$handleResize = this.handleResize.bind(this)
-    window.addEventListener('resize', this.$handleResizem, false)
+    !this.supportSticky() && window.addEventListener('resize', this.$handleResizem, false)
   }
   componentWillUnmount () {
-    window.removeEventListener('resize', this.$handleResizem)
+    !this.supportSticky() && window.removeEventListener('resize', this.$handleResizem)
   }
   componentWillReceiveProps (nextProps) {
     if (this.props.data !== nextProps.data) {
@@ -72,6 +72,15 @@ export default class IndexList extends React.Component{
       })
     }
   }
+  supportSticky () {
+    if (this.$$supportSticky !== undefined) {
+      return this.$$supportSticky
+    }
+    let node = document.createElement('div')
+    node.style.cssText = 'position:-webkit-sticky;position:sticky;'
+    this.$$supportSticky = (node.cssText || '').indexOf('sticky') > -1
+    return this.$$supportSticky
+  }
   init () {
     this.$$scrollNode = this.$el.querySelector('.vx-index-list--each')
     this.$$titleNodes = Array.from(this.$el.querySelectorAll('.vx-index-list--title'))
@@ -80,6 +89,9 @@ export default class IndexList extends React.Component{
     })
     this.$$navNodes = Array.from(this.$el.querySelectorAll('.vx-index-list--nav div'))
     this.$$fixedNode = this.$el.querySelector('.vx-index-list--fixed')
+    if (!this.supportSticky()) {
+      this.$$fixedNode.style.display = 'none'
+    }
     this.$$Y = this.$$fixedNode.offsetHeight
   }
   activeNavItem (index) {
@@ -96,20 +108,20 @@ export default class IndexList extends React.Component{
       }
     })
   }
-  handleScroll (e) {
+  handleScroll () {
     let scrollTop = this.$$scrollNode.scrollTop
     this.$$titleNodes.forEach((node, index) => {
       let position = node._offsetTop - scrollTop
       if (position < this.$$Y && position > 0) {
-        requestAnimationFrame(() => {
+        !this.supportSticky() && requestAnimationFrame(() => {
           this.$$fixedNode.style.top = `-${this.$$Y - position - 1}px`
         })
       } else if (position <= 0) {
-        requestAnimationFrame(() => {
+        !this.supportSticky() && requestAnimationFrame(() => {
           this.$$fixedNode.style.top = ''
           this.$$fixedNode.innerHTML = node.innerHTML.charAt(0)
-          this.activeNavItem(index)
         })
+        this.activeNavItem(index)
       }
     })
   }
