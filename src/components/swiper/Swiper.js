@@ -39,9 +39,9 @@ class Swiper extends React.Component {
   }
   componentDidMount () {
     let {active, pagination, prev, next, scrollbar, onChange} = this.props
-    require.ensure([], (r) => {
-      let Swiper = require('swiper/dist/js/swiper.min.js')
-      require('swiper/dist/css/swiper.min.css')
+    import('swiper/dist/js/swiper.min.js').then(res => {
+      let Swiper = res.default
+      import('swiper/dist/css/swiper.min.css')
       let options = Object.assign({
         initialSlide: active,
         autoplay: this.props.autoplay,

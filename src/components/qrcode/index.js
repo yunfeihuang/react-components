@@ -21,8 +21,8 @@ export default class Qrcode extends React.Component {
   }
   componentDidMount () {
     this.$el = this.refs.$el
-    require.ensure([], (r) => {
-      let QRCode = require('qrcodejs2')
+    import('qrcodejs2').then(res => {
+      let QRCode = res.default
       this.$$qrcode = new QRCode(this.$el, {
         ...this.props
       })

@@ -54,24 +54,26 @@ export default class Preview extends React.Component {
   open (index) {
     let self = this
     this.$el = this.refs.$el
-    require.ensure([], (r) => {
+    import('photoswipe/dist/photoswipe.min.js').then(res => {
       require('photoswipe/dist/photoswipe.css')
       require('photoswipe/dist/default-skin/default-skin.css')
-      let PhotoSwipe = require('photoswipe/dist/photoswipe.min.js')
-      let UI = require('photoswipe/dist/photoswipe-ui-default')
-      let options = Object.assign({
-        history: true,
-        shareEl: false,
-        tapToClose: true,
-        fullscreenEl: false,
-        zoomEl: true,
-        index: index
-      }, this.options)
-      this.$el.style.display = 'block'
-      this.$$photoswipe = new PhotoSwipe(this.$el, UI, this.props.list, options)
-      this.$$photoswipe.init()
-      this.$$photoswipe.listen('close', () => {
-        self.props.onClose && self.props.onClose()
+      let PhotoSwipe = res.default
+      import('photoswipe/dist/photoswipe.min.js').then(res2 => {
+        let UI = res2.default
+        let options = Object.assign({
+          history: true,
+          shareEl: false,
+          tapToClose: true,
+          fullscreenEl: false,
+          zoomEl: true,
+          index: index
+        }, this.options)
+        this.$el.style.display = 'block'
+        this.$$photoswipe = new PhotoSwipe(this.$el, UI, this.props.list, options)
+        this.$$photoswipe.init()
+        this.$$photoswipe.listen('close', () => {
+          self.props.onClose && self.props.onClose()
+        })
       })
     })
   }
