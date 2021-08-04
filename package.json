@@ -149,6 +149,6 @@
     "redux-devtools-log-monitor": "^1.4.0",
     "redux-logger": "^3.0.6",
     "vx-ui": "0.1.7-alpha",
-    "swiper": "^3.4.2"
+    "swiper": "^6.5.1"
   }
 }
