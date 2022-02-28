@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Toast from '@/components/toast'
+import Toast from './toast'
 
 export default function asyncComponent(importComponent) {
   class AsyncComponent extends React.Component {
@@ -9,12 +9,14 @@ export default function asyncComponent(importComponent) {
       this.state = {
         component: null
       }
+      /*
       this.node = document.createElement('div')
       document.body.appendChild(this.node)
       ReactDOM.render(
         <Toast type="loading" open={true} duration={0} align="center">页面努力加载...</Toast>,
         this.node
       )
+      */
     }
 
     async componentDidMount() {
@@ -22,11 +24,13 @@ export default function asyncComponent(importComponent) {
       this.setState({
         component: component
       }, () => {
+        /*
         setTimeout(() => {
           ReactDOM.unmountComponentAtNode(this.node)
           this.node && this.node.parentNode && this.node.parentNode.removeChild(this.node)
           this.node = null
         }, 200)
+        */
       })
     }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout, Nav, Body, Message, PopupPicker, Group, Cell, Switch} from '@/components'
+import { Layout, Nav, Body, Message, PopupPicker, Group, Cell, Switch} from '../components'
 
 let citys = {
   '01': [

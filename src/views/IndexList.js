@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout, Nav, IndexList } from '@/components'
+import { Layout, Nav, IndexList } from '../components'
 
 let list = []
 let array = ['★', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'J', 'K', 'L']

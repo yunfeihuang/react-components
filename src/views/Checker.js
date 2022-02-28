@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout, Body, Nav, Group, Checker, CheckerGroup } from '@/components'
+import { Layout, Body, Nav, Group, Checker, CheckerGroup } from '../components'
 
 class Demo extends React.Component {
   state = {

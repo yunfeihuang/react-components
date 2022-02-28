@@ -1,21 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'vx-ui/lib/style/theme/index.css'
 import './index.css';
 import App from './App';
-import registerServiceWorker from './registerServiceWorker';
-import { Provider } from 'react-redux';
-import store from './store';
-import 'vx-ui/lib/style/theme/index.css'
-import '@/components';
+import reportWebVitals from './reportWebVitals';
+import './components';
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
+  <App />,
   document.getElementById('root')
 );
-registerServiceWorker();
 
+// If you want to start measuring performance in your app, pass a function
+// to log results (for example: reportWebVitals(console.log))
+// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
+reportWebVitals();
 let initRootFontSize = function () {
   let deviceWidth = window.innerWidth
   let devicePixelRatio = window.devicePixelRatio || window.webkitDevicePixelRatio || window.mozDevicePixelRatio

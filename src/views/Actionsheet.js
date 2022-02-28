@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout, Body, Actionsheet, ActionsheetItem, Switch, Nav, Cell, Group} from '@/components'
+import { Layout, Body, Actionsheet, ActionsheetItem, Switch, Nav, Cell, Group} from '../components'
 
 class Demo extends React.Component {
   state = {

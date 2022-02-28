@@ -1,9 +1,9 @@
 import React from 'react';
-import { Layout, Body, Nav, Cell, Group } from '@/components'
+import { Layout, Body, Nav, Cell, Group } from '../components'
 
 class Home extends React.Component {
   handleClick () {
-    this.props.dispatch('todo/add', {name: 'fdafd'})
+    // this.props.dispatch('todo/add', {name: 'fdafd'})
   }
   render() {
     return (
@@ -15,7 +15,6 @@ class Home extends React.Component {
           <a target="_blank" rel="noopener noreferrer" href="https://github.com/yunfeihuang/react-components">
             <img style={{borderRadius: '50%',height: '40px',width: '40px'}} src="./images/github.png" alt=""/> <br/>
             star me
-            {this.props.state.todo && this.props.state.todo.counter}
           </a>
         </div>
           <Group title="basic">

@@ -1,24 +1,23 @@
-import React from 'react';
-import { HashRouter as Router } from 'react-router-dom';
+import logo from './logo.svg';
 import './App.css';
-import { renderRoutes } from 'react-router-config';
-import globalRouter from './views/router';
-// import DevTools from './devtools';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import routes from './views/router'
+import Home from './views/Home';
+const AppContext = React.createContext()
 
-const routes = [
-  ...globalRouter
-]
-
-class App extends React.Component {
-  render() {
-    return (
-      <Router>
-        <div>
-          {renderRoutes(routes)}
-        </div>
-      </Router>
-    )
-  }
+function App() {
+  return (
+    <AppContext.Provider value={{foo: 'foo'}}>
+      <BrowserRouter>
+          <Routes>
+            {routes.map(((item, i) => {
+              return (<Route path={item.path} exact element={<item.component/>} key={i}></Route>)
+            }))}
+          </Routes>
+      </BrowserRouter>
+    </AppContext.Provider>
+  );
 }
 
 export default App;

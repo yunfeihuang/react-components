@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout, Nav, Body, ListView, Flexbox, FlexboxItem, Img, Divider } from '@/components'
+import { Layout, Nav, Body, ListView, Flexbox, FlexboxItem, Img, Divider } from '../components'
 class Demo extends React.Component {
   constructor (props) {
     super(props)

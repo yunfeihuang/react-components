@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout, Body, Nav, Sidebar, SidebarItem} from '@/components'
+import { Layout, Body, Nav, Sidebar, SidebarItem} from '../components'
 
 let data = []
 for (let i = 0; i < 20; i++) {
