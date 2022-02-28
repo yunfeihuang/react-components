@@ -1,8 +1,20 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Arrow from '../arrow'
 import Transition from 'react-transition-group/Transition'
+
+/*
+function AccordionItem (props) {
+  const [open, setOpen] = useState(props.open)
+}
+AccordionItem.propTypes = {
+  open: PropTypes.bool
+}
+AccordionItem.defaultProps = {
+  open: false
+}
+*/
 
 class AccordionItem extends React.Component {
   static propTypes = {

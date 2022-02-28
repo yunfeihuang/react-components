@@ -1,8 +1,21 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import ReactDOM from 'react-dom'
 import Toast from './toast'
 
+
 export default function asyncComponent(importComponent) {
+  /*
+  function AsyncComponent (props) {
+    const [component, setComponent] = useState(null)
+    useEffect(async () => {
+      const { default: component } = await importComponent()
+      setComponent(component)
+    }, [])
+    const C = component
+    return C ? <C {...this.props} /> : null
+  }
+  return AsyncComponent
+  */
   class AsyncComponent extends React.Component {
     constructor(props) {
       super(props)

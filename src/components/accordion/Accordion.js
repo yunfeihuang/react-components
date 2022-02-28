@@ -1,59 +1,47 @@
-import React from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
-class Accordion extends React.Component{
-  static propTypes = {
-    mutex: PropTypes.bool
+function Accordion (props) {
+  const [value, setValue] = useState([])
+  function close (name) {
+    setValue(value.filter(item => {
+      return item !== name
+    }))
   }
-  static defaultProps = {
-    mutex: true
-  }
-  constructor (props) {
-    super(props)
-    this.state = {value: []}
-    this.open = this.open.bind(this)
-    this.close = this.close.bind(this)
-  }
-  render () {
-    let {children, className, mutex, ...others} = this.props
-    let cloneChildren = React.Children.map(children, (item) => {
-      if (item) {
-        return React.cloneElement(item, {
-          toOpen: this.open,
-          toClose: this.close,
-          value: this.state.value
-        })
-      }
-      return item;
-    })
-    return (
-      <div className={classnames(["vx-accordion", className])} data-mutex={mutex} {...others}>
-        {cloneChildren}
-      </div>
-    );
-  }
-  open (name) {
-    if (!this.props.mutex) {
-      if (this.state.value.indexOf(name) === -1) {
-        this.setState({
-          value: [...this.state.value, name]
-        })
+  function open (name) {
+    if (!props.mutex) {
+      if (value.indexOf(name) === -1) {
+        setValue([...value, name])
       } else {
-        this.close(name)
+        close(name)
       }
     } else {
-      this.setState({
-        value: this.state.value[0] === name ? [] : [name]
-      })
+      setValue(value[0] === name ? [] : [name])
     }
   }
-  close (name) {
-    let value = this.state.value.filter(item => {
-      return item !== name
-    })
-    this.setState({value})
-  }
+  
+  let {children, className, mutex, ...others} = props
+  let cloneChildren = React.Children.map(children, (item) => {
+    if (item) {
+      return React.cloneElement(item, {
+        toOpen: open,
+        toClose: close,
+        value: value
+      })
+    }
+    return item;
+  })
+  return (
+    <div className={classnames(["vx-accordion", className])} data-mutex={mutex} {...others}>
+      {cloneChildren}
+    </div>
+  );
 }
-
+Accordion.propTypes = {
+  mutex: PropTypes.bool
+}
+Accordion.defaultProps = {
+  mutex: true
+}
 export default Accordion;
