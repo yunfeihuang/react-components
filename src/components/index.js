@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom'
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import Arrow from './arrow'
 import Button from './button'
 import Nav from './nav'
@@ -57,18 +57,16 @@ Alert.open = props => {
     node.parentNode && document.body.removeChild(node)
     onClose && onClose()
   }
-  class Wrapper extends React.Component {
-    state = {open: false}
-    render () {
-      return <Alert {...others} open={this.state.open} onConfirm={this.handleConfirm.bind(this)} onClose={handleClose}>{message}</Alert>
-    }
-    componentDidMount () {
-      this.setState({open: true})
-    }
-    handleConfirm () {
-      this.setState({open: false})
+  function Wrapper () {
+    let [open, setOpen] = useState(false)
+    const handleConfirm = () => {
+      setOpen(false)
       onConfirm && onConfirm()
     }
+    useEffect(() => {
+      setOpen(true)
+    }, [])
+    return <Alert {...others} open={open} onConfirm={handleConfirm} onClose={handleClose}>{message}</Alert>
   }
   ReactDOM.render(
     <Wrapper/>,
@@ -85,18 +83,16 @@ Confirm.open = props => {
     node.parentNode && document.body.removeChild(node)
     onClose && onClose()
   }
-  class Wrapper extends React.Component {
-    state = {open: false}
-    render () {
-      return <Confirm {...others} open={this.state.open} onConfirm={this.handleConfirm.bind(this)} onClose={handleClose}>{message}</Confirm>
-    }
-    componentDidMount () {
-      this.setState({open: true})
-    }
-    handleConfirm () {
-      this.setState({open: false})
+  function Wrapper () {
+    let [open, setOpen] = useState(false)
+    const handleConfirm = () => {
+      setOpen(false)
       onConfirm && onConfirm()
     }
+    useEffect(() => {
+      setOpen(true)
+    }, [])
+    return <Confirm {...others} open={open} onConfirm={handleConfirm} onClose={handleClose}>{message}</Confirm>
   }
   ReactDOM.render(
     <Wrapper/>,
@@ -113,25 +109,23 @@ Prompt.open = props => {
     node.parentNode && document.body.removeChild(node)
     onClose && onClose()
   }
-  class Wrapper extends React.Component {
-    state = {open: false}
-    render () {
-      return <Prompt {...others} open={this.state.open} onConfirm={this.handleConfirm.bind(this)} onClose={handleClose}></Prompt>
-    }
-    componentDidMount () {
-      this.setState({open: true})
-    }
-    handleConfirm (value) {
-      this.setState({open: false})
+  function Wrapper () {
+    let [open, setOpen] = useState(false)
+    const handleConfirm = (value) => {
+      setOpen(false)
       onConfirm && onConfirm(value)
     }
+    useEffect(() => {
+      setOpen(true)
+    }, [])
+    return <Prompt {...others} open={open} onConfirm={handleConfirm} onClose={handleClose}></Prompt>
   }
   ReactDOM.render(
     <Wrapper/>,
     node
   )
 }
-
+let $setOpen = null
 Toast.open = props => {
   let {onClose, message, ...others} = props
   let node = document.createElement('div')
@@ -141,18 +135,16 @@ Toast.open = props => {
     node.parentNode && document.body.removeChild(node)
     onClose && onClose()
   }
-  class Wrapper extends React.Component {
-    state = {open: false}
-    componentDidMount () {
-      this.setState({open: true})
-      window.$$$$toast = this
-    }
-    render () {
-      return <Toast {...others} open={this.state.open} onClose={this.handleClose.bind(this)} onAfterClose={handleClose}>{message}</Toast>
-    }
-    handleClose () {
-      this.setState({open: false})
-    }
+  function Wrapper () {
+    let [open, setOpen] = useState(false)
+    $setOpen = setOpen
+    const _handleClose = () => {
+      setOpen(false)
+    } 
+    useEffect(() => {
+      setOpen(true)
+    }, [])
+    return <Toast {...others} open={open} onClose={_handleClose} onAfterClose={handleClose}>{message}</Toast>
   }
   ReactDOM.render(
     <Wrapper/>,
@@ -161,9 +153,7 @@ Toast.open = props => {
 }
 
 Toast.close = () => {
-  window.$$$$toast.setState({open: false}, () => {
-    window.$$$$toast = null
-  })
+  $setOpen && $setOpen(false)
 }
 
 Actionsheet.open = props => {
@@ -175,28 +165,27 @@ Actionsheet.open = props => {
     node.parentNode && document.body.removeChild(node)
     onClose && onClose()
   }
-  class Wrapper extends React.Component {
-    state = {open: false}
-    componentDidMount () {
-      this.setState({open: true})
+  function Wrapper () {
+    let [open, setOpen] = useState(false)
+    $setOpen = setOpen
+    const _handleClose = () => {
+      setOpen(false)
     }
-    render () {
-      return (
-        <Actionsheet {...others} open={this.state.open} onAction={this.handleAction.bind(this)} onClose={this.handleClose.bind(this)} onAfterClose={handleClose}>
-          {options.map(item => {
-            let {label, ...others} = item
-            return <ActionsheetItem {...others} key={item.value}>{label}</ActionsheetItem>
-          })}
-        </Actionsheet>
-      )
-    }
-    handleAction (value) {
-      this.setState({open: false})
+    const handleAction = (value) => {
+      setOpen(false)
       onAction && onAction(value)
     }
-    handleClose () {
-      this.setState({open: false})
-    }
+    useEffect(() => {
+      setOpen(true)
+    }, [])
+    return (
+      <Actionsheet {...others} open={open} onAction={handleAction} onClose={_handleClose} onAfterClose={handleClose}>
+        {options.map(item => {
+          let {label, ...others} = item
+          return <ActionsheetItem {...others} key={item.value}>{label}</ActionsheetItem>
+        })}
+      </Actionsheet>
+    )
   }
   ReactDOM.render(
     <Wrapper/>,
