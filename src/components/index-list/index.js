@@ -1,139 +1,78 @@
-import React from 'react'
+import React, {useState, useEffect, useRef} from 'react'
 import PropTypes from 'prop-types'
 import classnames from 'classnames'
 
-export default class IndexList extends React.Component{
-  static propTypes = {
-    data: PropTypes.array,
-    onClick: PropTypes.func
+function IndexList (props) {
+  const random = Math.random().toString(36).substr(2)
+  const el = useRef(null)
+  const [navList, setNavList] = useState(props.data.map(item => {
+    return item.label.charAt(0)
+  }))
+  const [currentCharAt, setCurrentCharAt] = useState(navList[0] || null)
+  let scrollTimer = null
+  function handleScroll () {
+    scrollTimer && clearTimeout(scrollTimer)
+    scrollTimer = setTimeout(() => {
+      const top = el.current.getBoundingClientRect().top
+      const nodes = el.current.querySelectorAll('.vx-index-list--title')
+      if (nodes.length) {
+        for(let i = 0; i < nodes.length; i++) {
+          if (nodes[i].getBoundingClientRect().top == top) {
+            setCurrentCharAt(nodes[i].innerText)
+          }
+        }
+      }
+    }, 200)
   }
-  static defaultProps = {
-    data: []
+  function handleGroup (value) {
+    const node = document.getElementById(random + '-' + value)
+    node && node.scrollIntoView({behavior: 'smooth'})
+    setCurrentCharAt(value)
   }
-  constructor (props) {
-    super(props)
-    let navList = this.props.data.map(item => {
+  function handleClick (value) {
+    props.onClick && props.onClick(value)
+  }
+  useEffect(() => {
+    window.addEventListener('resize', handleScroll, false)
+    return () => {
+      window.removeEventListener('resize', handleScroll, false)
+    }
+  }, [])
+  useEffect(() => {
+    setNavList(props.data.map(item => {
       return item.label.charAt(0)
-    })
-    this.state = {
-      navList,
-      currentCharAt: navList[0]
-    }
-    this.handleScroll = this.handleScroll.bind(this)
-  }
-  render () {
-    const { className, style, data } = this.props
-    return (
-      <div ref="$el" className={classnames(['vx-index-list', className])} style={style}>
-        <div className="vx-index-list--each" onScroll={this.handleScroll}>
-          {data.map((group,i) => {
-            return (
-              <div className="vx-index-list--group" key={i}>
-                <div className="vx-index-list--title">{group.label}</div>
-                {group.items.map((item,index) => {
-                  return (
-                    <div className="vx-index-list--item" key={index}  onClick={this.handleClick.bind(this, item.value)}>
-                      {item.label}
-                    </div>
-                  )
-                })}
-              </div>
-            )
-          })}
-        </div>
-        <div className="vx-index-list--nav">
-          {this.state.navList.map((item, index) => {
-            return (
-              <div key={index} className={{'is-active': index === 0}} onClick={this.handleGroup.bind(this, index)}>{item}</div>
-            )
-          })}
-        </div>
-        <div className="vx-index-list--fixed">{this.state.currentCharAt || ' '}</div>
+    }))
+    setCurrentCharAt(navList[0])
+  }, [props.data])
+  const { className, style, data } = props
+  
+  return (
+    <div className={classnames(['vx-index-list', className])} style={style}>
+      <div className="vx-index-list--each" ref={el} onScroll={handleScroll}>
+        {data.map((group,i) => {
+          return (
+            <div className="vx-index-list--group" key={i} id={random + '-' + group.label}>
+              <div className="vx-index-list--title" style={{position: 'sticky', top: '0', zIndex: '1'}}  key={group.label} >{group.label}</div>
+              {group.items.map((item,index) => {
+                return (<div className="vx-index-list--item" key={index}  onClick={handleClick.bind(null, item.value)}>{item.label}</div>)
+              })}
+            </div>
+          )
+        })}
       </div>
-    )
-  }
-  componentDidMount () {
-    this.$el = this.refs.$el
-    this.init()
-    this.$handleResize = this.handleResize.bind(this)
-    !this.supportSticky() && window.addEventListener('resize', this.$handleResizem, false)
-  }
-  componentWillUnmount () {
-    !this.supportSticky() && window.removeEventListener('resize', this.$handleResizem)
-  }
-  componentWillReceiveProps (nextProps) {
-    if (this.props.data !== nextProps.data) {
-      let navList = nextProps.data.map(item => {
-        return item.label.charAt(0)
-      })
-      this.setState({
-        navList,
-        currentCharAt: navList[0]
-      })
-    }
-  }
-  supportSticky () {
-    if (this.$$supportSticky !== undefined) {
-      return this.$$supportSticky
-    }
-    let node = document.createElement('div')
-    node.style.cssText = 'position:-webkit-sticky;position:sticky;'
-    this.$$supportSticky = (node.cssText || '').indexOf('sticky') > -1
-    return this.$$supportSticky
-  }
-  init () {
-    this.$$scrollNode = this.$el.querySelector('.vx-index-list--each')
-    this.$$titleNodes = Array.from(this.$el.querySelectorAll('.vx-index-list--title'))
-    this.$$titleNodes.forEach(node => {
-      node._offsetTop = node.offsetTop
-    })
-    this.$$navNodes = Array.from(this.$el.querySelectorAll('.vx-index-list--nav div'))
-    this.$$fixedNode = this.$el.querySelector('.vx-index-list--fixed')
-    if (!this.supportSticky()) {
-      this.$$fixedNode.style.display = 'none'
-    }
-    this.$$Y = this.$$fixedNode.offsetHeight
-  }
-  activeNavItem (index) {
-    let _node = this.$$navNodes[index]
-    this.$$navNodes.forEach(node => {
-      if (_node === node) {
-        requestAnimationFrame(() => {
-          node.classList.add('is-active')
-        })
-      } else {
-        requestAnimationFrame(() => {
-          node.classList.remove('is-active')
-        })
-      }
-    })
-  }
-  handleScroll () {
-    let scrollTop = this.$$scrollNode.scrollTop
-    this.$$titleNodes.forEach((node, index) => {
-      let position = node._offsetTop - scrollTop
-      if (position < this.$$Y && position > 0) {
-        !this.supportSticky() && requestAnimationFrame(() => {
-          this.$$fixedNode.style.top = `-${this.$$Y - position - 1}px`
-        })
-      } else if (position <= 0) {
-        !this.supportSticky() && requestAnimationFrame(() => {
-          this.$$fixedNode.style.top = ''
-          this.$$fixedNode.innerHTML = node.innerHTML.charAt(0)
-        })
-        this.activeNavItem(index)
-      }
-    })
-  }
-  handleResize () {
-    this.init()
-    this.handleScroll()
-  }
-  handleGroup (index) {
-    let node = this.$$titleNodes[index]
-    node.offsetParent.scrollTop = node._offsetTop
-  }
-  handleClick (value) {
-    this.props.onClick && this.props.onClick(value)
-  }
+      <div className="vx-index-list--nav" style={{zIndex: '2'}}>
+        {navList.map((item, index) => {
+          return (<div key={index} className={classnames({'is-active': item == currentCharAt})} onClick={handleGroup.bind(null, item)}>{item}</div>)
+        })}
+      </div>
+    </div>
+  )
 }
+IndexList.propTypes = {
+  data: PropTypes.array,
+  onClick: PropTypes.func
+}
+IndexList.defaultProps = {
+  data: []
+}
+export default IndexList

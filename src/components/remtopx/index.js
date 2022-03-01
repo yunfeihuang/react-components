@@ -40,7 +40,7 @@ function RemToPx (props) {
   const { style, width, height, even, component, children, ...others} = props
     let Component = component
     return (
-      <Component style={this.state.style} {...others}>
+      <Component style={style} {...others}>
         {children}
       </Component>
     )
