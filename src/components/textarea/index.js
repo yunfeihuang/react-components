@@ -7,16 +7,14 @@ function Textarea (props) {
   const textarea = useRef(null)
   const inner = useRef(null)
   const shadow = useRef(null)
-  
+
   function renderAutoHeight (value) {
     requestAnimationFrame(() => {
       shadow.current.innerHTML = value.replace(/(\r|\n)$/, '<br/><span style="color:transparent">s</span>').replace(/(\r|\n)/g, '<br/>')
       inner.current.style.height = shadow.current.offsetHeight + 'px'
     })
   }
-  function handleResize () {
-    renderAutoHeight(textarea.current.value)
-  }
+  
   function handleChange (e) {
     props.onChange && props.onChange (e.target.value)
   }
@@ -31,6 +29,9 @@ function Textarea (props) {
     setFocus(false)
   }
   useEffect(() => {
+    function handleResize () {
+      renderAutoHeight(textarea.current.value)
+    }
     renderAutoHeight(textarea.current.value)
     window.addEventListener('resize', handleResize, false)
     return () => {

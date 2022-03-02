@@ -11,9 +11,11 @@ function PopupPicker (props) {
   function handleClose () {
     props.onClose && props.onClose()
   }
+  /*
   function handleCloseAfter () {
     props.onCloseAfter && props.onCloseAfter()
   }
+  */
   function handleConfirm () {
     props.onConfirm && props.onConfirm()
     let value = myPickers.map(item => {

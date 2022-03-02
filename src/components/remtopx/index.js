@@ -3,34 +3,35 @@ import PropTypes from 'prop-types'
 
 function RemToPx (props) {
   const [size, setSize] = useState({})
-  function computedSize () {
-    let fontSize = document.documentElement.style.fontSize
-    let width = ''
-    let height = ''
-    if (fontSize) {
-      fontSize = parseInt(fontSize, 10)
-      if (props.width) {
-        width = Math.round(fontSize * props.width)
-        if (props.even && width % 2) {
-          width++
-        }
-      }
-      if (props.height) {
-        height = Math.round(fontSize * props.height)
-        if (props.even && height % 2) {
-          height++
-        }
-      }
-    }
-    return {
-      width: `${width}px`,
-      height: `${height}px`
-    }
-  }
-  function handleResize () {
-    setSize(computedSize())
-  }
+
   useEffect(() => {
+    function computedSize () {
+      let fontSize = document.documentElement.style.fontSize
+      let width = ''
+      let height = ''
+      if (fontSize) {
+        fontSize = parseInt(fontSize, 10)
+        if (props.width) {
+          width = Math.round(fontSize * props.width)
+          if (props.even && width % 2) {
+            width++
+          }
+        }
+        if (props.height) {
+          height = Math.round(fontSize * props.height)
+          if (props.even && height % 2) {
+            height++
+          }
+        }
+      }
+      return {
+        width: `${width}px`,
+        height: `${height}px`
+      }
+    }
+    function handleResize () {
+      setSize(computedSize())
+    }
     setSize(computedSize())
     window.addEventListener('resize', handleResize, false)
     return () => {
@@ -40,7 +41,7 @@ function RemToPx (props) {
   const { style, width, height, even, component, children, ...others} = props
     let Component = component
     return (
-      <Component style={style} {...others}>
+      <Component style={size} {...others}>
         {children}
       </Component>
     )

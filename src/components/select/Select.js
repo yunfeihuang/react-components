@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import classnames from 'classnames'
 import PropTypes from 'prop-types'
@@ -6,6 +6,94 @@ import Picker from './Picker'
 import Arrow from '../arrow'
 import {Flexbox, FlexboxItem} from '../flexbox'
 
+function Select(props) {
+  // const [focus, setFocus] = useState(false)
+  // const [open, setOpen] = useState(false)
+  const [label, setLabel] = useState(props.max === 1 ? '' : [])
+  let node = null
+  
+  function getLabel (value) {
+    let result = []
+    if (props.max === 1) {
+      React.Children.map(props.children, item => {
+        if (value === item.props.value) {
+          result.push(item.props.label || item.props.children)
+        }
+      })
+    } else {
+      React.Children.map(props.children, item => {
+        if (value.indexOf(item.props.value) > -1) {
+          result.push(item.props.label || item.props.children)
+        }
+      })
+    }
+    return result
+  }
+  function handleChange (value) {
+    setLabel(getLabel(value).join(props.separator), () => {
+      props.onChange && props.onChange(value)
+    })
+  }
+  function handleClose (value = false) {
+    // setFocus(false)
+    node && ReactDOM.unmountComponentAtNode(node)
+  }
+  
+  function handleClick () {
+    // setFocus(true)
+    node = document.createElement('div')
+    ReactDOM.render(
+      <Picker
+        open={false}
+        value={props.value}
+        title={props.placeholder}
+        max={props.max}
+        direction={props.popupDirection}
+        fastClose={props.max === 1}
+        onClose={handleClose}
+        onChange={handleChange}>
+          {props.children}
+      </Picker>,
+      node
+    )
+  }
+
+  useEffect(() => {
+    // setLabel(getLabel(props.value).join(props.separator))
+  }, [props.value])
+
+  let {disabled, placeholder, separator, arrow, arrowProps, children, prepend, append, className, popupDirection, max, ...others} = props
+  return (
+    <div className={classnames(["vx-select", {'is-disabled': disabled}, className])} onClick={handleClick} {...others}>
+      <Flexbox className="vx-select--inner" align="center">
+        {prepend}
+        <FlexboxItem>
+          <button type="button" data-placeholder={placeholder}>{label}</button>
+        </FlexboxItem>
+        {arrow && !append && <Arrow {...arrowProps} direction="down"/>}
+        {append}
+      </Flexbox>
+    </div>
+  );
+}
+
+Select.propTypes = {
+  placeholder: PropTypes.string,
+  max: PropTypes.number,
+  popupDirection: PropTypes.string,
+  separator: PropTypes.string,
+  arrow: PropTypes.bool,
+  onChange: PropTypes.func
+}
+Select.defaultProps = {
+  placeholder: '请选择',
+  separator: ',',
+  max: 1,
+  arrow: true,
+  arrowProps: {}
+}
+export default Select
+/*
 class Select extends React.Component {
   static propTypes = {
     placeholder: PropTypes.string,
@@ -108,3 +196,4 @@ class Select extends React.Component {
 }
 
 export default Select;
+*/

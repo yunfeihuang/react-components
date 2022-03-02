@@ -10,14 +10,14 @@ function IndexList (props) {
   }))
   const [currentCharAt, setCurrentCharAt] = useState(navList[0] || null)
   let scrollTimer = null
-  function handleScroll () {
+  const handleScroll = () => {
     scrollTimer && clearTimeout(scrollTimer)
     scrollTimer = setTimeout(() => {
       const top = el.current.getBoundingClientRect().top
       const nodes = el.current.querySelectorAll('.vx-index-list--title')
       if (nodes.length) {
         for(let i = 0; i < nodes.length; i++) {
-          if (nodes[i].getBoundingClientRect().top == top) {
+          if (nodes[i].getBoundingClientRect().top === top) {
             setCurrentCharAt(nodes[i].innerText)
           }
         }
@@ -37,7 +37,7 @@ function IndexList (props) {
     return () => {
       window.removeEventListener('resize', handleScroll, false)
     }
-  }, [])
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => {
     setNavList(props.data.map(item => {
       return item.label.charAt(0)
@@ -62,7 +62,7 @@ function IndexList (props) {
       </div>
       <div className="vx-index-list--nav" style={{zIndex: '2'}}>
         {navList.map((item, index) => {
-          return (<div key={index} className={classnames({'is-active': item == currentCharAt})} onClick={handleGroup.bind(null, item)}>{item}</div>)
+          return (<div key={index} className={classnames({'is-active': item === currentCharAt})} onClick={handleGroup.bind(null, item)}>{item}</div>)
         })}
       </div>
     </div>
